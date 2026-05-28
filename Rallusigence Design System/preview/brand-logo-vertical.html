@@ -1,0 +1,27 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+.row{display:flex;gap:14px;}
+.tile{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;border:1px solid var(--rs-border);border-radius:8px;min-height:200px;}
+.tile.dark{background:#20B4B1;border-color:#20B4B1;}
+.tile.soft{background:#F9FAFB;}
+.tile img{display:block;}
+.lab{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--rs-text-subtle);font-weight:700;}
+.dark .lab{color:rgba(255,255,255,.85);}
+</style></head><body>
+<div class="row">
+  <div class="tile">
+    <img src="../assets/letras-icono-vertical.svg" alt="Lockup vertical" style="height:140px;width:auto;">
+    <div class="lab">Vertical · firma</div>
+  </div>
+  <div class="tile soft">
+    <img src="../assets/icono.svg" alt="Solo marca" style="height:96px;width:auto;">
+    <div class="lab">Solo marca · favicon / avatar</div>
+  </div>
+  <div class="tile dark">
+    <img src="../assets/kiwi-icon.svg" alt="Kiwi solo" style="height:96px;width:auto;">
+    <div class="lab">Kiwi sin hexágono</div>
+  </div>
+</div>
+</body></html>

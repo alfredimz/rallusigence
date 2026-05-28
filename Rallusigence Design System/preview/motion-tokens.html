@@ -1,0 +1,44 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+h3{margin:0 0 10px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.tbl{display:grid;grid-template-columns:140px 1fr 110px;gap:8px 14px;align-items:center;}
+.k{font-family:ui-monospace,monospace;font-size:12px;color:var(--rs-text);font-weight:600;}
+.v{font-family:ui-monospace,monospace;font-size:11px;color:var(--rs-text-muted);}
+.note{font-size:12px;color:var(--rs-text);}
+.curve{height:36px;width:100%;border-radius:4px;background:var(--rs-bg-soft);position:relative;overflow:hidden;}
+.bar{position:absolute;top:50%;left:0;height:8px;width:24px;border-radius:4px;background:var(--rs-primary);transform:translateY(-50%);animation:slide 2.5s infinite;}
+.curve.ease-out .bar{animation-timing-function:cubic-bezier(0.16,1,0.3,1);}
+.curve.ease-inout .bar{animation-timing-function:cubic-bezier(0.4,0,0.2,1);}
+.curve.bounce .bar{animation-timing-function:cubic-bezier(0.68,-0.55,0.265,1.55);}
+@keyframes slide{0%,100%{left:0;}50%{left:calc(100% - 24px);}}
+.sect+.sect{margin-top:18px;}
+</style></head><body>
+<div class="sect">
+  <h3>Durations</h3>
+  <div class="tbl">
+    <div class="k">--duration-fast</div><div class="note">Hovers, focus rings, color flips</div><div class="v">0.2s</div>
+    <div class="k">--duration-normal</div><div class="note">Cards, buttons, header state changes</div><div class="v">0.3s</div>
+    <div class="k">--duration-slow</div><div class="note">Card hover lifts, panel slides</div><div class="v">0.4s</div>
+    <div class="k">--duration-intro</div><div class="note">Intro overlay fade out</div><div class="v">0.8s</div>
+  </div>
+</div>
+<div class="sect">
+  <h3>Easings — preview slides at 2.5s</h3>
+  <div class="tbl" style="grid-template-columns:160px 1fr 130px;">
+    <div class="k">--ease-out-cubic</div><div class="curve ease-out"><div class="bar"></div></div><div class="v">.16,1,.3,1</div>
+    <div class="k">--ease-in-out-cubic</div><div class="curve ease-inout"><div class="bar"></div></div><div class="v">.4,0,.2,1</div>
+    <div class="k">--ease-bounce</div><div class="curve bounce"><div class="bar"></div></div><div class="v">.68,-.55,.265,1.55</div>
+  </div>
+</div>
+<div class="sect">
+  <h3>Z-index scale</h3>
+  <div class="tbl">
+    <div class="k">--z-intro</div><div class="note">Intro overlay (one-time pitch)</div><div class="v">9999</div>
+    <div class="k">--z-sticky-btn</div><div class="note">Sticky mobile CTA</div><div class="v">100</div>
+    <div class="k">--z-header</div><div class="note">Sticky nav header</div><div class="v">50</div>
+    <div class="k">--z-mobile-overlay</div><div class="note">Backdrop behind mobile menu</div><div class="v">49</div>
+  </div>
+</div>
+</body></html>

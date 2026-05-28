@@ -1,0 +1,88 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Toast</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:24px;}
+h3{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.sub{margin:0 0 18px;font-size:11px;color:var(--rs-text-muted);}
+.controls{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{padding:8px 14px;border:1px solid var(--rs-border);background:#fff;border-radius:4px;font-family:inherit;font-weight:600;font-size:12px;cursor:pointer;color:var(--rs-text);transition:all .2s ease;}
+.btn:hover{border-color:var(--rs-primary);color:var(--rs-primary);}
+.btn[data-tone="success"]{background:#10B981;color:#fff;border-color:#10B981;}
+.btn[data-tone="error"]{background:#EF4444;color:#fff;border-color:#EF4444;}
+.btn[data-tone="info"]{background:#1078BC;color:#fff;border-color:#1078BC;}
+.btn[data-tone="primary"]{background:var(--rs-primary);color:#fff;border-color:var(--rs-primary);}
+
+.host{position:fixed;top:18px;right:18px;display:flex;flex-direction:column;gap:8px;z-index:9999;pointer-events:none;}
+.toast{pointer-events:auto;display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--rs-border);border-left:4px solid var(--rs-primary);border-radius:8px;padding:12px 14px;min-width:260px;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.10);transform:translateX(120%);opacity:0;transition:transform .35s var(--ease-out-cubic), opacity .25s ease;position:relative;overflow:hidden;}
+.toast.in{transform:translateX(0);opacity:1;}
+.toast.out{transform:translateX(120%);opacity:0;}
+.toast .ic{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;}
+.toast .body{flex:1;}
+.toast .ttl{font-size:13px;font-weight:600;line-height:1.3;}
+.toast .msg{font-size:12px;color:var(--rs-text-muted);margin-top:2px;line-height:1.4;}
+.toast .x{flex:none;background:none;border:none;color:var(--rs-text-subtle);cursor:pointer;font-size:14px;padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center;border-radius:4px;}
+.toast .x:hover{background:var(--rs-bg-soft);color:var(--rs-text);}
+.toast .progress{position:absolute;left:0;bottom:0;height:2px;background:var(--rs-primary);transform-origin:left;animation:tprog 4s linear forwards;}
+@keyframes tprog{from{transform:scaleX(1);}to{transform:scaleX(0);}}
+
+.toast[data-tone="success"]{border-left-color:#10B981;}
+.toast[data-tone="success"] .ic{background:#10B981;}
+.toast[data-tone="success"] .progress{background:#10B981;}
+.toast[data-tone="error"]{border-left-color:#EF4444;}
+.toast[data-tone="error"] .ic{background:#EF4444;}
+.toast[data-tone="error"] .progress{background:#EF4444;}
+.toast[data-tone="info"]{border-left-color:#1078BC;}
+.toast[data-tone="info"] .ic{background:#1078BC;}
+.toast[data-tone="info"] .progress{background:#1078BC;}
+.toast[data-tone="primary"] .ic{background:var(--rs-primary);}
+</style></head><body>
+<div class="wrap">
+<h3>Toasts — feedback no-bloqueante</h3>
+<p class="sub">Aparecen en top-right, auto-dismiss 4s, con barra de progreso. Click en × para cerrar antes.</p>
+
+<div class="controls">
+  <button class="btn" data-tone="success" data-title="¡Auditoría enviada!" data-msg="Te contactamos en menos de 24 h.">Success</button>
+  <button class="btn" data-tone="error" data-title="No pudimos enviar" data-msg="Revisa que tu WhatsApp tenga 10 dígitos.">Error</button>
+  <button class="btn" data-tone="info" data-title="Tip rápido" data-msg="Tu ROI promedio mejora 3.4× en 90 días.">Info</button>
+  <button class="btn" data-tone="primary" data-title="Link copiado" data-msg="rallusigence.com/auditoria">Primary</button>
+</div>
+
+</div>
+<div class="host" id="host"></div>
+<script>
+const host = document.getElementById('host');
+const icons = {success:'✓', error:'!', info:'i', primary:'★'};
+
+function toast({tone, title, msg}){
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.dataset.tone = tone;
+  t.innerHTML = `
+    <div class="ic">${icons[tone] || '·'}</div>
+    <div class="body"><div class="ttl">${title}</div><div class="msg">${msg}</div></div>
+    <button class="x" aria-label="Cerrar">×</button>
+    <div class="progress"></div>
+  `;
+  host.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('in'));
+  const close = () => {
+    t.classList.add('out');
+    setTimeout(() => t.remove(), 350);
+  };
+  t.querySelector('.x').addEventListener('click', close);
+  setTimeout(close, 4000);
+}
+
+document.querySelectorAll('.btn').forEach(b => {
+  b.addEventListener('click', () => toast({
+    tone: b.dataset.tone,
+    title: b.dataset.title,
+    msg: b.dataset.msg
+  }));
+});
+
+// auto-demo on load
+setTimeout(() => toast({tone:'success', title:'¡Auditoría enviada!', msg:'Te contactamos en menos de 24 h.'}), 400);
+</script>
+</body></html>

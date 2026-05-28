@@ -1,0 +1,33 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node (si se agrega en el futuro)
+node_modules/
+npm-debug.log
+.npm
+
+# Firebase
+.firebase/
+.firebaserc.local
+
+# Variables de entorno
+.env
+.env.local
+.env.production
+
+# Archivos temporales
+*.tmp
+*.bak
+~$*
+
+# Build outputs
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user

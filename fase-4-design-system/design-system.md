@@ -1,84 +1,112 @@
 # DESIGN SYSTEM — RALLUSIGENCE
-# Fase 4: Sistema de componentes completo | v1.0
+# Fase 4: Sistema de componentes completo | v2.0
+# CSS canónico: `Rallusigence Design System/colors_and_type.css`
+
+---
+
+> **FUENTE CANÓNICA:** El archivo CSS oficial es
+> `Rallusigence Design System/colors_and_type.css` (exportado de Claude Design).
+> Este documento es la especificación de componentes; usa `colors_and_type.css`
+> como la hoja de variables que importas en el proyecto Next.js.
+> Prefijo de variables: `--rs-*`. Prefijo de clases: `.rs-*`.
 
 ---
 
 ## VARIABLES CSS BASE
 
+> Bloque completo en `colors_and_type.css`. Se reproduce aquí como referencia.
+> No duplicar en código — importar el archivo directamente.
+
 ```css
 :root {
   /* === COLORES PRINCIPALES === */
-  --color-primary: #20B4B1;       /* turquesa brillante — identidad principal */
-  --color-primary-dark: #198C76;  /* hover sobre primario */
-  --color-primary-alt: #029E81;   /* verde turquesa — variante */
-  --color-blue: #1078BC;          /* azul — informativos */
-  --color-green-mid: #10AE8F;     /* verde medio — apoyo */
+  --rs-primary:        #20B4B1;  /* turquesa brillante — identidad principal */
+  --rs-primary-dark:   #198C76;  /* hover sobre primario */
+  --rs-primary-alt:    #029E81;  /* verde turquesa — variante */
+  --rs-blue:           #1078BC;  /* azul — informativos */
+  --rs-green-mid:      #10AE8F;  /* verde medio — apoyo */
 
   /* === COLORES SECUNDARIOS === */
-  --color-blue-light: #1B8CCD;
-  --color-blue-dark: #1E5F90;
-  --color-blue-intense: #2B378C;
-  --color-green-blue: #34A2A7;
-  --color-blue-mid: #3D53A0;
-  --color-gray-blue: #54949A;
-  --color-gray-blue2: #58639B;
-  --color-gray-warm: #594B4B;
-  --color-sky: #5AC1D2;
-  --color-teal-light: #6EC5CC;
+  --rs-blue-light:     #1B8CCD;
+  --rs-blue-dark:      #1E5F90;
+  --rs-blue-intense:   #2B378C;
+  --rs-green-blue:     #34A2A7;
+  --rs-blue-mid:       #3D53A0;
+  --rs-gray-blue:      #54949A;
+  --rs-gray-blue2:     #58639B;
+  --rs-gray-warm:      #594B4B;
+  --rs-sky:            #5AC1D2;
+  --rs-teal-light:     #6EC5CC;
 
   /* === COLORES DE ACENTO === */
-  --color-olive: #739341;
-  --color-green-vibrant: #76B72A;
-  --color-lime: #9DC53C;
-  --color-red-soft: #B34E50;
-  --color-orange-dark: #B57130;
-  --color-mustard: #BA9A36;
-  --color-brick: #C14725;
-  --color-pink: #D8676E;
-  --color-orange-strong: #DC4A21;
-  --color-gold: #DDAE29;
-  --color-red-vivid: #EB5B5B;
-  --color-orange-red: #EB5E39;
-  --color-orange-bright: #F39323;
-  --color-orange-light: #F5A153;
-  --color-yellow: #FFD31B;
+  --rs-olive:          #739341;
+  --rs-green-vibrant:  #76B72A;
+  --rs-lime:           #9DC53C;
+  --rs-red-soft:       #B34E50;
+  --rs-orange-dark:    #B57130;
+  --rs-mustard:        #BA9A36;
+  --rs-brick:          #C14725;
+  --rs-pink:           #D8676E;
+  --rs-orange-strong:  #DC4A21;
+  --rs-gold:           #DDAE29;
+  --rs-red-vivid:      #EB5B5B;
+  --rs-orange-red:     #EB5E39;
+  --rs-orange-bright:  #F39323;
+  --rs-orange-light:   #F5A153;
+  --rs-yellow:         #FFD31B;
 
   /* === NEUTROS === */
-  --color-white: #FFFFFF;
-  --color-text: #2C2C2C;
-  --color-border: #E5E5E5;
+  --rs-white:          #FFFFFF;
+  --rs-text:           #2C2C2C;
+  --rs-text-muted:     #6B7280;
+  --rs-text-subtle:    #9CA3AF;
+  --rs-border:         #E5E5E5;
+  --rs-border-soft:    #F3F4F6;
+  --rs-bg-soft:        #F9FAFB;
 
-  /* === ALIAS FUNCIONALES (para usar en componentes) === */
-  --color-cta: var(--color-primary);
-  --color-cta-hover: var(--color-primary-dark);
-  --color-background: var(--color-white);
-  --color-text-main: var(--color-text);
+  /* === SEMÁNTICOS === */
+  --rs-success:        #10B981;
+  --rs-success-bg:     #ECFDF5;
+  --rs-error:          #EF4444;
+  --rs-error-bg:       #FEF2F2;
+
+  /* === ALIAS FUNCIONALES === */
+  --color-cta:         var(--rs-primary);
+  --color-cta-hover:   var(--rs-primary-dark);
+  --color-bg:          var(--rs-white);
+  --color-fg:          var(--rs-text);
+  --color-fg-muted:    var(--rs-text-muted);
+  --color-border:      var(--rs-border);
 
   /* === TIPOGRAFÍA === */
-  --font-primary: 'Montserrat', sans-serif;
-  --font-elegant: 'Playfair Display', serif;
-  --font-creative: 'Lobster', cursive;
-  --font-creative-alt: 'Pacifico', cursive;
-  --font-informal: 'Patrick Hand', cursive;
-  --font-accent: 'Amatic SC', cursive;
+  --font-primary:    'Montserrat', system-ui, sans-serif;
+  --font-elegant:    'Playfair Display', Georgia, serif;
+  --font-creative:   'Pacifico', 'Brush Script MT', cursive;
+  --font-informal:   'Patrick Hand', 'Comic Sans MS', cursive;
+  --font-accent:     'Amatic SC', 'Marker Felt', cursive;
+  --font-mono:       ui-monospace, 'JetBrains Mono', 'Consolas', monospace;
 
   /* Pesos */
-  --weight-regular: 400;
-  --weight-semibold: 600;
-  --weight-bold: 700;
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
 
   /* Escala tipográfica */
   --text-h1: 48px;
   --text-h2: 36px;
   --text-h3: 24px;
+  --text-h4: 20px;
   --text-body: 16px;
   --text-small: 14px;
   --text-label: 14px;
+  --text-micro: 12px;
 
   /* Line heights */
-  --leading-tight: 1.1;
-  --leading-snug: 1.2;
-  --leading-normal: 1.3;
+  --leading-tight:   1.1;
+  --leading-snug:    1.2;
+  --leading-normal:  1.3;
   --leading-relaxed: 1.6;
 
   /* === ESPACIADO (8px grid) === */
@@ -90,9 +118,38 @@
 
   /* === LAYOUT === */
   --container-max: 1200px;
-  --content-max: 600px;
-  --border-radius: 4px;
+  --content-max:   600px;
+  --cta-max:       320px;
+
+  /* === RADIO / BORDES === */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-pill: 28px;
+
+  /* === SOMBRAS === */
+  --shadow-light:  0 1px 3px rgba(44, 44, 44, 0.10);
+  --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover:  0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-sticky: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-cta:    0 4px 12px rgba(32, 180, 177, 0.15);
+
+  /* === TRANSICIÓN === */
   --transition-base: all 0.2s ease-in-out;
+
+  /* === MOTION TOKENS === */
+  --duration-fast:     0.2s;
+  --duration-normal:   0.3s;
+  --duration-slow:     0.4s;
+  --duration-intro:    0.8s;
+  --ease-out-cubic:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:       cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* === Z-INDEX === */
+  --z-intro:          9999;
+  --z-sticky-btn:      100;
+  --z-header:           50;
+  --z-mobile-overlay:   49;
 }
 ```
 
@@ -130,72 +187,76 @@ Botón principal del sitio con color teal de marca. Usado para CTAs principales 
 - Mobile: ancho completo (100%) en formularios
 
 ### CSS
+> Clases del export: `.rs-btn`, `.rs-btn--primary`, `.rs-btn--sm`, `.rs-btn--lg`, `.rs-btn--ghost`
+
 ```css
-.btn-primary {
+.rs-btn {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   justify-content: center;
   height: 48px;
   padding: 12px 24px;
-  background-color: var(--color-primary);
-  color: #FFFFFF;
   font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body);
   line-height: 1.2;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   text-decoration: none;
   transition: var(--transition-base);
   user-select: none;
 }
 
-.btn-primary:hover {
-  background-color: #198C76;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(32, 180, 177, 0.15);
+.rs-btn--primary {
+  background-color: var(--rs-primary);
+  color: #FFFFFF;
 }
 
-.btn-primary:focus {
-  outline: 2px solid var(--color-primary);
+.rs-btn--primary:hover {
+  background-color: var(--rs-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-cta);
+}
+
+.rs-btn--primary:focus-visible {
+  outline: 2px solid var(--rs-primary);
   outline-offset: 2px;
 }
 
-.btn-primary:active {
-  background-color: #10AE8F;
+.rs-btn--primary:active {
+  background-color: var(--rs-green-mid);
   transform: translateY(0);
   box-shadow: none;
 }
 
-.btn-primary:disabled {
+.rs-btn--primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-.btn-primary--loading {
-  pointer-events: none;
+.rs-btn--ghost {
+  background: transparent;
+  color: var(--rs-primary);
+  border: 1.5px solid var(--rs-primary);
 }
 
-.btn-primary--loading::before {
-  content: '';
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  border: 2px solid transparent;
-  border-top: 2px solid #FFFFFF;
-  border-radius: 50%;
-  animation: btn-spinner 0.8s linear infinite;
+.rs-btn--ghost:hover {
+  background: rgba(32, 180, 177, 0.05);
 }
+
+.rs-btn--sm { height: 36px; padding: 8px 16px; font-size: var(--text-small); }
+.rs-btn--lg { height: 56px; padding: 16px 32px; font-size: 18px; }
 
 @keyframes btn-spinner {
   to { transform: rotate(360deg); }
 }
 
 @media (max-width: 767px) {
-  .btn-primary--full {
+  .rs-btn--full {
     width: 100%;
   }
 }

@@ -1,0 +1,269 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 24px 24px 0;
+  background-color: var(--rs-bg-soft);
+}
+
+.breadcrumbWrapper {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.breadcrumbLink {
+  color: var(--rs-primary);
+  text-decoration: none;
+  font-size: var(--text-small);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--rs-primary-dark);
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+}
+
+/* Hero Section */
+.heroWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroDescription {
+  margin-top: 16px;
+  font-size: 18px;
+  color: var(--color-fg-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .heroDescription {
+    font-size: 16px;
+  }
+}
+
+/* Process Section */
+.processSection {
+  background-color: var(--rs-bg-soft);
+}
+
+.processWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.processSteps {
+  margin-top: 48px;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepTitle {
+  margin-bottom: 8px;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 18px;
+  color: var(--color-fg);
+}
+
+.stepDescription {
+  margin-bottom: 12px;
+  color: var(--color-fg-muted);
+  line-height: 1.5;
+}
+
+.stepTime {
+  font-size: var(--text-small);
+  color: var(--rs-primary);
+  font-weight: var(--weight-medium);
+}
+
+/* Payment Section */
+.paymentSection {
+  background-color: var(--color-bg);
+}
+
+.paymentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.paymentExplanation {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.paymentIntro {
+  font-size: 18px;
+  color: var(--color-fg);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.paymentReason {
+  font-size: 16px;
+  color: var(--color-fg-muted);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.paymentSteps {
+  margin-top: 48px;
+}
+
+.paymentStepsTitle {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 20px;
+  color: var(--color-fg);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.paymentStepsList {
+  display: grid;
+  gap: 20px;
+}
+
+.paymentStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--rs-bg-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--rs-border-soft);
+}
+
+.paymentStepNumber {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: var(--rs-primary);
+  color: #fff;
+  font-weight: var(--weight-bold);
+  font-size: 14px;
+  border-radius: 50%;
+}
+
+.paymentStep p {
+  margin: 0;
+  color: var(--color-fg);
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/* Banks List */
+.banksList {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.banksTitle {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+  font-size: 16px;
+  color: var(--color-fg);
+  margin-bottom: 20px;
+}
+
+.banksGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.bankItem {
+  padding: 8px 16px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--rs-border-soft);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  color: var(--color-fg);
+  transition: var(--transition-base);
+}
+
+.bankItem:hover {
+  border-color: var(--rs-primary);
+  background-color: rgba(32, 180, 177, 0.05);
+}
+
+/* CTA Section */
+.ctaSection {
+  background: linear-gradient(135deg, var(--rs-primary), var(--rs-primary-dark));
+  color: #fff;
+}
+
+.ctaWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaActions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  .processSteps {
+    margin-top: 32px;
+  }
+
+  .stepTitle {
+    font-size: 16px;
+  }
+
+  .paymentSteps {
+    margin-top: 32px;
+  }
+
+  .paymentStep {
+    padding: 16px;
+  }
+
+  .paymentStepNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .banksGrid {
+    gap: 8px;
+  }
+
+  .bankItem {
+    padding: 6px 12px;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

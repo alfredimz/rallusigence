@@ -1,0 +1,109 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Skeleton</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:24px;}
+h3{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.sub{margin:0 0 18px;font-size:11px;color:var(--rs-text-muted);}
+
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.box{background:#fff;border:1px solid var(--rs-border-soft);border-radius:8px;padding:18px;min-height:220px;position:relative;}
+.label{position:absolute;top:8px;right:10px;font-size:9px;font-weight:700;color:var(--rs-text-subtle);letter-spacing:.08em;text-transform:uppercase;}
+
+/* Shimmer */
+.sk{background:linear-gradient(90deg, #F3F4F6 0%, #E8EAEC 25%, rgba(32,180,177,.10) 50%, #E8EAEC 75%, #F3F4F6 100%);background-size:200% 100%;animation:shim 1.6s linear infinite;border-radius:4px;}
+@keyframes shim{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.sk-line{height:12px;margin-bottom:8px;}
+.sk-circle{border-radius:50%;}
+
+/* Card skeleton */
+.card-sk{display:flex;gap:14px;align-items:flex-start;}
+.card-sk .av{width:48px;height:48px;flex:none;}
+.card-sk .lines{flex:1;}
+.card-sk .lines .sk-line:nth-child(1){width:60%;height:14px;}
+.card-sk .lines .sk-line:nth-child(2){width:90%;}
+.card-sk .lines .sk-line:nth-child(3){width:75%;}
+.card-sk .lines .sk-line:nth-child(4){width:40%;height:10px;margin-top:14px;}
+
+/* Real card (post-load) */
+.card-real{display:flex;gap:14px;align-items:flex-start;opacity:0;animation:cardIn .4s var(--ease-out-cubic) forwards;animation-delay:3s;}
+.card-real .av-real{width:48px;height:48px;flex:none;border-radius:50%;background:rgba(32,180,177,.10);display:flex;align-items:center;justify-content:center;color:var(--rs-primary);font-weight:700;}
+.card-real .h{font-size:14px;font-weight:600;margin:0 0 4px;}
+.card-real .p{font-size:12px;color:var(--rs-text-muted);line-height:1.5;margin:0 0 8px;}
+.card-real .meta{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--rs-text-subtle);}
+@keyframes cardIn{to{opacity:1;}}
+
+/* Toggle button */
+.toggle{margin-top:14px;padding:8px 14px;background:var(--rs-primary);color:#fff;border:none;border-radius:4px;font-family:inherit;font-weight:600;font-size:12px;cursor:pointer;}
+
+/* Container that swaps skeleton ↔ real */
+.swap{position:relative;}
+.swap .layer{transition:opacity .3s ease;}
+.swap.loaded .sk-state{opacity:0;pointer-events:none;position:absolute;inset:0;}
+.swap.loaded .real-state{opacity:1;}
+.swap .real-state{opacity:0;}
+.swap.loaded .real-state .card-real{animation-delay:.1s;}
+
+/* Dashboard skeleton */
+.dash{display:flex;flex-direction:column;gap:10px;}
+.dash .row{display:flex;gap:10px;}
+.dash .row > div{flex:1;height:46px;}
+.dash .row.tall > div{height:96px;}
+</style></head><body>
+<div class="wrap">
+<h3>Loading skeletons — teñidos con teal del brand</h3>
+<p class="sub">Shimmer estándar pero el highlight pasa por <code style="font-size:11px;">rgba(32,180,177,.10)</code>, así no se siente genérico de Bootstrap.</p>
+
+<div class="demo">
+
+  <!-- Card skeleton swapping to real -->
+  <div class="box swap" id="cardSwap">
+    <span class="label">Card · 3s</span>
+    <div class="layer sk-state">
+      <div class="card-sk">
+        <div class="sk sk-circle av"></div>
+        <div class="lines">
+          <div class="sk sk-line"></div>
+          <div class="sk sk-line"></div>
+          <div class="sk sk-line"></div>
+          <div class="sk sk-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layer real-state">
+      <div class="card-real">
+        <div class="av-real">★</div>
+        <div>
+          <h4 class="h">Auditoría · Clínica Sonrisa</h4>
+          <p class="p">Reporte listo: 12 oportunidades detectadas, 4 de impacto alto en SEO local.</p>
+          <div class="meta">Entregado en 41h 12m</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard skeleton -->
+  <div class="box">
+    <span class="label">Dashboard</span>
+    <div class="dash">
+      <div class="row tall"><div class="sk"></div></div>
+      <div class="row"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+      <div class="row"><div class="sk"></div></div>
+      <div class="row"><div class="sk"></div><div class="sk"></div></div>
+    </div>
+  </div>
+
+</div>
+<button class="toggle" id="toggle">↻ Reanimar carga</button>
+</div>
+
+<script>
+const swap = document.getElementById('cardSwap');
+function load(){
+  swap.classList.remove('loaded');
+  setTimeout(() => swap.classList.add('loaded'), 3000);
+}
+document.getElementById('toggle').addEventListener('click', load);
+load();
+</script>
+</body></html>

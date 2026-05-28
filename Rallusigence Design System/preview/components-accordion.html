@@ -1,0 +1,67 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Accordion</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:24px;max-width:680px;}
+h3{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.sub{margin:0 0 18px;font-size:11px;color:var(--rs-text-muted);}
+
+.acc{border:1px solid var(--rs-border-soft);border-radius:8px;overflow:hidden;background:#fff;}
+.item{border-bottom:1px solid var(--rs-border-soft);}
+.item:last-child{border-bottom:none;}
+.q{display:flex;align-items:center;gap:14px;width:100%;padding:16px 18px;background:none;border:none;font-family:inherit;font-size:14px;font-weight:600;color:var(--rs-text);text-align:left;cursor:pointer;transition:background .2s ease;}
+.q:hover{background:var(--rs-bg-soft);}
+.q .num{font-family:Arvo,Georgia,serif;font-size:13px;color:var(--rs-text-subtle);font-weight:700;letter-spacing:.04em;flex:none;min-width:28px;}
+.q .lbl{flex:1;}
+.q .ic{flex:none;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--rs-primary);transition:transform .35s var(--ease-out-cubic);}
+.item.open .q{background:rgba(32,180,177,.05);}
+.item.open .q .ic{transform:rotate(45deg);}
+.item.open .q{color:var(--rs-primary);}
+.a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease-out-cubic);}
+.a-inner{padding:0 18px 18px 60px;font-size:13px;color:var(--rs-text-muted);line-height:1.6;}
+</style></head><body>
+<div class="wrap">
+<h3>Acordeón — FAQ</h3>
+<p class="sub">Click para expandir. Click en otro item cierra el actual (single-open). Altura medida en JS para animación suave.</p>
+
+<div class="acc" id="acc">
+  <div class="item">
+    <button class="q"><span class="num">01</span><span class="lbl">¿Cuánto tarda la auditoría gratis?</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+    <div class="a"><div class="a-inner">Menos de 48 horas desde que recibimos tus datos. Si tarda más, es gratis y además te regalamos un mes de SEO.</div></div>
+  </div>
+  <div class="item">
+    <button class="q"><span class="num">02</span><span class="lbl">¿Necesito ya tener un sitio web?</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+    <div class="a"><div class="a-inner">No. Auditamos lo que tengas: redes sociales, Google Business, WhatsApp Business. El sitio web puede ser parte del plan, no del prerequisito.</div></div>
+  </div>
+  <div class="item">
+    <button class="q"><span class="num">03</span><span class="lbl">¿Puedo cancelar el agente WhatsApp si no me sirve?</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+    <div class="a"><div class="a-inner">Sí, mes a mes, sin penalización. Solo te pedimos 7 días de aviso para que tu equipo retome las conversaciones sin gaps.</div></div>
+  </div>
+  <div class="item">
+    <button class="q"><span class="num">04</span><span class="lbl">¿Manejan negocios fuera de México?</span><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></button>
+    <div class="a"><div class="a-inner">Trabajamos toda LATAM y comunidades hispanohablantes en US. El bot habla español neutral o se adapta al modismo local que prefieras.</div></div>
+  </div>
+</div>
+</div>
+
+<script>
+const items = document.querySelectorAll('.acc .item');
+items.forEach(item => {
+  const q = item.querySelector('.q');
+  const a = item.querySelector('.a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    items.forEach(it => {
+      it.classList.remove('open');
+      it.querySelector('.a').style.maxHeight = '0px';
+    });
+    if (!isOpen){
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+// Open the first by default for the preview
+setTimeout(() => items[0].querySelector('.q').click(), 200);
+</script>
+</body></html>

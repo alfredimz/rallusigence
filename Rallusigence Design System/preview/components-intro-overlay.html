@@ -1,0 +1,457 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Intro · Elevator pitch</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+:root{--ease-out-cubic:cubic-bezier(.16,1,.3,1);--ease-bounce:cubic-bezier(.68,-0.55,.27,1.55);}
+html,body{margin:0;background:#000;font-family:var(--font-primary);color:#fff;overflow:hidden;}
+.stage{position:relative;width:100%;height:100vh;min-height:480px;background:radial-gradient(ellipse at top,#1A2A2C 0%,#0E1618 60%,#000 100%);overflow:hidden;}
+
+/* Animated grid backdrop — subtle teal lines */
+.stage::before{content:'';position:absolute;inset:-50%;background-image:linear-gradient(rgba(32,180,177,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(32,180,177,.08) 1px,transparent 1px);background-size:40px 40px;animation:gridDrift 40s linear infinite;pointer-events:none;}
+@keyframes gridDrift{from{transform:translate(0,0);}to{transform:translate(-40px,-40px);}}
+
+/* Scenes — all absolute, only .active is shown */
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;opacity:0;pointer-events:none;}
+.scene.active{opacity:1;pointer-events:auto;}
+
+/* ============================================================
+   SCENE 1 — PROBLEMA: dots representando clientes que se desvanecen
+   Entry: letters drop from above with spring
+   Exit: words shatter into pieces
+   ============================================================ */
+.s1-visual{position:relative;width:280px;height:120px;margin-bottom:30px;}
+.s1-visual .moon{position:absolute;left:50%;top:0;transform:translateX(-50%);width:54px;height:54px;border-radius:50%;background:#FFD31B;box-shadow:14px 0 0 -6px #1A2A2C inset, 0 0 30px rgba(255,211,27,.4);}
+.s1-visual .moon::after{content:'z';position:absolute;top:-14px;right:-22px;font-family:Arvo,Georgia,serif;font-size:18px;color:#FFD31B;font-weight:700;animation:zZz 1.6s ease-in-out infinite;}
+@keyframes zZz{0%,100%{opacity:0;transform:translateY(0) scale(.6);}50%{opacity:1;transform:translateY(-8px) scale(1);}}
+.s1-visual .dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;bottom:0;animation:dotFall 2s ease-in infinite;}
+.s1-visual .dot:nth-child(2){left:20%;animation-delay:0s;background:#20B4B1;}
+.s1-visual .dot:nth-child(3){left:35%;animation-delay:.4s;background:#fff;}
+.s1-visual .dot:nth-child(4){left:60%;animation-delay:.8s;background:#FFD31B;}
+.s1-visual .dot:nth-child(5){left:78%;animation-delay:1.2s;background:#fff;}
+@keyframes dotFall{0%{opacity:0;transform:translateY(-90px) scale(.5);}30%{opacity:1;transform:translateY(0) scale(1);}80%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(40px) scale(0);}}
+
+.s1-headline{font-family:Arvo,Georgia,serif;font-size:46px;font-weight:700;line-height:1.05;letter-spacing:-.02em;max-width:880px;}
+.s1-headline .ch{display:inline-block;}
+.s1-headline .accent{color:#EB5B5B;}
+.scene.s1.active .s1-headline .ch{animation:dropIn .55s var(--ease-bounce) both;}
+@keyframes dropIn{from{opacity:0;transform:translateY(-50px) rotate(-15deg);}to{opacity:1;transform:translateY(0) rotate(0);}}
+.scene.s1.exit .s1-headline .ch{animation:shatter .8s ease-in forwards;}
+@keyframes shatter{to{opacity:0;transform:translate(var(--shx,0),var(--shy,200px)) rotate(var(--shr,90deg));}}
+.scene.s1.exit .s1-visual{animation:fadeUpOut .5s ease-in forwards;}
+@keyframes fadeUpOut{to{opacity:0;transform:translateY(-30px);}}
+
+/* ============================================================
+   SCENE 2 — ESTADÍSTICA: bars rising representing lost customers
+   Entry: number counts up + bars rise from bottom
+   Exit: zoom-blur punch
+   ============================================================ */
+.s2-row{display:flex;align-items:flex-end;gap:34px;margin-bottom:28px;}
+.s2-stat{font-family:Arvo,Georgia,serif;font-size:140px;font-weight:700;line-height:.85;letter-spacing:-.04em;color:#EB5E39;text-shadow:0 0 60px rgba(235,94,57,.4);}
+.s2-stat .pct{font-size:64px;color:#fff;vertical-align:top;}
+.s2-bars{display:flex;align-items:flex-end;gap:6px;height:140px;}
+.s2-bars span{width:14px;background:linear-gradient(to top,#EB5E39,#FFD31B);border-radius:2px 2px 0 0;transform-origin:bottom;transform:scaleY(0);}
+.scene.s2.active .s2-bars span{animation:barRise .8s var(--ease-out-cubic) both;}
+.scene.s2.active .s2-bars span:nth-child(1){--bh:.92;animation-delay:.4s;}
+.scene.s2.active .s2-bars span:nth-child(2){--bh:.78;animation-delay:.5s;}
+.scene.s2.active .s2-bars span:nth-child(3){--bh:.65;animation-delay:.6s;}
+.scene.s2.active .s2-bars span:nth-child(4){--bh:.5;animation-delay:.7s;}
+.scene.s2.active .s2-bars span:nth-child(5){--bh:.35;animation-delay:.8s;}
+.scene.s2.active .s2-bars span:nth-child(6){--bh:.22;animation-delay:.9s;}
+.scene.s2.active .s2-bars span:nth-child(7){--bh:.12;animation-delay:1.0s;}
+@keyframes barRise{from{transform:scaleY(0);}to{transform:scaleY(var(--bh,1));}}
+
+.s2-headline{font-family:Montserrat,system-ui,sans-serif;font-size:28px;font-weight:600;line-height:1.3;color:#fff;max-width:740px;letter-spacing:-.005em;}
+.s2-headline em{color:#FFD31B;font-style:normal;font-weight:700;}
+.scene.s2.active .s2-stat{animation:popBig .8s var(--ease-bounce) both;}
+@keyframes popBig{from{opacity:0;transform:scale(.4);}to{opacity:1;transform:scale(1);}}
+.scene.s2.active .s2-headline{animation:fadeUp .6s var(--ease-out-cubic) .9s both;}
+.scene.s2.exit{animation:zoomBlur .55s ease-in forwards;}
+@keyframes zoomBlur{to{opacity:0;transform:scale(1.4);filter:blur(20px);}}
+
+/* ============================================================
+   SCENE 3 — SOLUCIÓN: kiwi enters, gears spinning, clock ticking
+   Entry: kiwi rolls in from left, ring sweeps, clock hands spin to 48
+   Exit: radial wipe outward (centered on kiwi)
+   ============================================================ */
+.s3-stage{position:relative;width:520px;height:200px;margin-bottom:28px;}
+.s3-kiwi{position:absolute;left:-100px;top:50%;transform:translateY(-50%);width:120px;height:120px;}
+.s3-kiwi img{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 20px rgba(32,180,177,.4));}
+.scene.s3.active .s3-kiwi{animation:kiwiRoll 1s var(--ease-out-cubic) both;}
+@keyframes kiwiRoll{from{left:-100px;transform:translateY(-50%) rotate(-360deg);}to{left:30px;transform:translateY(-50%) rotate(0);}}
+
+.s3-clock{position:absolute;right:30px;top:50%;transform:translateY(-50%);width:140px;height:140px;border-radius:50%;border:3px solid #20B4B1;box-shadow:0 0 0 6px rgba(32,180,177,.15),0 0 60px rgba(32,180,177,.3);background:#0E1618;display:flex;align-items:center;justify-content:center;}
+.s3-clock .face{position:absolute;inset:0;border-radius:50%;}
+.s3-clock .tick{position:absolute;top:50%;left:50%;width:2px;height:8px;background:rgba(32,180,177,.4);transform-origin:1px 60px;}
+.s3-clock .num{position:absolute;font-family:Arvo,Georgia,serif;font-size:42px;font-weight:700;color:#fff;line-height:1;}
+.s3-clock .num small{display:block;font-size:11px;color:#20B4B1;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+.s3-clock .hand{position:absolute;left:50%;bottom:50%;width:3px;background:#20B4B1;transform-origin:bottom;border-radius:2px;}
+.s3-clock .hand.h{height:38px;margin-left:-1.5px;}
+.s3-clock .hand.m{height:54px;margin-left:-1.5px;background:#fff;}
+.s3-clock .center{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:#FFD31B;transform:translate(-50%,-50%);box-shadow:0 0 12px rgba(255,211,27,.6);z-index:2;}
+.scene.s3.active .s3-clock{animation:clockIn .6s var(--ease-bounce) .3s both;opacity:0;}
+@keyframes clockIn{from{opacity:0;transform:translateY(-50%) scale(.5);}to{opacity:1;transform:translateY(-50%) scale(1);}}
+.scene.s3.active .s3-clock .hand{animation:handSpin 1.2s var(--ease-out-cubic) .9s both;}
+@keyframes handSpin{from{transform:rotate(0);}to{transform:rotate(var(--rot,720deg));}}
+.s3-clock .hand.h{--rot:1080deg;}
+.s3-clock .hand.m{--rot:1440deg;}
+
+/* Connecting energy line between kiwi and clock */
+.s3-stage .beam{position:absolute;top:50%;left:150px;right:170px;height:2px;background:linear-gradient(90deg,transparent,#20B4B1,transparent);transform:translateY(-50%) scaleX(0);transform-origin:left;}
+.scene.s3.active .s3-stage .beam{animation:beamGrow .5s var(--ease-out-cubic) 1.1s both;}
+@keyframes beamGrow{to{transform:translateY(-50%) scaleX(1);}}
+.s3-stage .spark{position:absolute;top:50%;width:6px;height:6px;background:#FFD31B;border-radius:50%;box-shadow:0 0 10px #FFD31B;transform:translateY(-50%);opacity:0;}
+.scene.s3.active .s3-stage .spark{animation:sparkFly 1s linear 1.5s infinite;}
+@keyframes sparkFly{0%{left:150px;opacity:1;}100%{left:340px;opacity:0;}}
+
+.s3-headline{font-family:Arvo,Georgia,serif;font-size:42px;font-weight:700;letter-spacing:-.02em;line-height:1.1;}
+.s3-headline em{color:#20B4B1;font-style:normal;}
+.scene.s3.active .s3-headline{animation:fadeUp .7s var(--ease-out-cubic) 1.4s both;}
+
+.scene.s3.exit{animation:irisOut .6s ease-in forwards;}
+@keyframes irisOut{to{clip-path:circle(0% at 50% 50%);}}
+
+/* ============================================================
+   SCENE 4 — PRUEBA: counter + sparkles + WhatsApp bubbles
+   Entry: card slides in 3D from right, counter spins
+   Exit: card-flip on Y axis
+   ============================================================ */
+.s4-deck{display:flex;gap:18px;margin-bottom:24px;perspective:1200px;}
+.s4-card{padding:22px 26px;border:1.5px solid #20B4B1;border-radius:14px;background:rgba(32,180,177,.08);backdrop-filter:blur(8px);min-width:170px;transform:rotateY(60deg) translateX(120px);opacity:0;}
+.s4-card .lbl{font-size:10px;color:#20B4B1;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:8px;}
+.s4-card .big{font-family:Arvo,Georgia,serif;font-size:54px;line-height:1;font-weight:700;letter-spacing:-.02em;color:#fff;font-variant-numeric:tabular-nums;}
+.s4-card .big .pre{color:#10B981;}
+.s4-card .big .unit{font-size:24px;color:#20B4B1;}
+.s4-card .sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:4px;line-height:1.3;max-width:140px;}
+.scene.s4.active .s4-card{animation:cardSlide .7s var(--ease-out-cubic) both;}
+.scene.s4.active .s4-card:nth-child(1){animation-delay:.1s;}
+.scene.s4.active .s4-card:nth-child(2){animation-delay:.3s;}
+.scene.s4.active .s4-card:nth-child(3){animation-delay:.5s;}
+@keyframes cardSlide{to{opacity:1;transform:rotateY(0) translateX(0);}}
+
+.s4-headline{font-family:Montserrat,system-ui,sans-serif;font-size:24px;font-weight:600;line-height:1.4;max-width:680px;color:rgba(255,255,255,.92);letter-spacing:-.005em;}
+.s4-headline strong{color:#FFD31B;font-weight:700;}
+.scene.s4.active .s4-headline{animation:fadeUp .6s var(--ease-out-cubic) .8s both;}
+
+.scene.s4.exit{animation:flipExit .55s ease-in forwards;transform-style:preserve-3d;}
+@keyframes flipExit{to{opacity:0;transform:rotateY(-90deg) scale(.8);}}
+
+/* Sparkles for s4 */
+.s4-sparks{position:absolute;inset:0;pointer-events:none;}
+.s4-sparks span{position:absolute;width:10px;height:10px;background:#FFD31B;clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);opacity:0;}
+.scene.s4.active .s4-sparks span{animation:sparkPop 1.2s ease-out infinite;}
+.s4-sparks span:nth-child(1){top:20%;left:18%;animation-delay:1s;}
+.s4-sparks span:nth-child(2){top:30%;right:14%;background:#20B4B1;animation-delay:1.4s;}
+.s4-sparks span:nth-child(3){bottom:30%;left:22%;background:#10B981;animation-delay:1.8s;}
+.s4-sparks span:nth-child(4){top:60%;right:20%;animation-delay:2.2s;}
+@keyframes sparkPop{0%{opacity:0;transform:scale(0) rotate(0);}50%{opacity:1;transform:scale(1.2) rotate(180deg);}100%{opacity:0;transform:scale(0) rotate(360deg);}}
+
+/* ============================================================
+   SCENE 5 — CTA: stamp + button + final wordmark
+   Entry: wordmark draws stroke, stamp slams down with shake, CTA pops
+   Exit: none (final scene, hold)
+   ============================================================ */
+.s5-stamp{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:160px;height:160px;border:5px solid #EB5E39;border-radius:50%;color:#EB5E39;font-weight:700;text-align:center;line-height:1;transform:rotate(-12deg) scale(3);opacity:0;margin-bottom:30px;position:relative;background:rgba(0,0,0,.4);}
+.s5-stamp .big{font-family:Arvo,Georgia,serif;font-size:46px;letter-spacing:-.02em;}
+.s5-stamp .small{font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-top:6px;}
+.s5-stamp::before{content:'';position:absolute;inset:8px;border:2px dashed #EB5E39;border-radius:50%;animation:stampSpin 12s linear infinite;}
+@keyframes stampSpin{to{transform:rotate(360deg);}}
+.scene.s5.active .s5-stamp{animation:stampSlam .6s var(--ease-out-cubic) .2s both, stampShake .4s ease-out .8s;}
+@keyframes stampSlam{from{transform:rotate(-12deg) scale(3);opacity:0;}80%{transform:rotate(-12deg) scale(.92);opacity:1;}to{transform:rotate(-12deg) scale(1);opacity:1;}}
+@keyframes stampShake{0%,100%{transform:rotate(-12deg) scale(1);}25%{transform:rotate(-14deg) scale(1.03) translateY(-3px);}50%{transform:rotate(-10deg) scale(.98);}75%{transform:rotate(-13deg) scale(1.01) translateY(2px);}}
+
+.s5-mark{height:48px;margin-bottom:18px;opacity:0;}
+.scene.s5.active .s5-mark{animation:markIn .6s var(--ease-out-cubic) 1.0s both;}
+@keyframes markIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+.s5-headline{font-family:Arvo,Georgia,serif;font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1.05;margin-bottom:24px;}
+.s5-headline em{color:#20B4B1;font-style:normal;}
+.scene.s5.active .s5-headline{animation:fadeUp .6s var(--ease-out-cubic) 1.3s both;}
+
+.s5-cta{padding:18px 38px;background:linear-gradient(135deg,#20B4B1,#10AE8F);color:#fff;border:none;border-radius:6px;font-family:inherit;font-weight:700;font-size:17px;cursor:pointer;letter-spacing:.01em;box-shadow:0 8px 32px rgba(32,180,177,.5);opacity:0;transform:translateY(20px);position:relative;overflow:hidden;}
+.s5-cta::before{content:'';position:absolute;inset:-4px;background:linear-gradient(135deg,#20B4B1,#10AE8F,#FFD31B,#20B4B1);background-size:200% 200%;border-radius:8px;z-index:-1;animation:ctaGlow 3s linear infinite;}
+@keyframes ctaGlow{to{background-position:200% 200%;}}
+.s5-cta::after{content:'→';margin-left:8px;display:inline-block;transition:transform .25s var(--ease-out-cubic);}
+.s5-cta:hover::after{transform:translateX(4px);}
+.scene.s5.active .s5-cta{animation:ctaPop 1s var(--ease-bounce) 1.7s both, ctaPulse 2.4s ease-in-out 2.7s infinite;}
+@keyframes ctaPop{0%{opacity:0;transform:translateY(40px) scale(.6);}60%{opacity:1;transform:translateY(0) scale(1.08);}100%{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 8px 32px rgba(32,180,177,.5),0 0 0 0 rgba(32,180,177,.4);}50%{box-shadow:0 8px 32px rgba(32,180,177,.5),0 0 0 18px rgba(32,180,177,0);}}
+
+.s5-foot{margin-top:18px;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.04em;opacity:0;}
+.scene.s5.active .s5-foot{animation:fadeUp .6s var(--ease-out-cubic) 2.2s both;}
+
+/* Confetti for scene 5 */
+.s5-confetti{position:absolute;inset:0;pointer-events:none;}
+.s5-confetti i{position:absolute;width:8px;height:14px;top:-20px;opacity:0;}
+.scene.s5.active .s5-confetti i{animation:confetti 3s linear .6s infinite;}
+@keyframes confetti{0%{opacity:0;top:-20px;transform:rotate(0);}10%{opacity:1;}100%{opacity:0;top:110%;transform:rotate(720deg) translateX(var(--cx,0));}}
+
+/* ============================================================
+   SHARED — fade up util, chrome
+   ============================================================ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* Chrome: skip, replay, progress */
+.chrome{position:absolute;inset:0;pointer-events:none;z-index:10;}
+.skip{position:absolute;bottom:18px;right:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);padding:7px 14px;border-radius:20px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;font-family:inherit;font-weight:600;pointer-events:auto;backdrop-filter:blur(8px);}
+.skip:hover{background:rgba(32,180,177,.15);border-color:#20B4B1;color:#fff;}
+.replay{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);padding:7px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600;pointer-events:auto;backdrop-filter:blur(8px);letter-spacing:.04em;}
+.replay:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+.audio{position:absolute;top:18px;right:18px;width:36px;height:36px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:50%;color:rgba(255,255,255,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;pointer-events:auto;font-family:inherit;backdrop-filter:blur(8px);}
+
+/* Progress dots */
+.progress{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;pointer-events:auto;}
+.progress .seg{width:28px;height:3px;background:rgba(255,255,255,.18);border-radius:2px;cursor:pointer;position:relative;overflow:hidden;}
+.progress .seg::after{content:'';position:absolute;left:0;top:0;height:100%;background:#20B4B1;width:0;transition:width .2s linear;}
+.progress .seg.done::after{width:100%;}
+.progress .seg.cur::after{width:var(--p,0%);transition:none;}
+
+/* Scene number badge */
+.scene-num{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-family:ui-monospace,monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.18em;text-transform:uppercase;}
+.scene-num span{color:#20B4B1;font-weight:700;}
+</style></head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- SCENE 1 -->
+  <div class="scene s1" data-i="0">
+    <div class="s1-visual">
+      <div class="moon"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <h1 class="s1-headline" id="h1">Tu negocio pierde clientes <em class="accent">mientras duermes</em></h1>
+  </div>
+
+  <!-- SCENE 2 -->
+  <div class="scene s2" data-i="1">
+    <div class="s2-row">
+      <div class="s2-stat">67<span class="pct">%</span></div>
+      <div class="s2-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <p class="s2-headline">de los clientes nunca regresa si <em>nadie responde</em> en la primera hora.</p>
+  </div>
+
+  <!-- SCENE 3 -->
+  <div class="scene s3" data-i="2">
+    <div class="s3-stage">
+      <div class="s3-kiwi"><img src="../assets/kiwi-icon.svg" alt=""></div>
+      <div class="beam"></div>
+      <div class="spark"></div>
+      <div class="s3-clock">
+        <div class="num" style="text-align:center;">48<small>HORAS</small></div>
+      </div>
+    </div>
+    <h2 class="s3-headline">Lo automatizamos en <em>48 horas</em>.</h2>
+  </div>
+
+  <!-- SCENE 4 -->
+  <div class="scene s4" data-i="3">
+    <div class="s4-sparks"><span></span><span></span><span></span><span></span></div>
+    <div class="s4-deck">
+      <div class="s4-card">
+        <div class="lbl">Resultados 2025</div>
+        <div class="big"><span class="pre">+</span><span data-count="312" data-d="0">0</span></div>
+        <div class="sub">clientes recuperados con recordatorios automáticos</div>
+      </div>
+      <div class="s4-card">
+        <div class="lbl">ROI promedio</div>
+        <div class="big"><span data-count="3.4" data-d="1">0</span><span class="unit">×</span></div>
+        <div class="sub">en los primeros 90 días después del lanzamiento</div>
+      </div>
+      <div class="s4-card">
+        <div class="lbl">Disponibilidad</div>
+        <div class="big"><span data-count="24" data-d="0">0</span><span class="unit">/7</span></div>
+        <div class="sub">tu agente WhatsApp responde mientras tú duermes</div>
+      </div>
+    </div>
+    <p class="s4-headline">Negocios que confiaron · números que se sostienen <strong>solos</strong>.</p>
+  </div>
+
+  <!-- SCENE 5 — FINAL CTA -->
+  <div class="scene s5" data-i="4">
+    <div class="s5-confetti" id="confetti"></div>
+    <div class="s5-stamp"><span class="big">48h</span><span class="small">o gratis</span></div>
+    <img class="s5-mark" src="../assets/letras-icono-horizontal.svg" alt="Rallusigence">
+    <h2 class="s5-headline">Tu turno. <em>Auditoría gratis.</em></h2>
+    <button class="s5-cta">Empezar mi auditoría</button>
+    <div class="s5-foot">Sin tarjeta · sin compromiso · entrega garantizada</div>
+  </div>
+
+  <!-- CHROME -->
+  <div class="chrome">
+    <div class="scene-num">acto <span id="numCur">01</span> · de 05</div>
+    <button class="replay" id="replay">↻ replay</button>
+    <button class="audio" id="audio" aria-label="Audio">🔇</button>
+    <button class="skip" id="skip">Saltar [ESC]</button>
+    <div class="progress" id="progress"></div>
+  </div>
+
+</div>
+
+<script>
+const SCENES = [
+  { dur: 3400 },  // problema
+  { dur: 3400 },  // estadística
+  { dur: 3800 },  // solución
+  { dur: 4200 },  // prueba
+  { dur: 99999 }  // final — holds
+];
+const stage = document.getElementById('stage');
+const scenes = stage.querySelectorAll('.scene');
+const progress = document.getElementById('progress');
+const numCur = document.getElementById('numCur');
+let idx = 0;
+let timer = null;
+let progressTimer = null;
+
+// Build progress segments
+SCENES.forEach((_, i) => {
+  const s = document.createElement('div');
+  s.className = 'seg';
+  s.addEventListener('click', () => goTo(i));
+  progress.appendChild(s);
+});
+const segs = progress.querySelectorAll('.seg');
+
+// Pre-split scene 1 headline letters for shatter effect
+function splitText(el){
+  const parts = [];
+  el.childNodes.forEach(node => {
+    if (node.nodeType === 3){
+      [...node.textContent].forEach(ch => {
+        const span = document.createElement('span');
+        span.className = 'ch';
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        // Random shatter direction
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 200 + Math.random() * 300;
+        span.style.setProperty('--shx', Math.cos(angle) * dist + 'px');
+        span.style.setProperty('--shy', Math.abs(Math.sin(angle) * dist) + 200 + 'px');
+        span.style.setProperty('--shr', (Math.random() * 720 - 360) + 'deg');
+        parts.push(span);
+      });
+    } else if (node.nodeType === 1){
+      const clone = node.cloneNode(false);
+      [...node.textContent].forEach(ch => {
+        const span = document.createElement('span');
+        span.className = 'ch';
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 200 + Math.random() * 300;
+        span.style.setProperty('--shx', Math.cos(angle) * dist + 'px');
+        span.style.setProperty('--shy', Math.abs(Math.sin(angle) * dist) + 200 + 'px');
+        span.style.setProperty('--shr', (Math.random() * 720 - 360) + 'deg');
+        clone.appendChild(span);
+        parts.push(span);
+      });
+      el.replaceChild(clone, node);
+      return;
+    }
+  });
+  // Replace text nodes with spans
+  el.innerHTML = '';
+  parts.forEach((s, i) => {
+    s.style.animationDelay = (0.2 + i * 0.025) + 's';
+    el.appendChild(s);
+  });
+}
+
+// Build confetti
+function buildConfetti(){
+  const host = document.getElementById('confetti');
+  const colors = ['#20B4B1','#FFD31B','#EB5E39','#10B981','#fff','#1078BC'];
+  for (let i = 0; i < 30; i++){
+    const c = document.createElement('i');
+    c.style.left = (Math.random() * 100) + '%';
+    c.style.background = colors[i % colors.length];
+    c.style.animationDelay = (Math.random() * 2.5) + 's';
+    c.style.setProperty('--cx', (Math.random() * 200 - 100) + 'px');
+    host.appendChild(c);
+  }
+}
+
+// Counter for scene 4
+function easeOut(t){return 1 - Math.pow(1 - t, 3);}
+function animateCounter(el){
+  const target = parseFloat(el.dataset.count);
+  const decimals = parseInt(el.dataset.d || '0', 10);
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now){
+    const t = Math.min((now - start) / duration, 1);
+    const v = target * easeOut(t);
+    el.textContent = v.toFixed(decimals);
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function showScene(i){
+  // Clear all states
+  scenes.forEach(s => { s.classList.remove('active','exit'); });
+  segs.forEach((s, j) => {
+    s.classList.toggle('done', j < i);
+    s.classList.toggle('cur', j === i);
+    s.style.setProperty('--p', j === i ? '0%' : (j < i ? '100%' : '0%'));
+  });
+  numCur.textContent = String(i + 1).padStart(2, '0');
+  const scene = scenes[i];
+  // Force reflow so animations re-trigger if same scene
+  void scene.offsetWidth;
+  scene.classList.add('active');
+  // Per-scene side-effects
+  if (i === 3){
+    setTimeout(() => {
+      scene.querySelectorAll('[data-count]').forEach((el, j) => {
+        setTimeout(() => animateCounter(el), j * 250);
+      });
+    }, 800);
+  }
+  // Animate progress segment
+  if (progressTimer) cancelAnimationFrame(progressTimer);
+  const startTime = performance.now();
+  const dur = SCENES[i].dur;
+  function progTick(now){
+    const t = Math.min((now - startTime) / dur, 1);
+    segs[i].style.setProperty('--p', (t * 100) + '%');
+    if (t < 1 && i === idx) progressTimer = requestAnimationFrame(progTick);
+  }
+  progressTimer = requestAnimationFrame(progTick);
+}
+
+function goTo(i){
+  if (i === idx) return;
+  if (timer) clearTimeout(timer);
+  // exit current
+  if (i > idx) scenes[idx].classList.add('exit');
+  idx = i;
+  setTimeout(() => showScene(idx), i > 0 ? 350 : 0);
+  if (idx < SCENES.length - 1){
+    timer = setTimeout(() => goTo(idx + 1), SCENES[idx].dur);
+  }
+}
+
+function start(){
+  // Re-split S1 each replay
+  const h1 = document.getElementById('h1');
+  if (!h1.dataset.split){ splitText(h1); h1.dataset.split = '1'; }
+  idx = 0;
+  showScene(0);
+  if (timer) clearTimeout(timer);
+  timer = setTimeout(() => goTo(1), SCENES[0].dur);
+}
+
+document.getElementById('replay').addEventListener('click', () => {
+  // Reset everything fully
+  scenes.forEach(s => s.classList.remove('active','exit'));
+  if (timer) clearTimeout(timer);
+  if (progressTimer) cancelAnimationFrame(progressTimer);
+  // Reset counters
+  document.querySelectorAll('[data-count]').forEach(el => el.textContent = '0');
+  setTimeout(start, 50);
+});
+document.getElementById('skip').addEventListener('click', () => goTo(SCENES.length - 1));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') goTo(SCENES.length - 1); });
+
+buildConfetti();
+start();
+</script>
+</body></html>

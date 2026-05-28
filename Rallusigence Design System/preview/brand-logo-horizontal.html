@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+.brand{display:flex;flex-direction:column;gap:18px;}
+.lockup{display:flex;align-items:center;gap:16px;padding:14px 18px;border:1px solid var(--rs-border);border-radius:8px;cursor:pointer;transition:border-color .25s ease;}
+.lockup:hover{border-color:var(--rs-primary);}
+.lockup img{display:block;transition:transform .35s var(--ease-out-cubic);}
+.icon-img{animation:idleBob 4s ease-in-out infinite;}
+.lockup:hover .icon-img{animation:logoTilt .6s var(--ease-out-cubic);}
+@keyframes idleBob{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-2px) rotate(-1deg);}}
+@keyframes logoTilt{0%{transform:rotate(0) scale(1);}40%{transform:rotate(-6deg) scale(1.06);}100%{transform:rotate(0) scale(1.04);}}
+.lockup:hover .word-img{transform:translateX(2px);}
+.tag{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--rs-text-subtle);font-weight:700;flex:1;text-align:right;}
+.note{font-size:11px;color:var(--rs-text-muted);margin:0;}
+</style></head><body>
+<p class="note">Hover sobre cualquier lockup: el ícono se inclina + escala. El ícono también tiene idle bob suave (4s).</p>
+<div class="brand">
+  <div class="lockup">
+    <img class="icon-img" src="../assets/icono.svg" alt="Marca primaria" style="height:64px;width:auto;">
+    <img class="word-img" src="../assets/letras.svg" alt="Wordmark" style="height:30px;width:auto;">
+    <div class="tag">Mark + Wordmark</div>
+  </div>
+  <div class="lockup" style="background:#F9FAFB;">
+    <img class="icon-img" src="../assets/letras-icono-horizontal.svg" alt="Lockup horizontal" style="height:48px;width:auto;">
+    <div class="tag">Horizontal lockup</div>
+  </div>
+</div>
+</body></html>

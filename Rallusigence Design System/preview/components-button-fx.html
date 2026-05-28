@@ -1,0 +1,47 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:24px;font-family:var(--font-primary);color:var(--rs-text);}
+h3{margin:0 0 12px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px;}
+.note{font-size:11px;color:var(--rs-text-muted);max-width:520px;line-height:1.5;}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;font-weight:500;font-size:16px;font-family:inherit;border-radius:4px;border:none;cursor:pointer;transition:all .3s cubic-bezier(0.16,1,0.3,1);z-index:1;}
+.btn-primary{background:var(--rs-primary);color:#fff;}
+.btn-primary::before{content:'';position:absolute;top:100%;left:0;width:100%;height:100%;background:var(--rs-primary-dark);transition:transform .4s cubic-bezier(0.16,1,0.3,1);z-index:-1;}
+.btn-primary:hover::before{transform:translateY(-100%);}
+.btn-primary:hover{box-shadow:0 6px 20px rgba(32,180,177,.25);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--rs-primary);border:1px solid var(--rs-primary);}
+.btn-secondary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--rs-primary);transition:left .4s cubic-bezier(0.16,1,0.3,1);z-index:-1;}
+.btn-secondary:hover::before{left:0;}
+.btn-secondary:hover{color:#fff;}
+.ripple-effect{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripple .6s ease-out;pointer-events:none;}
+@keyframes ripple{to{transform:scale(2);opacity:0;}}
+</style></head><body>
+<h3>Primary — fill from bottom on hover, ripple on click</h3>
+<div class="row">
+  <button class="btn btn-primary" data-r>Auditoría gratis</button>
+  <button class="btn btn-primary" data-r>Solicitar reporte</button>
+  <p class="note">Hover: <code>::before</code> con <code>--rs-primary-dark</code> sube de <code>translateY(100%)</code> a <code>-100%</code> en 0.4s. Click: ripple blanco se expande desde el punto del click.</p>
+</div>
+<h3>Secondary — fill from left on hover, text turns white</h3>
+<div class="row">
+  <button class="btn btn-secondary" data-r>Ver servicios</button>
+  <button class="btn btn-secondary" data-r>Conocer al equipo</button>
+  <p class="note">Hover: <code>::before</code> con teal sólido entra desde <code>left -100%</code> a <code>0</code>. El texto cambia a blanco simultáneamente.</p>
+</div>
+<script>
+document.querySelectorAll('[data-r]').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const r = btn.getBoundingClientRect();
+    const size = Math.max(r.width, r.height);
+    const x = e.clientX - r.left - size/2;
+    const y = e.clientY - r.top - size/2;
+    const s = document.createElement('span');
+    s.className = 'ripple-effect';
+    s.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+    btn.appendChild(s);
+    setTimeout(() => s.remove(), 600);
+  });
+});
+</script>
+</body></html>

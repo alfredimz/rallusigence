@@ -1,0 +1,19 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.tile{padding:14px;border:1px solid var(--rs-border);}
+.tile .lab{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--rs-text-subtle);margin-bottom:8px;}
+.tile .demo{height:48px;background:var(--rs-primary);}
+.r-sm{border-radius:4px;}
+.r-md{border-radius:8px;}
+.r-pill{border-radius:28px;}
+.tile .meta{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--rs-text-muted);margin-top:8px;}
+</style></head><body>
+<div class="grid">
+  <div class="tile"><div class="lab">Radius — sm</div><div class="demo r-sm"></div><div class="meta">4px · inputs, botones, badges</div></div>
+  <div class="tile"><div class="lab">Radius — md</div><div class="demo r-md"></div><div class="meta">8px · cards, form-card, secciones</div></div>
+  <div class="tile"><div class="lab">Radius — pill</div><div class="demo r-pill"></div><div class="meta">28px · sticky CTA mobile</div></div>
+</div>
+</body></html>

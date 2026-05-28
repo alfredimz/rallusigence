@@ -1,0 +1,260 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 24px 24px 0;
+  background-color: var(--rs-bg-soft);
+}
+
+.breadcrumbWrapper {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.breadcrumbLink {
+  color: var(--rs-primary);
+  text-decoration: none;
+  font-size: var(--text-small);
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--rs-primary-dark);
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-fg-muted);
+  font-size: var(--text-small);
+}
+
+/* Hero Section */
+.heroWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroDescription {
+  margin-top: 16px;
+  font-size: 18px;
+  color: var(--color-fg-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  .heroDescription {
+    font-size: 16px;
+  }
+}
+
+/* Cases Section */
+.casesSection {
+  background-color: var(--rs-bg-soft);
+}
+
+.casesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .casesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.caseCard {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.caseCard:hover {
+  border-color: var(--rs-primary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.caseImagePlaceholder {
+  height: 180px;
+  background: linear-gradient(135deg, rgba(32,180,177,0.1), rgba(32,180,177,0.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.caseContent {
+  padding: 24px;
+}
+
+.caseHeader {
+  margin-bottom: 20px;
+}
+
+.caseTitle {
+  margin: 0 0 4px 0;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 20px;
+  color: var(--color-fg);
+}
+
+.caseType {
+  font-size: var(--text-small);
+  color: var(--rs-primary);
+  font-weight: var(--weight-medium);
+  margin-bottom: 2px;
+}
+
+.caseLocation {
+  font-size: var(--text-micro);
+  color: var(--color-fg-muted);
+}
+
+.caseDetails {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.caseDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.caseDetailLabel {
+  font-size: var(--text-micro);
+  color: var(--color-fg-muted);
+  font-weight: var(--weight-medium);
+}
+
+.caseDetailValue {
+  font-size: var(--text-small);
+  color: var(--color-fg);
+  font-weight: var(--weight-semibold);
+}
+
+.caseResult {
+  background-color: var(--rs-bg-soft);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.caseResultNumber {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: 28px;
+  color: var(--rs-primary);
+  line-height: 1;
+}
+
+.caseResultText {
+  font-size: var(--text-small);
+  color: var(--color-fg);
+  margin-top: 4px;
+}
+
+.caseDescription {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-fg-muted);
+  line-height: 1.5;
+}
+
+/* Note Section */
+.noteSection {
+  background-color: var(--color-bg);
+}
+
+.noteWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.noteCard {
+  padding: 32px;
+  background-color: var(--color-bg);
+  border: 2px dashed var(--rs-border-soft);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.noteTitle {
+  margin: 0 0 16px 0;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 18px;
+  color: var(--color-fg);
+}
+
+.noteText {
+  margin: 0 0 24px 0;
+  font-size: 15px;
+  color: var(--color-fg-muted);
+  line-height: 1.5;
+}
+
+.noteActions {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .caseCard {
+    border-radius: var(--radius-sm);
+  }
+
+  .caseContent {
+    padding: 20px;
+  }
+
+  .caseDetails {
+    gap: 16px;
+  }
+
+  .caseResult {
+    padding: 12px;
+  }
+
+  .caseResultNumber {
+    font-size: 24px;
+  }
+
+  .noteCard {
+    padding: 24px;
+  }
+
+  .casesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .caseImagePlaceholder {
+    height: 140px;
+  }
+
+  .noteCard {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}

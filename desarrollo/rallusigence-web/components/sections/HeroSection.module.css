@@ -1,0 +1,130 @@
+.hero {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(32,180,177,0.04) 50%, rgba(32,180,177,0.07) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(32,180,177,0.09) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(32,180,177,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+}
+
+.subtitle {
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg-muted);
+  max-width: 480px;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, rgba(32,180,177,0.07) 0%, rgba(32,180,177,0.14) 100%);
+  border: none;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(32,180,177,0.12), 0 0 0 1px rgba(32,180,177,0.12);
+}
+
+.imagePlaceholder::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(32,180,177,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+  .h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 80px 16px 48px;
+  }
+
+  .h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+
+  .ctas {
+    flex-direction: column;
+  }
+
+  .ctas .rs-btn {
+    width: 100%;
+  }
+
+  .imagePlaceholder {
+    aspect-ratio: 16/9;
+  }
+}

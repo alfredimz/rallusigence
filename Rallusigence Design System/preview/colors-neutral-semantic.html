@@ -1,0 +1,55 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:20px;display:grid;grid-template-columns:1.2fr 1fr;gap:18px;}
+.col h3{margin:0 0 10px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.row{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--rs-border);border-radius:6px;margin-bottom:6px;background:#fff;transition:border-color .2s ease, transform .2s ease;}
+.row[data-copy]:hover{border-color:var(--rs-primary);transform:translateX(2px);}
+.row .sw{width:36px;height:36px;border-radius:6px;flex:none;border:1px solid rgba(0,0,0,.05);}
+.row .meta{flex:1;}
+.row .nm{font-size:12px;font-weight:600;}
+.row .desc{font-size:10.5px;color:var(--rs-text-muted);line-height:1.35;}
+.row .hexm{font-family:ui-monospace,monospace;font-size:10px;color:var(--rs-text-muted);}
+.semantic .row{padding:10px;}
+.semantic .badge{display:inline-flex;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+</style></head><body><div class="wrap">
+
+<div class="col">
+  <h3>Neutros  ·  click para copiar</h3>
+  <div class="row" data-copy="#FFFFFF" data-copy-label="#FFFFFF · White" data-ripple="rgba(32,180,177,.18)"><div class="sw" style="background:#FFFFFF;border:1px solid #E5E5E5;"></div><div class="meta"><div class="nm">White</div><div class="desc">Fondo principal</div></div><div class="hexm">#FFFFFF</div></div>
+  <div class="row" data-copy="#F9FAFB" data-copy-label="#F9FAFB · Bg soft" data-ripple="rgba(32,180,177,.18)"><div class="sw" style="background:#F9FAFB;"></div><div class="meta"><div class="nm">Bg soft</div><div class="desc">Fondo de sección alterno, testimonios</div></div><div class="hexm">#F9FAFB</div></div>
+  <div class="row" data-copy="#F3F4F6" data-copy-label="#F3F4F6 · Border soft" data-ripple="rgba(32,180,177,.18)"><div class="sw" style="background:#F3F4F6;"></div><div class="meta"><div class="nm">Border soft</div><div class="desc">Separador sutil interno</div></div><div class="hexm">#F3F4F6</div></div>
+  <div class="row" data-copy="#E5E5E5" data-copy-label="#E5E5E5 · Border" data-ripple="rgba(32,180,177,.18)"><div class="sw" style="background:#E5E5E5;"></div><div class="meta"><div class="nm">Border</div><div class="desc">Borde de inputs y cards</div></div><div class="hexm">#E5E5E5</div></div>
+  <div class="row" data-copy="#9CA3AF" data-copy-label="#9CA3AF · Text subtle" data-ripple="rgba(156,163,175,.3)"><div class="sw" style="background:#9CA3AF;"></div><div class="meta"><div class="nm">Text subtle</div><div class="desc">Placeholders, copyright</div></div><div class="hexm">#9CA3AF</div></div>
+  <div class="row" data-copy="#6B7280" data-copy-label="#6B7280 · Text muted" data-ripple="rgba(107,114,128,.3)"><div class="sw" style="background:#6B7280;"></div><div class="meta"><div class="nm">Text muted</div><div class="desc">Descripciones secundarias</div></div><div class="hexm">#6B7280</div></div>
+  <div class="row" data-copy="#2C2C2C" data-copy-label="#2C2C2C · Text" data-ripple="rgba(44,44,44,.25)"><div class="sw" style="background:#2C2C2C;"></div><div class="meta"><div class="nm">Text</div><div class="desc">Texto principal · 12.6:1 sobre blanco</div></div><div class="hexm">#2C2C2C</div></div>
+</div>
+
+<div class="col semantic">
+  <h3>Semánticos  ·  click para copiar</h3>
+  <div class="row" data-copy="#10B981" data-copy-label="#10B981 · Success" data-ripple="rgba(16,185,129,.3)" style="background:#ECFDF5;border-color:#A7F3D0;">
+    <div class="sw" style="background:#10B981;"></div>
+    <div class="meta"><div class="nm">Success</div><div class="desc">Confirmaciones, checkmarks, "auditoría enviada"</div></div>
+    <div class="hexm">#10B981</div>
+  </div>
+  <div class="row" data-copy="#EF4444" data-copy-label="#EF4444 · Error" data-ripple="rgba(239,68,68,.3)" style="background:#FEF2F2;border-color:#FECACA;">
+    <div class="sw" style="background:#EF4444;"></div>
+    <div class="meta"><div class="nm">Error</div><div class="desc">Validación de form, alertas</div></div>
+    <div class="hexm">#EF4444</div>
+  </div>
+  <div class="row" data-copy="#1078BC" data-copy-label="#1078BC · Info" data-ripple="rgba(16,120,188,.3)">
+    <div class="sw" style="background:#1078BC;"></div>
+    <div class="meta"><div class="nm">Info</div><div class="desc">Tooltips, links secundarios</div></div>
+    <div class="hexm">#1078BC</div>
+  </div>
+  <div class="row" data-copy="rgba(32,180,177,0.10)" data-copy-label="α 0.10 ring" data-ripple="rgba(32,180,177,.18)" style="background:rgba(32,180,177,.10);border-color:transparent;">
+    <div class="sw" style="background:#20B4B1;"></div>
+    <div class="meta"><div class="nm">Primary tint</div><div class="desc">Focus rings, price-tag bg, hover sutil</div></div>
+    <div class="hexm">α .10</div>
+  </div>
+</div>
+
+</div>
+<script src="_interactions.js"></script>
+</body></html>

@@ -1,0 +1,77 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Tabs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:24px;}
+h3{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.sub{margin:0 0 18px;font-size:11px;color:var(--rs-text-muted);}
+
+.tabs{position:relative;display:flex;gap:6px;border-bottom:1px solid var(--rs-border);padding-bottom:0;}
+.tab{position:relative;padding:12px 18px;border:none;background:none;font-family:inherit;font-size:14px;font-weight:600;color:var(--rs-text-muted);cursor:pointer;letter-spacing:.01em;transition:color .2s ease;}
+.tab:hover{color:var(--rs-text);}
+.tab.on{color:var(--rs-primary);}
+.indicator{position:absolute;bottom:-1px;height:2px;background:var(--rs-primary);border-radius:2px;transition:left .35s var(--ease-out-cubic), width .35s var(--ease-out-cubic);box-shadow:0 0 8px rgba(32,180,177,.5);}
+.panels{padding:22px 4px 0;}
+.panel{display:none;animation:panelIn .3s var(--ease-out-cubic);}
+.panel.on{display:block;}
+@keyframes panelIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.panel h4{font-family:Arvo,Georgia,serif;margin:0 0 6px;font-size:18px;letter-spacing:-0.005em;}
+.panel p{margin:0 0 10px;font-size:13px;color:var(--rs-text-muted);line-height:1.6;max-width:540px;}
+.bullets{margin:0;padding-left:18px;font-size:13px;color:var(--rs-text);line-height:1.7;}
+</style></head><body>
+<div class="wrap">
+<h3>Tabs — indicator que viaja entre opciones</h3>
+<p class="sub">El indicador se mide al activo on-tab-change, no es un border-bottom estático.</p>
+
+<div class="tabs" id="tabs">
+  <button class="tab on">Sitio web</button>
+  <button class="tab">WhatsApp 24/7</button>
+  <button class="tab">SEO local</button>
+  <button class="tab">Auditoría</button>
+  <span class="indicator" id="ind"></span>
+</div>
+<div class="panels" id="panels">
+  <div class="panel on">
+    <h4>Sitio web profesional</h4>
+    <p>Landing responsivo con SEO técnico, formulario integrado y hosting incluido. Apareces en Google cuando alguien busca lo que tú vendes.</p>
+    <ul class="bullets"><li>Core Web Vitals optimizados</li><li>SSL + dominio incluidos primer año</li><li>Editor sin código para actualizaciones</li></ul>
+  </div>
+  <div class="panel">
+    <h4>Agente WhatsApp 24/7</h4>
+    <p>Bot con IA que responde dudas, agenda citas y filtra leads mientras tú duermes. Pasa al humano cuando importa.</p>
+    <ul class="bullets"><li>Entrenado con tus FAQ y catálogo</li><li>Integración con Google Calendar</li><li>Reportes semanales de conversaciones</li></ul>
+  </div>
+  <div class="panel">
+    <h4>SEO local</h4>
+    <p>Optimizamos tu Google Business y posicionamos por términos que realmente convierten en tu zona.</p>
+    <ul class="bullets"><li>Auditoría técnica + plan de contenido</li><li>Reseñas asistidas con automatizaciones</li><li>Reportes mensuales con métricas claras</li></ul>
+  </div>
+  <div class="panel">
+    <h4>Auditoría digital — gratis</h4>
+    <p>Revisamos tu web, redes y Google. Reporte completo en menos de 48 horas, sin costo, sin compromiso.</p>
+    <ul class="bullets"><li>Diagnóstico técnico (velocidad, SEO)</li><li>Revisión de contenido y mensaje</li><li>Roadmap priorizado de oportunidades</li></ul>
+  </div>
+</div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.panel');
+const ind = document.getElementById('ind');
+function moveIndTo(tab){
+  const r = tab.getBoundingClientRect();
+  const pr = tab.parentElement.getBoundingClientRect();
+  ind.style.left = (r.left - pr.left) + 'px';
+  ind.style.width = r.width + 'px';
+}
+function activate(i){
+  tabs.forEach((t, idx) => t.classList.toggle('on', idx === i));
+  panels.forEach((p, idx) => p.classList.toggle('on', idx === i));
+  moveIndTo(tabs[i]);
+}
+tabs.forEach((t, i) => t.addEventListener('click', () => activate(i)));
+window.addEventListener('load', () => activate(0));
+window.addEventListener('resize', () => activate([...tabs].findIndex(t => t.classList.contains('on'))));
+activate(0);
+</script>
+</body></html>

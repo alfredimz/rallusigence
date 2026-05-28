@@ -1,81 +1,130 @@
 # Arquitectura Técnica — Rallusigence
 **Proyecto:** Sitio web Rallusigence (rallusigence.net)
 **Fase:** 5 — Técnico
-**Stack:** HTML5 + CSS3 + JavaScript ES6 vanilla
+**Stack:** Next.js 15 (App Router) + React + TypeScript
+**CSS:** `Rallusigence Design System/colors_and_type.css` + CSS Modules por componente
 **Hosting:** Firebase Hosting
-**Fecha:** 2026-04-25
+**Blog:** MDX — Alfredo escribe en Markdown, se publica automático
+**Actualizado:** Mayo 2026
 
 ---
 
-## Sección 1 — Estructura de carpetas
+## Sección 0 — Design System (fuente de CSS)
+
+El CSS de variables, fuentes y clases tipográficas vive en:
 
 ```
-rallusigence-web/
-├── index.html                  # Home single-page con anclas
-├── auditoria-gratis.html       # Landing page para ads
-├── 404.html                    # Página de error personalizada
-├── robots.txt                  # Indexación SEO
-├── sitemap.xml                 # Mapa del sitio para buscadores
-├── favicon.ico                 # Favicon multi-formato
-├── site.webmanifest            # PWA manifest (instalable mobile)
+Rallusigence Design System/          ← carpeta de la exportación de Claude Design
+├── colors_and_type.css              ← FUENTE CANÓNICA de variables --rs-* y clases .rs-*
+├── fonts/                           ← TTF auto-hosteados (Montserrat 5 pesos, Playfair 2, etc.)
+├── assets/                          ← Logos SVG + PNG (icono, letras, kiwi-icon, lockups)
+├── ui_kits/marketing-website/
+│   ├── components.jsx               ← Componentes React de referencia (Header, Hero, ServiceCard…)
+│   └── index.html                   ← Preview HTML del landing
+└── preview/                         ← 60+ HTMLs de previsualización por componente/token
+```
+
+**Cómo usarlo en Next.js:**
+1. Copiar `colors_and_type.css` y la carpeta `fonts/` a `public/design-system/`
+2. Importar en `app/globals.css`:  `@import url('/design-system/colors_and_type.css');`
+3. Copiar assets de `assets/` a `public/assets/`
+4. Los componentes `.jsx` de `ui_kits/` son la referencia visual — adaptar a TypeScript + CSS Modules
+
+**Convenciones del export:**
+- Variables CSS: prefijo `--rs-*` (ej. `--rs-primary: #20B4B1`)
+- Clases tipográficas: prefijo `.rs-*` (ej. `.rs-h1`, `.rs-body`, `.rs-price`)
+- Clases de botón: `.rs-btn`, `.rs-btn--primary`, `.rs-btn--ghost`, `.rs-btn--sm`, `.rs-btn--lg`
+
+---
+
+## Sección 1 — Estructura de carpetas (Next.js 15 App Router)
+
+```
+rallusigence-web/                    # raíz del proyecto Next.js
+├── app/
+│   ├── layout.tsx                   # RootLayout — metadata global, fonts, GA4
+│   ├── globals.css                  # Importa design system + reset global
+│   ├── page.tsx                     # / Home (hero + problema + paquetes + proceso + diff + CTA)
+│   ├── paquetes/
+│   │   └── page.tsx                 # /paquetes — detalle de los 3 paquetes
+│   ├── como-funciona/
+│   │   └── page.tsx                 # /como-funciona — proceso + modelo de pago
+│   ├── portafolio/
+│   │   └── page.tsx                 # /portafolio — trabajos realizados
+│   ├── blog/
+│   │   ├── page.tsx                 # /blog — listado de artículos
+│   │   └── [slug]/
+│   │       └── page.tsx             # /blog/[slug] — artículo individual (SSG)
+│   ├── contacto/
+│   │   └── page.tsx                 # /contacto — formulario + WhatsApp
+│   ├── auditoria-gratis/
+│   │   └── page.tsx                 # /auditoria-gratis — landing para ads (sin nav)
+│   ├── gracias/
+│   │   └── page.tsx                 # /gracias — confirmación post-formulario + pixel
+│   ├── aviso-de-privacidad/
+│   │   └── page.tsx                 # texto legal
+│   ├── terminos-y-condiciones/
+│   │   └── page.tsx                 # texto legal
+│   └── not-found.tsx                # Página 404 personalizada
 │
-├── css/
-│   ├── variables.css           # Custom properties (colores, spacing, fuentes)
-│   ├── reset.css               # Reset CSS moderno (modern-normalize)
-│   ├── base.css                # Tipografía, body, html, links base
-│   ├── components.css          # 20 componentes (botones, cards, forms, etc.)
-│   ├── layout.css              # Grid, contenedores, secciones, header/footer
-│   └── utilities.css           # Helpers (.hidden, .text-center, .mt-*, etc.)
+├── components/                      # Componentes React reutilizables
+│   ├── layout/
+│   │   ├── Header.tsx               # Nav sticky con menú hamburguesa
+│   │   └── Footer.tsx               # Footer con links y legal
+│   ├── ui/
+│   │   ├── Button.tsx               # .rs-btn con variantes
+│   │   ├── ServiceCard.tsx          # Card de servicio/paquete
+│   │   ├── TestimonialCard.tsx      # Testimonio con estrellas
+│   │   └── FormField.tsx            # Input con label, error, success
+│   └── sections/
+│       ├── Hero.tsx
+│       ├── PainSection.tsx
+│       ├── ServicesSection.tsx
+│       ├── ProcessSection.tsx
+│       ├── DiffSection.tsx
+│       └── ContactForm.tsx
 │
-├── js/
-│   ├── main.js                 # Sticky header, smooth scroll, scroll reveal
-│   ├── form.js                 # Validación + envío Formspree
-│   └── analytics.js            # GA4 events
+├── content/                         # MDX blog posts
+│   └── blog/
+│       └── ejemplo-articulo.mdx
 │
-├── img/
-│   ├── logo/
-│   │   ├── logo.svg            # Logo principal vectorial
-│   │   ├── logo-white.svg      # Versión para fondos oscuros
-│   │   ├── logo-icon.svg       # Isotipo para favicon/social
-│   │   └── apple-touch-icon.png # 180x180 iOS
-│   ├── icons/
-│   │   └── (iconos custom si los hay; mayoría via Lucide CDN)
+├── public/
+│   ├── design-system/
+│   │   ├── colors_and_type.css      ← copiado del export
+│   │   └── fonts/                   ← TTFs copiados del export
+│   ├── assets/                      ← logos SVG/PNG del export
+│   │   ├── icono.svg
+│   │   ├── kiwi-icon.svg
+│   │   ├── letras-icono-horizontal.svg
+│   │   └── letras-icono-vertical.svg
 │   ├── og/
-│   │   ├── og-home.jpg         # 1200x630 Open Graph home
-│   │   ├── og-auditoria.jpg    # 1200x630 OG landing
-│   │   └── twitter-card.jpg    # 1200x675 Twitter
-│   ├── hero/
-│   │   ├── hero-desktop.webp   # Imagen hero principal
-│   │   ├── hero-mobile.webp    # Versión mobile optimizada
-│   │   └── hero-poster.jpg     # Fallback para WebP
-│   ├── servicios/
-│   │   ├── servicio-01.webp
-│   │   ├── servicio-02.webp
-│   │   └── servicio-03.webp
-│   └── testimonios/
-│       ├── cliente-01.webp     # Avatares clientes (cuadradas 200x200)
-│       └── cliente-02.webp
+│   │   ├── og-home.jpg              # 1200x630 Open Graph home
+│   │   └── og-auditoria.jpg         # 1200x630 OG landing
+│   ├── favicon.ico
+│   └── robots.txt
 │
-├── fonts/                      # (opcional) Si se autohostean fuentes
-│   └── (vacío si solo se usa Google Fonts via CDN)
+├── lib/
+│   ├── mdx.ts                       # Helpers para leer MDX del blog
+│   └── analytics.ts                 # GA4 event helpers
 │
-├── firebase.json               # Configuración Firebase Hosting
-├── .firebaserc                 # ID del proyecto Firebase
-├── .gitignore                  # node_modules, .env, .firebase/
-└── README.md                   # Setup local + deploy
+├── firebase.json                    # Configuración Firebase Hosting
+├── .firebaserc                      # ID del proyecto Firebase
+├── next.config.ts                   # Configuración Next.js (MDX, imágenes, etc.)
+├── tsconfig.json
+├── .gitignore
+└── README.md
 ```
 
-### Justificación de cada archivo
+### Justificación de decisiones clave
 
-| Archivo / carpeta | Justificación |
+| Decisión | Justificación |
 |---|---|
-| `index.html` | Home single-page; todas las secciones del marketing en una sola URL para mejor SEO y experiencia. |
-| `auditoria-gratis.html` | Landing dedicada con foco único (formulario), sin distracciones del nav. Necesaria para ads. |
-| `404.html` | Mejor UX y SEO; Firebase la sirve automáticamente. |
-| `robots.txt` + `sitemap.xml` | Indispensables para indexación en Google. |
-| `site.webmanifest` | Permite "agregar a inicio" desde mobile; mejora Core Web Vitals score. |
-| `css/` separados en 6 archivos | Permite cargar `variables.css` y `base.css` críticos primero; mantiene cada archivo <300 líneas. |
-| `js/` modular | Separar concerns: navegación (`main`), formularios (`form`), tracking (`analytics`). Facilita mantenimiento y permite cargar `analytics.js` con `defer` sin bloquear. |
+| App Router (Next.js 15) | Rutas por archivo, layouts anidados, SSG para blog, metadata API nativa |
+| `globals.css` importa design system | Un solo punto de entrada para variables --rs-*; cada componente usa CSS Modules para estilos locales |
+| `public/design-system/` | Los TTFs se sirven estáticos; Next.js los cachea con header long-lived automáticamente |
+| MDX para blog | Alfredo escribe Markdown, se compila a HTML con getStaticPaths; cero backend |
+| Formspree para formularios | Sin servidor propio; POST desde cliente, redirect a /gracias |
+| Firebase Hosting | CDN global gratuito, deploy con `firebase deploy`, compatible con Next.js export estático |
 | `img/og/` | Imágenes Open Graph para WhatsApp, Facebook, Twitter cuando se comparta el link. |
 | `img/hero/` con WebP + JPG fallback | WebP para navegadores modernos; fallback JPG en `<picture>` para compatibilidad. |
 | `firebase.json` | Define headers de seguridad, caché y rewrites. |

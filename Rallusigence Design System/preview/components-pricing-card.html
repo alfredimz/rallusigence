@@ -1,0 +1,76 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#F9FAFB;padding:24px;font-family:var(--font-primary);color:var(--rs-text);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:flex-start;}
+.pc{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:#fff;border:1px solid var(--rs-border);transition:transform .3s ease, box-shadow .3s ease;position:relative;}
+.pc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.10);}
+.pc__h{background:linear-gradient(135deg, var(--rs-primary) 0%, var(--rs-primary-dark) 100%);color:#fff;padding:18px 22px;text-align:center;}
+.pc__title{font-weight:700;font-size:18px;margin:0 0 4px;}
+.pc__sub{font-size:12px;opacity:.9;}
+.pc__body{padding:20px 22px;flex:1;display:flex;flex-direction:column;}
+.pc__price{text-align:center;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid #F3F4F6;}
+.pc__amount{font-family:ui-monospace,monospace;font-weight:700;font-size:30px;line-height:1;color:var(--rs-text);}
+.pc__period{font-size:12px;color:#6B7280;margin-top:4px;}
+.pc__feat{flex:1;}
+.pc__f{display:flex;gap:8px;padding:5px 0;font-size:13px;line-height:1.4;}
+.pc__f::before{content:'✓';color:var(--rs-primary);font-weight:700;font-size:12px;margin-top:2px;}
+.pc__foot{padding:0 22px 22px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;height:42px;padding:0 16px;background:var(--rs-primary);color:#fff;font-weight:600;font-size:14px;border-radius:4px;border:none;cursor:pointer;font-family:inherit;}
+.pc--featured{border-color:var(--rs-primary);transform:scale(1.04);box-shadow:0 8px 24px rgba(32,180,177,.18);}
+.pc--featured::before{content:'RECOMENDADO';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--rs-primary);color:#fff;padding:4px 14px;font-weight:600;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border-radius:0 0 4px 4px;animation:ribbonWave 4s ease-in-out infinite;transform-origin:top center;}
+@keyframes ribbonWave{0%,100%{transform:translateX(-50%) skewX(0deg);}25%{transform:translateX(-50%) skewX(1deg);}75%{transform:translateX(-50%) skewX(-1deg);}}
+.pc--featured .pc__h{background:linear-gradient(135deg, var(--rs-primary-dark) 0%, var(--rs-green-mid) 100%);background-size:200% 200%;animation:gradShift 8s ease-in-out infinite;}
+@keyframes gradShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+</style></head><body>
+<div class="grid">
+  <div class="pc">
+    <div class="pc__h">
+      <h3 class="pc__title">Sitio web</h3>
+      <div class="pc__sub">Landing profesional + SEO</div>
+    </div>
+    <div class="pc__body">
+      <div class="pc__price"><div class="pc__amount">$12,000</div><div class="pc__period">MXN · pago único</div></div>
+      <div class="pc__feat">
+        <div class="pc__f">Diseño responsivo</div>
+        <div class="pc__f">Formulario de contacto</div>
+        <div class="pc__f">Hosting incluido 1 año</div>
+      </div>
+    </div>
+    <div class="pc__foot"><button class="btn" style="background:transparent;color:var(--rs-primary);border:1px solid var(--rs-primary);">Lo quiero</button></div>
+  </div>
+
+  <div class="pc pc--featured">
+    <div class="pc__h">
+      <h3 class="pc__title">WhatsApp 24/7</h3>
+      <div class="pc__sub">Bot IA + agenda + soporte</div>
+    </div>
+    <div class="pc__body">
+      <div class="pc__price"><div class="pc__amount">$5,000</div><div class="pc__period">MXN / mes</div></div>
+      <div class="pc__feat">
+        <div class="pc__f">Bot que responde 24 horas</div>
+        <div class="pc__f">Agenda automática</div>
+        <div class="pc__f">Reportes semanales</div>
+        <div class="pc__f">Soporte directo conmigo</div>
+      </div>
+    </div>
+    <div class="pc__foot"><button class="btn">Empezar ahora</button></div>
+  </div>
+
+  <div class="pc">
+    <div class="pc__h">
+      <h3 class="pc__title">SEO automático</h3>
+      <div class="pc__sub">Contenido + posicionamiento</div>
+    </div>
+    <div class="pc__body">
+      <div class="pc__price"><div class="pc__amount">$3,500</div><div class="pc__period">MXN / mes</div></div>
+      <div class="pc__feat">
+        <div class="pc__f">4 artículos optimizados/mes</div>
+        <div class="pc__f">Keywords investigadas</div>
+        <div class="pc__f">Reporte de posiciones</div>
+      </div>
+    </div>
+    <div class="pc__foot"><button class="btn" style="background:transparent;color:var(--rs-primary);border:1px solid var(--rs-primary);">Lo quiero</button></div>
+  </div>
+</div>
+</body></html>

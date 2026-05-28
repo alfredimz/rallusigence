@@ -1,0 +1,64 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+.do{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.col{padding:16px;border-radius:8px;border:1px solid var(--rs-border);background:#fff;}
+.col h4{margin:0 0 12px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;display:flex;align-items:center;gap:6px;}
+.do-yes h4{color:#10B981;}
+.do-no h4{color:#EF4444;}
+.col h4 .pill{font-size:9px;background:rgba(16,185,129,.12);color:#10B981;padding:2px 6px;border-radius:8px;}
+.do-no h4 .pill{background:rgba(239,68,68,.12);color:#EF4444;}
+
+.do-yes ul{list-style:none;margin:0;padding:0;}
+.do-yes li{font-size:13.5px;line-height:1.5;color:#2C2C2C;padding:7px 0 7px 22px;position:relative;}
+.do-yes li::before{content:'';position:absolute;left:0;top:11px;width:14px;height:8px;border-left:2px solid #10B981;border-bottom:2px solid #10B981;transform:rotate(-45deg);transform-origin:top left;opacity:0;animation:checkDraw .4s var(--ease-out-cubic) forwards;}
+.do-yes li:nth-child(1)::before{animation-delay:.2s;}
+.do-yes li:nth-child(2)::before{animation-delay:.6s;}
+.do-yes li:nth-child(3)::before{animation-delay:1.0s;}
+.do-yes li:nth-child(4)::before{animation-delay:1.4s;}
+@keyframes checkDraw{from{opacity:0;width:0;height:0;}50%{opacity:1;}to{opacity:1;width:14px;height:8px;}}
+
+.do-no ul{list-style:none;margin:0;padding:0;}
+.do-no li{font-size:13.5px;line-height:1.5;color:#6B7280;padding:7px 0 7px 22px;position:relative;}
+.do-no li::before{content:'×';position:absolute;left:0;top:7px;color:#EF4444;font-weight:700;font-size:18px;line-height:1;width:14px;text-align:center;}
+.do-no li::after{content:'';position:absolute;left:22px;right:0;top:50%;height:1.5px;background:#EF4444;width:0;animation:strike .55s var(--ease-out-cubic) forwards;}
+.do-no li:nth-child(1)::after{animation-delay:.4s;}
+.do-no li:nth-child(2)::after{animation-delay:.9s;}
+.do-no li:nth-child(3)::after{animation-delay:1.4s;}
+.do-no li:nth-child(4)::after{animation-delay:1.9s;}
+@keyframes strike{from{width:0;}to{width:calc(100% - 6px);}}
+
+.replay{margin-top:12px;padding:6px 12px;background:#fff;color:var(--rs-text-muted);border:1px solid var(--rs-border);border-radius:4px;font-family:inherit;font-weight:600;font-size:11px;cursor:pointer;}
+.replay:hover{border-color:var(--rs-primary);color:var(--rs-primary);}
+</style></head><body>
+<div class="do" id="grid">
+  <div class="col do-yes">
+    <h4>Voz · directa, concreta <span class="pill">USAR</span></h4>
+    <ul>
+      <li>Automatizamos tu WhatsApp en 5 días.</li>
+      <li>Tu sitio web listo en 3 días por $12,000.</li>
+      <li>Te ayudo. Yo configuro, yo explico.</li>
+      <li>Auditoría gratis · CTA siempre visible.</li>
+    </ul>
+  </div>
+  <div class="col do-no">
+    <h4>Prohibidas <span class="pill">NUNCA</span></h4>
+    <ul>
+      <li>Soluciones disruptivas e innovadoras</li>
+      <li>Potenciar tu ecosistema digital</li>
+      <li>Customer journey al siguiente nivel</li>
+      <li>Workflow con best practices y sinergias</li>
+    </ul>
+  </div>
+</div>
+<button class="replay" id="replay">↻ Reanimar</button>
+<script>
+document.getElementById('replay').addEventListener('click', () => {
+  const g = document.getElementById('grid');
+  const c = g.cloneNode(true);
+  g.parentNode.replaceChild(c, g);
+  c.id = 'grid';
+});
+</script>
+</body></html>

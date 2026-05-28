@@ -1,0 +1,32 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:20px;}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.s{display:flex;flex-direction:column;gap:6px;}
+.s[data-copy]{transition:transform .2s var(--ease-out-cubic);}
+.s[data-copy]:hover{transform:translateY(-2px);}
+.s[data-copy]:hover .c{box-shadow:0 6px 14px rgba(0,0,0,.12);}
+.s .c{aspect-ratio:1.6/1;border-radius:6px;border:1px solid rgba(0,0,0,.05);transition:box-shadow .2s ease;}
+.s .n{font-size:10.5px;font-weight:600;line-height:1.2;}
+.s .h{font-family:ui-monospace,monospace;font-size:9.5px;color:var(--rs-text-muted);}
+h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+</style></head><body><div class="wrap">
+
+<h3>Secundarios — apoyo  ·  click para copiar</h3>
+<div class="grid">
+  <div class="s" data-copy="#1078BC" data-copy-label="#1078BC · Azul" data-ripple="rgba(16,120,188,.3)"><div class="c" style="background:#1078BC"></div><div class="n">Azul</div><div class="h">#1078BC</div></div>
+  <div class="s" data-copy="#1B8CCD" data-copy-label="#1B8CCD · Azul claro" data-ripple="rgba(27,140,205,.3)"><div class="c" style="background:#1B8CCD"></div><div class="n">Azul claro</div><div class="h">#1B8CCD</div></div>
+  <div class="s" data-copy="#1E5F90" data-copy-label="#1E5F90 · Azul oscuro" data-ripple="rgba(30,95,144,.3)"><div class="c" style="background:#1E5F90"></div><div class="n">Azul oscuro</div><div class="h">#1E5F90</div></div>
+  <div class="s" data-copy="#2B378C" data-copy-label="#2B378C · Azul intenso" data-ripple="rgba(43,55,140,.3)"><div class="c" style="background:#2B378C"></div><div class="n">Azul intenso</div><div class="h">#2B378C</div></div>
+  <div class="s" data-copy="#34A2A7" data-copy-label="#34A2A7 · Verde azul" data-ripple="rgba(52,162,167,.3)"><div class="c" style="background:#34A2A7"></div><div class="n">Verde azul</div><div class="h">#34A2A7</div></div>
+  <div class="s" data-copy="#3D53A0" data-copy-label="#3D53A0 · Azul medio" data-ripple="rgba(61,83,160,.3)"><div class="c" style="background:#3D53A0"></div><div class="n">Azul medio</div><div class="h">#3D53A0</div></div>
+  <div class="s" data-copy="#54949A" data-copy-label="#54949A · Gris azul" data-ripple="rgba(84,148,154,.3)"><div class="c" style="background:#54949A"></div><div class="n">Gris azul</div><div class="h">#54949A</div></div>
+  <div class="s" data-copy="#5AC1D2" data-copy-label="#5AC1D2 · Celeste" data-ripple="rgba(90,193,210,.3)"><div class="c" style="background:#5AC1D2"></div><div class="n">Celeste</div><div class="h">#5AC1D2</div></div>
+  <div class="s" data-copy="#6EC5CC" data-copy-label="#6EC5CC · Turq. claro" data-ripple="rgba(110,197,204,.3)"><div class="c" style="background:#6EC5CC"></div><div class="n">Turq. claro</div><div class="h">#6EC5CC</div></div>
+  <div class="s" data-copy="#10AE8F" data-copy-label="#10AE8F · Verde medio" data-ripple="rgba(16,174,143,.3)"><div class="c" style="background:#10AE8F"></div><div class="n">Verde medio</div><div class="h">#10AE8F</div></div>
+</div>
+</div>
+<script src="_interactions.js"></script>
+</body></html>

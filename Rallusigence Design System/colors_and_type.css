@@ -1,0 +1,253 @@
+/* ============================================================
+   RALLUSIGENCE — Colors & Type
+   Source: brand-manual.md + design-system.md (alfredimz/rallusigence)
+   ============================================================ */
+
+/* === FONT FACES (local TTF) ====================================== */
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400;
+  src: url('fonts/Montserrat-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 500;
+  src: url('fonts/Montserrat-Medium.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600;
+  src: url('fonts/Montserrat-SemiBold.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700;
+  src: url('fonts/Montserrat-Bold.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 800;
+  src: url('fonts/Montserrat-ExtraBold.ttf') format('truetype'); font-display: swap; }
+
+@font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400;
+  src: url('fonts/PlayfairDisplay-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700;
+  src: url('fonts/PlayfairDisplay-Bold.ttf') format('truetype'); font-display: swap; }
+
+@font-face { font-family: 'Pacifico'; font-style: normal; font-weight: 400;
+  src: url('fonts/Pacifico-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Patrick Hand'; font-style: normal; font-weight: 400;
+  src: url('fonts/PatrickHand-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Amatic SC'; font-style: normal; font-weight: 400;
+  src: url('fonts/AmaticSC-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Amatic SC'; font-style: normal; font-weight: 700;
+  src: url('fonts/AmaticSC-Bold.ttf') format('truetype'); font-display: swap; }
+
+:root {
+  /* === BRAND COLORS (primary identity) === */
+  --rs-primary:        #20B4B1;  /* turquesa brillante — color identitario */
+  --rs-primary-dark:   #198C76;  /* hover sobre primario */
+  --rs-primary-alt:    #029E81;  /* verde turquesa — variante */
+  --rs-blue:           #1078BC;  /* azul informativo */
+  --rs-green-mid:      #10AE8F;  /* verde medio — apoyo */
+
+  /* === SECONDARY (apoyo) === */
+  --rs-blue-light:     #1B8CCD;
+  --rs-blue-dark:      #1E5F90;
+  --rs-blue-intense:   #2B378C;
+  --rs-green-blue:     #34A2A7;
+  --rs-blue-mid:       #3D53A0;
+  --rs-gray-blue:      #54949A;
+  --rs-gray-blue2:     #58639B;
+  --rs-gray-warm:      #594B4B;
+  --rs-sky:            #5AC1D2;
+  --rs-teal-light:     #6EC5CC;
+
+  /* === ACCENT (uso moderado) === */
+  --rs-olive:          #739341;
+  --rs-green-vibrant:  #76B72A;
+  --rs-lime:           #9DC53C;
+  --rs-red-soft:       #B34E50;
+  --rs-orange-dark:    #B57130;
+  --rs-mustard:        #BA9A36;
+  --rs-brick:          #C14725;
+  --rs-pink:           #D8676E;
+  --rs-orange-strong:  #DC4A21;
+  --rs-gold:           #DDAE29;
+  --rs-red-vivid:      #EB5B5B;
+  --rs-orange-red:     #EB5E39;
+  --rs-orange-bright:  #F39323;
+  --rs-orange-light:   #F5A153;
+  --rs-yellow:         #FFD31B;
+
+  /* === NEUTRALS === */
+  --rs-white:          #FFFFFF;
+  --rs-text:           #2C2C2C;
+  --rs-text-muted:     #6B7280;
+  --rs-text-subtle:    #9CA3AF;
+  --rs-border:         #E5E5E5;
+  --rs-border-soft:    #F3F4F6;
+  --rs-bg-soft:        #F9FAFB;
+
+  /* === SEMANTIC === */
+  --rs-success:        #10B981;
+  --rs-success-bg:     #ECFDF5;
+  --rs-success-border: #A7F3D0;
+  --rs-error:          #EF4444;
+  --rs-error-bg:       #FEF2F2;
+  --rs-error-border:   #FECACA;
+  --rs-info:           var(--rs-blue);
+
+  /* === FUNCTIONAL ALIASES === */
+  --color-cta:         var(--rs-primary);
+  --color-cta-hover:   var(--rs-primary-dark);
+  --color-bg:          var(--rs-white);
+  --color-fg:          var(--rs-text);
+  --color-fg-muted:    var(--rs-text-muted);
+  --color-fg-subtle:   var(--rs-text-subtle);
+  --color-border:      var(--rs-border);
+
+  /* === TYPOGRAPHY FAMILIES === */
+  --font-primary:    'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-elegant:    'Playfair Display', Georgia, serif;
+  --font-creative:   'Pacifico', 'Brush Script MT', cursive;
+  --font-informal:   'Patrick Hand', 'Comic Sans MS', cursive;
+  --font-accent:     'Amatic SC', 'Marker Felt', cursive;
+  --font-mono:       ui-monospace, 'JetBrains Mono', 'Consolas', monospace;
+
+  /* === WEIGHTS === */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* === TYPE SCALE === */
+  --text-h1: 48px;
+  --text-h2: 36px;
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-label: 14px;
+  --text-micro: 12px;
+
+  /* === LINE HEIGHTS === */
+  --leading-tight:   1.1;
+  --leading-snug:    1.2;
+  --leading-normal:  1.3;
+  --leading-relaxed: 1.6;
+
+  /* === SPACING (8px grid) === */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 48px;
+  --space-5: 80px;
+
+  /* === LAYOUT === */
+  --container-max: 1200px;
+  --content-max:   600px;
+  --cta-max:       320px;
+
+  /* === RADIUS / BORDER === */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill: 28px;
+
+  /* === SHADOWS === */
+  --shadow-light:  0 1px 3px rgba(44, 44, 44, 0.10);
+  --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover:  0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-sticky: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-cta:    0 4px 12px rgba(32, 180, 177, 0.15);
+
+  /* === TRANSITION === */
+  --transition-base: all 0.2s ease-in-out;
+
+  /* === MOTION TOKENS (animaciones-componentes.md) === */
+  --duration-fast:    0.2s;
+  --duration-normal:  0.3s;
+  --duration-slow:    0.4s;
+  --duration-intro:   0.8s;     /* intro overlay fade */
+  --ease-out-cubic:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:      cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* === Z-INDEX SCALE === */
+  --z-intro:           9999;
+  --z-sticky-btn:       100;
+  --z-header:            50;
+  --z-mobile-overlay:    49;
+}
+
+/* === SEMANTIC TYPE STYLES =========================================
+   Apply by class (.rs-h1) or wrap content with these classes.
+   Headings use Montserrat Bold; body uses Montserrat Regular.
+================================================================== */
+.rs-h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+  margin: 0;
+}
+.rs-h2 {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+  margin: 0;
+}
+.rs-h3 {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-h3);
+  line-height: var(--leading-normal);
+  color: var(--color-fg);
+  margin: 0;
+}
+.rs-h4 {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-h4);
+  line-height: var(--leading-normal);
+  color: var(--color-fg);
+  margin: 0;
+}
+.rs-display {
+  font-family: var(--font-elegant);
+  font-weight: var(--weight-regular);
+  font-style: italic;
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  color: var(--color-fg);
+}
+.rs-body {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg);
+}
+.rs-label {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-label);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--color-fg);
+}
+.rs-small {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--color-fg-muted);
+}
+.rs-micro {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-micro);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-fg-subtle);
+}
+.rs-price {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-h4);
+  line-height: 1.2;
+  color: var(--rs-primary);
+}

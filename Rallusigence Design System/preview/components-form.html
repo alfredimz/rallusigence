@@ -1,0 +1,159 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+.bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.tab{padding:6px 12px;border:1px solid var(--rs-border);background:#fff;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;color:var(--rs-text-muted);font-family:inherit;letter-spacing:.02em;transition:all .2s var(--ease-out-cubic);}
+.tab:hover{border-color:var(--rs-primary);color:var(--rs-primary);}
+.tab.on{background:var(--rs-primary);border-color:var(--rs-primary);color:#fff;}
+.label-help{font-size:11px;color:var(--rs-text-muted);margin-left:auto;}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fg{display:block;position:relative;}
+label{display:block;margin-bottom:8px;font-weight:500;font-size:14px;letter-spacing:.02em;color:#2C2C2C;}
+label.req::after{content:' *';color:#EF4444;}
+.fg.is-error label{color:#EF4444;}
+
+.input{display:block;width:100%;height:48px;padding:12px 16px;background:#fff;color:#2C2C2C;font-family:inherit;font-weight:400;font-size:16px;line-height:1.4;border:1px solid #E5E5E5;border-radius:4px;box-sizing:border-box;outline:none;transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;}
+.input::placeholder{color:#9CA3AF;}
+
+/* States */
+.fg.is-focus .input{border-color:var(--rs-primary);box-shadow:0 0 0 3px rgba(32,180,177,.15), 0 0 20px rgba(32,180,177,.1);transform:translateY(-1px);}
+.fg.is-error .input{border-color:#EF4444;box-shadow:0 0 0 3px rgba(239,68,68,.10);animation:shake .4s ease-in-out;}
+.fg.is-success .input{border-color:#10B981;padding-right:40px;}
+.fg.is-success::after{content:'✓';position:absolute;right:14px;bottom:14px;color:#10B981;font-weight:700;font-size:18px;animation:popIn .3s var(--ease-out-cubic);}
+
+.err-msg{display:block;margin-top:6px;color:#EF4444;font-size:12px;line-height:1.4;max-height:0;overflow:hidden;opacity:0;transition:all .3s var(--ease-out-cubic);}
+.fg.is-error .err-msg{max-height:50px;opacity:1;}
+
+.fg.is-typing .input::after{content:'|';animation:caret 1s steps(1) infinite;}
+
+/* Disabled */
+.fg.is-disabled .input{background:#F9FAFB;color:#6B7280;}
+
+@keyframes shake{0%,20%,40%,60%,80%{transform:translateX(-2px);}10%,30%,50%,70%,90%{transform:translateX(2px);}100%{transform:translateX(0);}}
+@keyframes popIn{from{opacity:0;transform:translateY(8px) scale(.7);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes caret{50%{opacity:0;}}
+
+/* Submit */
+.row-submit{display:flex;align-items:center;gap:14px;margin-top:18px;}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;background:var(--rs-primary);color:#fff;border:none;border-radius:4px;font-family:inherit;font-weight:600;font-size:15px;cursor:pointer;}
+.btn.is-loading{color:transparent;pointer-events:none;}
+.btn.is-loading::before{content:'';position:absolute;top:50%;left:50%;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top:2px solid #fff;border-radius:50%;transform:translate(-50%,-50%);animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+.success-banner{margin-top:14px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:6px;padding:14px 16px;color:#065F46;font-size:13px;line-height:1.4;display:none;}
+.success-banner.is-on{display:flex;align-items:center;gap:10px;animation:slideDown .4s var(--ease-out-cubic);}
+.success-banner svg{flex:none;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+</style></head><body>
+
+<div class="bar">
+  <button class="tab" data-state="rest">Rest</button>
+  <button class="tab" data-state="focus">Focus</button>
+  <button class="tab" data-state="typing">Typing</button>
+  <button class="tab" data-state="error">Error</button>
+  <button class="tab" data-state="success">Success</button>
+  <button class="tab" data-state="loading">Loading</button>
+  <span class="label-help">↻ ciclo automático cada 2.4s — click para fijar</span>
+</div>
+
+<div class="grid">
+  <div class="fg" id="f1"><label class="req">Nombre completo</label><input class="input" placeholder="Dr. Roberto"></div>
+  <div class="fg" id="f2"><label class="req">Email</label><input class="input" placeholder="roberto@clinica.mx"></div>
+  <div class="fg" id="f3"><label class="req">WhatsApp</label><input class="input" placeholder="55-1234-5678"><span class="err-msg">Ingresa 10 dígitos sin espacios</span></div>
+  <div class="fg is-disabled"><label>Empresa</label><input class="input" placeholder="Clínica Sonrisa" disabled></div>
+</div>
+
+<div class="row-submit">
+  <button class="btn" id="submit">Solicitar auditoría</button>
+  <span class="label-help" style="margin:0;">Cuando state = loading el botón cicla con spinner.</span>
+</div>
+
+<div class="success-banner" id="banner">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  ¡Recibimos tu solicitud! Te contactamos en menos de 24 horas.
+</div>
+
+<script>
+const fields = ['f1','f2','f3'];
+const placeholders = {
+  f1: ['Dr. Roberto', 'Dr. Roberto Méndez'],
+  f2: ['roberto@clinica.mx', 'roberto@clinica.mx'],
+  f3: ['55-12-34', '55-1234-5678'],
+};
+const tabs = document.querySelectorAll('.tab');
+const submit = document.getElementById('submit');
+const banner = document.getElementById('banner');
+let timer = null;
+let manual = false;
+const order = ['rest','focus','typing','error','success','loading'];
+
+function clearAll(){
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    el.classList.remove('is-focus','is-error','is-success','is-typing');
+    const inp = el.querySelector('.input');
+    if (inp) inp.value = '';
+  });
+  submit.classList.remove('is-loading');
+  banner.classList.remove('is-on');
+  tabs.forEach(t => t.classList.remove('on'));
+}
+
+function apply(state){
+  clearAll();
+  tabs.forEach(t => { if (t.dataset.state === state) t.classList.add('on'); });
+  const f1 = document.getElementById('f1');
+  const f2 = document.getElementById('f2');
+  const f3 = document.getElementById('f3');
+  if (state === 'focus'){
+    f2.classList.add('is-focus');
+    f2.querySelector('.input').value = placeholders.f2[0];
+  } else if (state === 'typing'){
+    f1.classList.add('is-focus','is-typing');
+    typeInto(f1.querySelector('.input'), placeholders.f1[1]);
+  } else if (state === 'error'){
+    f3.classList.add('is-error');
+    f3.querySelector('.input').value = placeholders.f3[0];
+  } else if (state === 'success'){
+    f1.classList.add('is-success'); f1.querySelector('.input').value = placeholders.f1[1];
+    f2.classList.add('is-success'); f2.querySelector('.input').value = placeholders.f2[1];
+    f3.classList.add('is-success'); f3.querySelector('.input').value = placeholders.f3[1];
+    banner.classList.add('is-on');
+  } else if (state === 'loading'){
+    f1.querySelector('.input').value = placeholders.f1[1];
+    f2.querySelector('.input').value = placeholders.f2[1];
+    f3.querySelector('.input').value = placeholders.f3[1];
+    submit.classList.add('is-loading');
+  }
+}
+function typeInto(input, text){
+  let i = 0;
+  input.value = '';
+  const step = () => {
+    if (i <= text.length){ input.value = text.slice(0,i); i++; setTimeout(step, 60); }
+  };
+  step();
+}
+
+function cycle(){
+  let i = 0;
+  const next = () => {
+    if (manual) return;
+    apply(order[i % order.length]);
+    i++;
+    timer = setTimeout(next, 2400);
+  };
+  next();
+}
+
+tabs.forEach(t => t.addEventListener('click', () => {
+  manual = true;
+  if (timer) clearTimeout(timer);
+  apply(t.dataset.state);
+}));
+
+cycle();
+</script>
+</body></html>

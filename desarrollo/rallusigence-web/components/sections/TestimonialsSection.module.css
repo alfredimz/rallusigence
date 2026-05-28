@@ -1,0 +1,13 @@
+.section {
+  background-color: var(--rs-bg-soft);
+}
+
+.titleWrap {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.testimonialWrap {
+  max-width: 600px;
+  margin: 0 auto;
+}

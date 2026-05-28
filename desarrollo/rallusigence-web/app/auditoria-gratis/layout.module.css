@@ -1,0 +1,84 @@
+/* === HEADER MINIMALISTA === */
+.header {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--rs-border-soft);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
+
+.headerContainer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+}
+
+.whatsappLink {
+  padding: 8px 16px;
+  background-color: var(--rs-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-small);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.whatsappLink:hover {
+  background-color: var(--rs-primary-dark);
+}
+
+/* === FOOTER MINIMALISTA === */
+.footer {
+  background-color: var(--rs-bg-soft);
+  border-top: 1px solid var(--rs-border-soft);
+  padding: 24px 0;
+}
+
+.footerContainer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.legal {
+  font-size: var(--text-small);
+  color: var(--rs-text-subtle);
+}
+
+.legalLink {
+  font-size: var(--text-small);
+  color: var(--rs-text-subtle);
+  text-decoration: underline;
+  text-decoration-color: var(--rs-border-soft);
+  transition: var(--transition-base);
+}
+
+.legalLink:hover {
+  color: var(--color-fg);
+  text-decoration-color: var(--rs-primary);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .headerContainer {
+    padding: 12px 16px;
+  }
+
+  .footerContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+}

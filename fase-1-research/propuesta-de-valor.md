@@ -1,80 +1,91 @@
 # PROPUESTA DE VALOR — RALLUSIGENCE
-**Agencia de Automatización IA para PYMEs Mexicanas**
+**Agencia de sitios web con IA — MVP**
+**Actualizado:** Abril 2026
 
 ---
 
 ## 1. DECLARACIÓN DE PROPUESTA DE VALOR
 
-Automatizamos tareas repetitivas de tu PYME con IA que funciona 24/7. Menos tiempo perdido en cotizaciones y seguimientos, más tiempo vendiendo. Desde $3,500/mes.
+Tu negocio en internet en 3 días. Sitio profesional hecho con IA, entregado completo, sin mensualidades, sin dependencias. Precio fijo desde el primer mensaje.
 
 ---
 
 ## 2. LOS 3 PILARES DE DIFERENCIACIÓN
 
-### PILAR 1: Alfredo responde, no un vendedor
-**Explicación:** Cuando llamas o escribes, hablas directamente con quien programa tu automatización. Sin intermediarios, sin malentendidos, sin "me comunico con el equipo técnico".
+### PILAR 1: Velocidad real
+**Explicación:** Mientras una agencia tradicional tarda 15-30 días, nosotros entregamos en 3, 7 o 12 días según el paquete. La IA construye, nosotros supervisamos y entregamos.
 
-**Evidencia:** Alfredo es frontend developer senior en fintech con experiencia real en Angular, SCSS y sistemas de automatización. Un solo contacto desde cotización hasta entrega.
+**Evidencia:** El paquete Lanzamiento se entrega en 3 días hábiles. Garantizado o se regresa el 50% del anticipo.
 
-### PILAR 2: Empezamos gratis, cobramos cuando funciona
-**Explicación:** Tu auditoría digital es gratuita. Te mostramos exactamente qué procesos puedes automatizar y cuánto tiempo vas a ahorrar antes de que gastes un peso.
+### PILAR 2: Precio fijo y visible
+**Explicación:** Los precios están publicados en el sitio. Sin "cotizaciones" que duran semanas. Sin "depende del proyecto". Entras, ves el precio, decides.
 
-**Evidencia:** El análisis inicial no cuesta nada porque sabemos que una PYME bien automatizada se vende sola. Si no encuentras valor, no hay compromiso.
+**Evidencia:** $6,000 / $12,000 / $20,000 MXN. Sin IVA, sin letra chica, sin costo de mantenimiento posterior.
 
-### PILAR 3: IA que trabaja en español mexicano
-**Explicación:** Nuestros agentes entienden "ahorita", "cliente frecuente" y "me confirmas por favor". No traducciones robóticas ni respuestas que suenan a chatbot gringo.
+### PILAR 3: Entrega total — tú eres el dueño
+**Explicación:** El sitio queda en tu hosting, con tu dominio, en tus cuentas. Rallusigence no tiene acceso después de la entrega. No hay dependencia, no hay mensualidades.
 
-**Evidencia:** Claude Sonnet 4.6 entrenado en español + prompts específicos para cortesía mexicana + pruebas reales con clientes locales de Tizayuca e Hidalgo.
-
----
-
-## 3. MENSAJES CLAVE POR SERVICIO
-
-**S1 — Sitio web profesional:**
-"Tu negocio en Google antes de cerrar esta pestaña"
-
-**S2 — Agente WhatsApp 24/7:**
-"Nunca más pierdas una venta por no contestar"
-
-**S3 — Contenido SEO automático:**
-"Google encuentra tu negocio sin que hagas nada"
-
-**S4 — Automatización de procesos:**
-"Cotizaciones que se hacen solas mientras duermes"
-
-**S5 — Auditoría digital gratuita:**
-"Descubre qué dinero pierdes cada mes"
+**Evidencia:** Entregamos el código fuente completo + acceso a Firebase/hosting en la cuenta del cliente + guía de uso.
 
 ---
 
-## 4. LO QUE NO SOMOS (POSICIONAMIENTO POR CONTRASTE)
+## 3. PAQUETES Y MENSAJES CLAVE
 
-❌ **No somos una agencia de marketing tradicional** — no hacemos campañas de Facebook ni diseño gráfico artístico.
+### LANZAMIENTO — $6,000 MXN — 3 días
+**Para quién:** Negocio que no tiene sitio o tiene uno de 2015 que no sirve.
+**Mensaje:** "Tu negocio en Google antes de que termine la semana"
+**Incluye:** Landing 1 página, 5-7 secciones, mobile-first, formulario de contacto, SEO básico, dominio configurado en tu cuenta.
 
-❌ **No prometemos "transformación digital"** — automatizamos procesos específicos que te quitan tiempo.
+### PROFESIONAL — $12,000 MXN — 7 días
+**Para quién:** Negocio que quiere presencia completa y aparecer en búsquedas.
+**Mensaje:** "Un sitio que trabaja para ti mientras atiendes a tus clientes"
+**Incluye:** 5-7 páginas, blog listo para publicar, galería de fotos, Google Maps, Analytics, SEO on-page completo.
 
-❌ **No manejamos equipos de 20 personas** — somos Alfredo + IA. Sin reuniones largas ni estructura burocrática.
-
-❌ **No vendemos software americano complicado** — nuestras automatizaciones funcionan desde WhatsApp y correo, que ya usas.
-
-❌ **No cobramos por horas de consultoría** — precio fijo por resultado entregado. Sin sorpresas en la factura.
-
----
-
-## 5. TAGLINE PRINCIPAL + ALTERNATIVAS
-
-### TAGLINE PRINCIPAL:
-**"Tu PYME automatizada en días, no meses"**
-
-### ALTERNATIVAS:
-1. "IA que habla como mexicano, trabaja como robot"
-2. "Automatización sin complicaciones para negocios reales"
-3. "Tu asistente IA que nunca falta al trabajo"
+### AVANZADO — $20,000 MXN — 12 días
+**Para quién:** Negocio que quiere vender en línea y generar tráfico orgánico desde el día 1.
+**Mensaje:** "Tu tienda y tu blog corriendo solos desde la primera semana"
+**Incluye:** Todo del Profesional + tienda online, 5 artículos de blog iniciales, integración WhatsApp, optimización de velocidad avanzada.
 
 ---
 
-**NOTAS DE IMPLEMENTACIÓN:**
-- Validar mensajes con 3-5 PYMEs locales antes del lanzamiento
-- A/B testing del tagline en landing page
-- Medir conversión de auditoría gratuita → propuesta pagada
-- ROI mínimo demostrable: 4x en 12 meses por cliente
+## 4. LO QUE NO SOMOS
+
+❌ No somos una agencia de marketing — no hacemos campañas ni redes sociales (por ahora)
+❌ No cobramos mensualidades de mantenimiento — entregamos y el cliente es dueño total
+❌ No hacemos citas ni visitas presenciales — todo por WhatsApp o chat
+❌ No emitimos facturas — somos freelancers independientes, el precio es lo que ahorras en overhead corporativo
+❌ No usamos plantillas genéricas de Wix o Squarespace — cada sitio es construido específicamente
+
+---
+
+## 5. MODELO DE PAGO
+
+Retiro sin tarjeta en cajero automático.
+- El cliente paga el 50% al iniciar
+- El 50% restante al entregar
+- El cliente genera el código desde su app bancaria (BBVA, Banorte, HSBC, etc.)
+- Sin tickets, sin facturas, sin RFC
+
+**Por qué funciona así:** Somos profesionistas independientes. Al operar fuera de la estructura fiscal corporativa, evitamos costos que tendríamos que trasladar al cliente. El resultado: precios más justos y accesibles.
+
+---
+
+## 6. POSICIONAMIENTO EN EL MERCADO 2026
+
+| Competencia | Su problema | Nuestra ventaja |
+|---|---|---|
+| Agencias tradicionales | 15-30 días, $15,000-60,000 MXN | 3-12 días, $6,000-20,000 MXN |
+| Freelancers en Workana | Calidad inconsistente, sin garantía | Proceso definido, entrega garantizada |
+| Wix / Squarespace | $300-600 MXN/mes para siempre, genérico | Pago único, sitio personalizado, tú eres dueño |
+| Otras agencias IA | Precios opacos, mensualidades | Precio visible, sin mensualidades |
+
+---
+
+## 7. TAGLINE PRINCIPAL
+
+**"Tu negocio en internet en 3 días. Precio fijo. Tú eres el dueño."**
+
+### Alternativas:
+1. "Sitios web profesionales. En días, no meses."
+2. "Tu presencia digital. Entregada completa. Sin letra chica."
+3. "De la nada a estar en Google. En una semana."

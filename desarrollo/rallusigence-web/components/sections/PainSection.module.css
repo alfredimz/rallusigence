@@ -1,0 +1,38 @@
+.section {
+  background: linear-gradient(180deg, var(--rs-bg-soft) 0%, rgba(32,180,177,0.035) 100%);
+}
+
+.titleWrap {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.list {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.painIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(235, 91, 91, 0.1);
+  color: var(--rs-red-vivid);
+}
+
+.painTitle {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-body);
+  color: var(--color-fg);
+  margin-bottom: 4px;
+}
+
+.painDesc {
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg-muted);
+}

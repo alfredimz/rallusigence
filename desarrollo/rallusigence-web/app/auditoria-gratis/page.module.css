@@ -1,0 +1,105 @@
+/* === PAGE CONTAINER === */
+.page {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* === HERO SECTION === */
+.hero {
+  padding: 48px 0;
+  background: linear-gradient(135deg, rgba(32,180,177,0.03) 0%, rgba(255,255,255,1) 50%, rgba(32,180,177,0.03) 100%);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--rs-text-subtle);
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* === BENEFICIOS === */
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: var(--weight-medium);
+  color: var(--color-fg);
+}
+
+.benefitIcon {
+  color: var(--rs-primary);
+  flex-shrink: 0;
+}
+
+/* === FORMULARIO === */
+.formSection {
+  padding: 24px 0 48px 0;
+}
+
+/* === PRUEBA SOCIAL === */
+.social {
+  background-color: var(--rs-bg-soft);
+  padding: 32px 0;
+  border-top: 1px solid var(--rs-border-soft);
+}
+
+.socialText {
+  font-size: 16px;
+  color: var(--rs-text-subtle);
+  text-align: center;
+  font-weight: var(--weight-medium);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .hero {
+    padding: 32px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .benefits {
+    text-align: left;
+  }
+
+  .benefit {
+    font-size: 15px;
+  }
+
+  .formSection {
+    padding: 16px 0 32px 0;
+  }
+
+  .social {
+    padding: 24px 0;
+  }
+
+  .socialText {
+    font-size: 15px;
+  }
+}

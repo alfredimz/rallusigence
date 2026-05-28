@@ -1,0 +1,33 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;padding:22px;font-family:var(--font-primary);color:var(--rs-text);}
+h3{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.section+.section{margin-top:28px;}
+.divider{display:block;width:100%;height:auto;color:var(--rs-primary);}
+.divider--wave{height:60px;color:rgba(32,180,177,.15);}
+.wave-anim{animation:waveDrift 40s linear infinite;width:200%;}
+@keyframes waveDrift{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.wave-host{overflow:hidden;}
+.divider--dots{height:30px;animation:p 3s ease-in-out infinite;}
+@keyframes p{0%,100%{opacity:.6;}50%{opacity:1;}}
+.note{font-size:11px;color:var(--rs-text-muted);margin-top:4px;}
+.bg-soft{background:var(--rs-bg-soft);padding:16px 0;}
+</style></head><body>
+<div class="section">
+  <h3>section-divider--wave  ·  60px tall, very low-opacity teal</h3>
+  <div class="bg-soft wave-host">
+    <svg class="divider divider--wave wave-anim" viewBox="0 0 2400 120" preserveAspectRatio="none">
+      <path d="M0,96L48,80C96,64 192,32 288,32C384,32 480,64 576,85.3C672,107 768,117 864,112C960,107 1056,85 1152,74.7C1248,64 1344,64 1392,64L1440,64C1488,64 1584,32 1680,32C1776,32 1872,64 1968,85.3C2064,107 2160,117 2256,112C2352,107 2400,96 2400,96L2400,120L0,120Z" fill="currentColor"/>
+    </svg>
+  </div>
+  <p class="note">Use entre secciones de fondo distinto cuando un corte plano se sienta abrupto. Color: <code>rgba(32,180,177,.15)</code>.</p>
+</div>
+<div class="section">
+  <h3>section-divider--dots  ·  11 dots, opacity 0.3 → 0.8 → 0.3, gentle pulse 3s</h3>
+  <svg class="divider divider--dots" viewBox="0 0 1200 40">
+    <circle cx="100" cy="20" r="2" fill="currentColor" opacity=".3"/><circle cx="200" cy="20" r="2" fill="currentColor" opacity=".4"/><circle cx="300" cy="20" r="2" fill="currentColor" opacity=".5"/><circle cx="400" cy="20" r="2" fill="currentColor" opacity=".6"/><circle cx="500" cy="20" r="2" fill="currentColor" opacity=".7"/><circle cx="600" cy="20" r="2" fill="currentColor" opacity=".8"/><circle cx="700" cy="20" r="2" fill="currentColor" opacity=".7"/><circle cx="800" cy="20" r="2" fill="currentColor" opacity=".6"/><circle cx="900" cy="20" r="2" fill="currentColor" opacity=".5"/><circle cx="1000" cy="20" r="2" fill="currentColor" opacity=".4"/><circle cx="1100" cy="20" r="2" fill="currentColor" opacity=".3"/>
+  </svg>
+  <p class="note">Use como pausa visual entre H2 y bloques de soporte. Color: <code>--rs-primary</code>.</p>
+</div>
+</body></html>

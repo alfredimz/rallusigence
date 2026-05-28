@@ -1,0 +1,87 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Metric counter</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;background:#fff;font-family:var(--font-primary);color:var(--rs-text);}
+.wrap{padding:24px;}
+h3{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--rs-text-subtle);font-weight:700;}
+.sub{margin:0 0 18px;font-size:11px;color:var(--rs-text-muted);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.metric{background:#F9FAFB;border:1px solid var(--rs-border-soft);border-radius:10px;padding:22px 20px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.metric::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rs-primary);transform:scaleY(0);transform-origin:top;transition:transform .6s var(--ease-out-cubic);}
+.metric.in::before{transform:scaleY(1);}
+.metric .pre{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--rs-text-subtle);}
+.num{font-family:Arvo,Georgia,serif;font-weight:700;font-size:48px;line-height:1.05;color:var(--rs-primary);letter-spacing:-0.02em;display:flex;align-items:baseline;gap:4px;font-variant-numeric:tabular-nums;}
+.num .unit{font-size:24px;color:var(--rs-text);}
+.label{font-size:13px;color:var(--rs-text-muted);line-height:1.4;}
+.btn{margin-top:18px;padding:8px 14px;background:var(--rs-primary);color:#fff;border:none;border-radius:4px;font-family:inherit;font-weight:600;font-size:12px;cursor:pointer;}
+.btn:hover{background:var(--rs-primary-hover);}
+</style></head><body>
+<div class="wrap">
+<h3>Métricas — counter de 0 al valor cuando entran al viewport</h3>
+<p class="sub">Usa <code style="font-size:11px;">IntersectionObserver</code> + <code style="font-size:11px;">requestAnimationFrame</code> con easing easeOutCubic. Reproduce abajo.</p>
+<div class="grid" id="grid">
+  <div class="metric" data-target="312" data-prefix="+" data-duration="1400">
+    <div class="pre">Resultados 2025</div>
+    <div class="num"><span class="value">0</span></div>
+    <div class="label">clientes recuperados con recordatorios automáticos</div>
+  </div>
+  <div class="metric" data-target="48" data-suffix="h" data-duration="1100">
+    <div class="pre">Tiempo de entrega</div>
+    <div class="num"><span class="value">0</span><span class="unit"></span></div>
+    <div class="label">de cuando firmas a cuando tu auditoría está lista</div>
+  </div>
+  <div class="metric" data-target="3.4" data-decimals="1" data-suffix="x" data-duration="1300">
+    <div class="pre">ROI promedio</div>
+    <div class="num"><span class="value">0</span><span class="unit"></span></div>
+    <div class="label">los primeros 90 días después del lanzamiento</div>
+  </div>
+</div>
+<button class="btn" id="replay">↻ Reanimar</button>
+</div>
+
+<script>
+function easeOutCubic(t){return 1 - Math.pow(1 - t, 3);}
+function animateNum(el){
+  const target = parseFloat(el.dataset.target);
+  const decimals = parseInt(el.dataset.decimals || '0', 10);
+  const duration = parseInt(el.dataset.duration || '1200', 10);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const valueEl = el.querySelector('.value');
+  const unitEl = el.querySelector('.unit');
+  if (unitEl && suffix) unitEl.textContent = suffix;
+  el.classList.add('in');
+  const start = performance.now();
+  function tick(now){
+    const t = Math.min((now - start) / duration, 1);
+    const eased = easeOutCubic(t);
+    const v = target * eased;
+    valueEl.textContent = prefix + v.toFixed(decimals);
+    if (t < 1) requestAnimationFrame(tick);
+    else valueEl.textContent = prefix + target.toFixed(decimals);
+  }
+  requestAnimationFrame(tick);
+}
+
+const metrics = document.querySelectorAll('.metric');
+const seen = new WeakSet();
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting && !seen.has(en.target)){
+      seen.add(en.target);
+      animateNum(en.target);
+    }
+  });
+}, {threshold:.4});
+metrics.forEach(m => io.observe(m));
+
+document.getElementById('replay').addEventListener('click', () => {
+  metrics.forEach(m => {
+    seen.delete(m);
+    m.classList.remove('in');
+    m.querySelector('.value').textContent = '0';
+    setTimeout(() => animateNum(m), 50);
+  });
+});
+</script>
+</body></html>

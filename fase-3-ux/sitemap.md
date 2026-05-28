@@ -1,13 +1,41 @@
 # SITEMAP — Rallusigence
-# Arquitectura del sitio web | Abril 2026
+# Arquitectura del sitio web | Actualizado Abril 2026
+# Stack: Next.js 15 (App Router)
 
 ---
 
-## DECISIÓN DE ESTRUCTURA: **SINGLE-PAGE + LANDING ESPECÍFICA**
+## DECISIÓN DE ESTRUCTURA: **MULTI-PÁGINA CON NEXT.JS APP ROUTER**
 
 **Justificación:**
-- **Audiencia mobile-first:** Dr. Roberto y María Elena navegan desde celular
-- **Conversión:** Un solo CTA principal (auditoría gratis) reduce fricción
+- Sitio completo de agencia — no solo landing
+- SEO por página individual (cada servicio, blog, portafolio)
+- Blog con generación estática (SSG) para artículos
+- Next.js App Router permite rutas dinámicas para blog ([slug])
+- MVP: solo paquetes de sitios web — otras páginas de servicios se agregan post-MVP
+
+## ARQUITECTURA COMPLETA
+
+```
+rallusigence.net/
+├── /                         → Home (hero + problema + paquetes + proceso + diferenciadores + pago + FAQ + CTA)
+├── /paquetes                 → Detalle completo de los 3 paquetes
+├── /como-funciona            → Proceso detallado + modelo de pago
+├── /portafolio               → Trabajos realizados (se llena con primeros clientes)
+├── /blog                     → Listado de artículos
+├── /blog/[slug]              → Artículo individual (SSG)
+├── /contacto                 → Formulario + WhatsApp
+├── /auditoria-gratis         → Landing para Google/Facebook Ads
+├── /gracias                  → Confirmación post-formulario
+├── /aviso-de-privacidad      → Texto legal
+└── /terminos-y-condiciones   → Texto legal
+
+SERVICIOS FUTUROS (post-MVP — estructura lista):
+├── /servicios                → Catálogo completo
+├── /servicios/whatsapp-bot
+├── /servicios/seo
+├── /servicios/diseno-grafico
+└── /servicios/[slug]         → Cualquier servicio nuevo
+```
 - **SEO futuro:** Single-page para MVP, blog separado después
 - **Carga rápida:** No hay navegación entre páginas, menos requests
 - **Ads optimizado:** Landing específica para tráfico pagado sin distracciones

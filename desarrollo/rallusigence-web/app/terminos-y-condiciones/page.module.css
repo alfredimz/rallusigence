@@ -1,0 +1,86 @@
+/* Reutilizar los mismos estilos que aviso de privacidad */
+/* === PAGE LAYOUT === */
+.page {
+  background-color: var(--color-bg);
+  min-height: 70vh;
+  padding: 48px 0;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content {
+  background-color: var(--color-bg);
+  border: 1px solid var(--rs-border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 48px;
+}
+
+/* === TYPOGRAPHY === */
+.content h1 {
+  margin-bottom: 8px;
+}
+
+.updated {
+  color: var(--rs-text-subtle);
+  font-size: var(--text-small);
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.content h2 {
+  margin-bottom: 16px;
+  color: var(--rs-primary);
+}
+
+.content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-fg);
+  margin-bottom: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 767px) {
+  .page {
+    padding: 32px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .content {
+    padding: 32px 24px;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .updated {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 24px 20px;
+  }
+}
