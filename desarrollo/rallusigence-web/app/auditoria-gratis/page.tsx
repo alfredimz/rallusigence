@@ -8,6 +8,14 @@ export default function AuditoriaGratis() {
       {/* Hero directo */}
       <section className={styles.hero}>
         <div className={styles.container}>
+          <img
+            src="/assets/kiwis/kiwi-analista.svg"
+            alt=""
+            aria-hidden="true"
+            className={styles.analista}
+            width={96}
+            height={96}
+          />
           <h1 className="rs-h1">
             Auditoría digital GRATIS para tu negocio
           </h1>
@@ -54,7 +62,7 @@ export default function AuditoriaGratis() {
       <section className={styles.social}>
         <div className={styles.container}>
           <p className={styles.socialText}>
-            600+ negocios mexicanos ya mejoraron con nuestra auditoría
+            Auditoría real hecha por especialistas con IA. El reporte es tuyo, decidas trabajar con nosotros o no.
           </p>
         </div>
       </section>

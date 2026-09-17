@@ -8,16 +8,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const serviceLinks = [
+    { label: 'Todos los servicios', href: '/servicios' },
+    { label: 'Diseño web', href: '/servicios/diseno-web' },
+    { label: 'SEO', href: '/servicios/seo' },
+    { label: 'Agente WhatsApp', href: '/servicios/bot-whatsapp' },
     { label: 'Paquetes', href: '/#paquetes' },
-    { label: 'Cómo funciona', href: '/#como-funciona' },
     { label: 'Blog', href: '/blog' }
   ]
 
   const contactInfo = [
     {
       label: 'WhatsApp',
-      href: 'https://wa.me/52XXXXXXXXXX',
-      text: '+52 XXX XXX XXXX',
+      href: 'https://wa.me/525626171584',
+      text: 'WhatsApp: +52 56 2617 1584',
       isWhatsApp: true
     },
     {

@@ -50,3 +50,58 @@
   padding: 4px 8px;
   border-radius: var(--radius-sm);
 }
+
+/* === WOW-2: scrollytelling === */
+.list {
+  position: relative;
+}
+
+.connector {
+  position: absolute;
+  left: 20px;
+  top: 48px;
+  bottom: 48px;
+  width: 3px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.connectorFill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--rs-primary), #7de8e6);
+  border-radius: 2px;
+  box-shadow: 0 0 14px rgba(32, 180, 177, 0.55);
+  transform: scaleY(0);
+  transform-origin: top;
+  will-change: transform;
+}
+
+.section :global(.step-item) {
+  position: relative;
+  z-index: 1;
+}
+
+.section :global(.step-item__number) {
+  transition: transform 0.3s var(--ease-out-cubic), box-shadow 0.3s var(--ease-out-cubic);
+}
+
+.active :global(.step-item__number) {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 6px rgba(32, 180, 177, 0.25), 0 0 26px rgba(32, 180, 177, 0.6);
+}
+
+.active .stepTime {
+  color: #a9f5f3;
+  background-color: rgba(32, 180, 177, 0.3);
+}
+
+@media (max-width: 767px) {
+  .connector { left: 16px; top: 40px; bottom: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorFill { transform: scaleY(1); }
+}

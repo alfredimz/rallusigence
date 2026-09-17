@@ -7,7 +7,52 @@
   margin-bottom: 48px;
 }
 
+.subtitle {
+  margin: 12px auto 0;
+  max-width: 560px;
+  color: var(--color-fg-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
 .testimonialWrap {
-  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 1040px;
   margin: 0 auto;
+}
+/* === WOW-3 === */
+.kiwiTraje {
+  display: block;
+  margin: 0 auto 12px;
+  width: 84px;
+  height: 84px;
+  animation: trajeFloat 5s ease-in-out infinite;
+}
+@keyframes trajeFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%      { transform: translateY(-7px) rotate(1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) { .kiwiTraje { animation: none; } }
+
+/* Carrusel táctil en móvil (scroll-snap nativo, sin JS) */
+@media (max-width: 767px) {
+  .testimonialWrap {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 16px;
+    padding: 4px 8px 16px;
+    margin: 0 -16px;
+  }
+  .testimonialWrap::-webkit-scrollbar { display: none; }
+  .testimonialWrap > div {
+    flex: 0 0 86%;
+    scroll-snap-align: center;
+  }
+  .testimonialWrap > div:first-child { margin-left: 7%; }
+  .testimonialWrap > div:last-child { margin-right: 7%; }
 }

@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import styles from './ProcessSection.module.css'
 
 const steps = [
@@ -28,6 +31,54 @@ const steps = [
 ]
 
 export default function ProcessSection() {
+  const listRef = useRef<HTMLDivElement>(null)
+  const fillRef = useRef<HTMLSpanElement>(null)
+
+  // Scrollytelling: la línea conectora se dibuja al ritmo del scroll (GSAP ScrollTrigger,
+  // cargado dinámicamente solo en este componente) y el paso centrado se ilumina.
+  useEffect(() => {
+    let cancelled = false
+    let mm: { revert: () => void } | undefined
+    ;(async () => {
+      const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ])
+      if (cancelled || !listRef.current || !fillRef.current) return
+      gsap.registerPlugin(ScrollTrigger)
+      const matcher = gsap.matchMedia()
+      matcher.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.fromTo(
+          fillRef.current,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: listRef.current,
+              start: 'top 70%',
+              end: 'bottom 45%',
+              scrub: 0.4,
+            },
+          }
+        )
+        listRef.current!.querySelectorAll('.step-item').forEach((el) => {
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 62%',
+            end: 'bottom 38%',
+            toggleClass: { targets: el, className: styles.active },
+          })
+        })
+      })
+      mm = matcher
+    })()
+    return () => {
+      cancelled = true
+      mm?.revert()
+    }
+  }, [])
+
   return (
     <section id="como-funciona" aria-labelledby="proceso-title" className={styles.section} data-theme="dark">
       <div className="section-wrapper">
@@ -37,7 +88,10 @@ export default function ProcessSection() {
           </h2>
         </div>
 
-        <div className={styles.list}>
+        <div className={styles.list} ref={listRef}>
+          <span className={styles.connector} aria-hidden="true">
+            <span className={styles.connectorFill} ref={fillRef} />
+          </span>
           {steps.map((step, index) => (
             <div key={step.number} className={`step-item reveal reveal--delay-${index + 1}`}>
               <div className="step-item__number">{step.number}</div>

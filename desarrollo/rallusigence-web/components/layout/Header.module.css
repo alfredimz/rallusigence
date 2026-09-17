@@ -63,6 +63,7 @@
   z-index: var(--z-mobile-overlay);
   background-color: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(8px);
+  overflow-y: auto;
   opacity: 0;
   animation: fadeIn var(--duration-normal) var(--ease-out-cubic) forwards;
 }
@@ -115,18 +116,13 @@
   margin-left: 24px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 899px) {
   .desktopCta {
     display: none;
   }
 }
 
-@media (max-width: 767px) {
-  .container {
-    padding: 0 16px;
-    height: 64px;
-  }
-
+@media (max-width: 899px) {
   .nav {
     display: none;
   }
@@ -135,6 +131,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+    height: 64px;
   }
 
   .mobileMenu {

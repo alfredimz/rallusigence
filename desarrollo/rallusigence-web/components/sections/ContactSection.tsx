@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import FormField from '@/components/ui/FormField'
+import ConfettiBurst from '@/components/ui/ConfettiBurst'
 import { trackFormSubmit, trackFormError, trackWhatsAppClick } from '@/lib/analytics'
 import styles from './ContactSection.module.css'
 
@@ -9,14 +10,12 @@ interface FormData {
   name: string
   business: string
   whatsapp: string
-  email: string
 }
 
 interface FormErrors {
   name?: string
   business?: string
   whatsapp?: string
-  email?: string
   submit?: string
 }
 
@@ -26,8 +25,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     business: '',
-    whatsapp: '',
-    email: ''
+    whatsapp: ''
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -52,12 +50,6 @@ export default function ContactSection() {
       newErrors.whatsapp = 'Ingresa un número de WhatsApp de 10 dígitos'
     }
 
-    // Email regex estándar
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      newErrors.email = 'Ingresa un email válido'
-    }
-
     return newErrors
   }
 
@@ -79,7 +71,7 @@ export default function ContactSection() {
     setStatus('loading')
 
     try {
-      const response = await fetch('https://formspree.io/f/XXXXXXXX', {
+      const response = await fetch('https://formspree.io/f/xkjwqlbg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -88,7 +80,6 @@ export default function ContactSection() {
           name: formData.name.trim(),
           business: formData.business.trim(),
           whatsapp: formData.whatsapp.trim(),
-          email: formData.email.trim(),
           message: `Solicitud de paquete desde ${window.location.hostname}`
         })
       })
@@ -98,7 +89,7 @@ export default function ContactSection() {
         // Track form submission
         trackFormSubmit('auditoria_home')
         // Limpiar formulario
-        setFormData({ name: '', business: '', whatsapp: '', email: '' })
+        setFormData({ name: '', business: '', whatsapp: '' })
       } else {
         setStatus('error')
         setErrors({ submit: 'Error al enviar — intenta de nuevo' })
@@ -134,9 +125,10 @@ export default function ContactSection() {
             <div className={`${styles.alt} reveal reveal--delay-2`}>
               <p>O contáctanos directo:</p>
               <a
-                href="https://wa.me/52XXXXXXXXXX"
+                href="https://wa.me/525626171584"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="wa-pulse"
                 onClick={() => trackWhatsAppClick('contacto')}
               >
                 WhatsApp
@@ -145,9 +137,20 @@ export default function ContactSection() {
           </div>
 
           {/* Form card derecha */}
+          <div className={styles.formSide}>
+            <img
+              src="/assets/kiwis/kiwi-cartero.svg"
+              alt=""
+              aria-hidden="true"
+              className={styles.cartero}
+              width={80}
+              height={80}
+              loading="lazy"
+            />
           <div className={`form-card reveal reveal--delay-1 ${styles.formCard}`}>
             {status === 'success' ? (
-              <div className={styles.successMessage}>
+              <div className={`${styles.successMessage} success-pop`}>
+                <ConfettiBurst />
                 <h3>Solicitud enviada ✓</h3>
                 <p>Te contactamos en 24 horas</p>
               </div>
@@ -187,16 +190,6 @@ export default function ContactSection() {
                     error={errors.whatsapp}
                   />
 
-                  <FormField
-                    label="Email"
-                    name="email"
-                    type="email"
-                    placeholder="tu@email.com"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    error={errors.email}
-                  />
                 </div>
 
                 {errors.submit && (
@@ -214,6 +207,7 @@ export default function ContactSection() {
                 </button>
               </form>
             )}
+          </div>
           </div>
         </div>
       </div>

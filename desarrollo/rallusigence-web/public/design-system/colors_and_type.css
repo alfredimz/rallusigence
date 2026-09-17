@@ -5,29 +5,29 @@
 
 /* === FONT FACES (local TTF) ====================================== */
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400;
-  src: url('/design-system/fonts/Montserrat-Regular.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Montserrat-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 500;
-  src: url('/design-system/fonts/Montserrat-Medium.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Montserrat-Medium.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600;
-  src: url('/design-system/fonts/Montserrat-SemiBold.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Montserrat-SemiBold.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 700;
-  src: url('/design-system/fonts/Montserrat-Bold.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Montserrat-Bold.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 800;
-  src: url('/design-system/fonts/Montserrat-ExtraBold.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Montserrat-ExtraBold.woff2') format('woff2'); font-display: swap; }
 
 @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400;
-  src: url('/design-system/fonts/PlayfairDisplay-Regular.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/PlayfairDisplay-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700;
-  src: url('/design-system/fonts/PlayfairDisplay-Bold.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/PlayfairDisplay-Bold.woff2') format('woff2'); font-display: swap; }
 
 @font-face { font-family: 'Pacifico'; font-style: normal; font-weight: 400;
-  src: url('/design-system/fonts/Pacifico-Regular.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/Pacifico-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Patrick Hand'; font-style: normal; font-weight: 400;
-  src: url('/design-system/fonts/PatrickHand-Regular.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/PatrickHand-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Amatic SC'; font-style: normal; font-weight: 400;
-  src: url('/design-system/fonts/AmaticSC-Regular.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/AmaticSC-Regular.woff2') format('woff2'); font-display: swap; }
 @font-face { font-family: 'Amatic SC'; font-style: normal; font-weight: 700;
-  src: url('/design-system/fonts/AmaticSC-Bold.ttf') format('truetype'); font-display: swap; }
+  src: url('/design-system/fonts/AmaticSC-Bold.woff2') format('woff2'); font-display: swap; }
 
 :root {
   /* === BRAND COLORS (primary identity) === */

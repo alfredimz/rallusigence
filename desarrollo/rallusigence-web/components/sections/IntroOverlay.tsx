@@ -5,6 +5,11 @@ import styles from './IntroOverlay.module.css'
 
 const KEY = 'rs_intro_shown'
 
+function markIntroDone() {
+  document.documentElement.dataset.rsIntroDone = '1'
+  window.dispatchEvent(new Event('rs:intro-done'))
+}
+
 export default function IntroOverlay() {
   const [visible, setVisible] = useState(false)
   const [fading, setFading] = useState(false)
@@ -21,6 +26,7 @@ export default function IntroOverlay() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
       setDone(true)
+      markIntroDone()
       return
     }
 
@@ -28,6 +34,7 @@ export default function IntroOverlay() {
     const today = new Date().toDateString()
     if (localStorage.getItem(KEY) === today) {
       setDone(true)
+      markIntroDone()
       return
     }
 
@@ -63,6 +70,7 @@ export default function IntroOverlay() {
       setDone(true)
       if (typeof window !== 'undefined') {
         localStorage.setItem(KEY, new Date().toDateString())
+        markIntroDone()
       }
     }, 400) // tiempo del fade-out
   }

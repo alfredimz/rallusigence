@@ -94,3 +94,25 @@
     order: -1;
   }
 }
+/* === WOW-3 === */
+.formSide {
+  position: relative;
+}
+.cartero {
+  position: absolute;
+  top: -52px;
+  right: 28px;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+  pointer-events: none;
+  animation: carteroFloat 4.5s ease-in-out infinite;
+}
+@keyframes carteroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@media (max-width: 767px) {
+  .cartero { top: -42px; right: 16px; width: 64px; height: 64px; }
+}
+@media (prefers-reduced-motion: reduce) { .cartero { animation: none; } }

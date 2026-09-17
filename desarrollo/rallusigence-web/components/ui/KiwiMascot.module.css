@@ -1,0 +1,148 @@
+/* KiwiMascot — vuelo → aterrizaje → idle float → blink. Solo transform/opacity. */
+
+.scene {
+  position: relative;
+  display: inline-block;
+  width: 220px;
+}
+
+.kiwiWrapper {
+  display: block;
+  transform-origin: 50% 90%;
+  will-change: transform;
+  opacity: 0;
+}
+
+.go .kiwiWrapper {
+  animation:
+    flyIn 0.9s var(--ease-out-cubic) 0.15s both,
+    landSquash 0.35s var(--ease-bounce) 1.05s,
+    floaty 4.5s ease-in-out 1.4s infinite;
+}
+
+.kiwiWrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes flyIn {
+  0%   { transform: translate(170px, -130px) rotate(-24deg) scale(0.5); opacity: 0; }
+  55%  { opacity: 1; }
+  78%  { transform: translate(-10px, 8px) rotate(5deg) scale(1.05); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes landSquash {
+  0%   { transform: scale(1, 1); }
+  45%  { transform: scale(1.12, 0.82); }
+  75%  { transform: scale(0.96, 1.05); }
+  100% { transform: scale(1, 1); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Sombra que respira bajo el kiwi */
+.shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 58%;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(26, 20, 20, 0.2), transparent 70%);
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.go .shadow {
+  animation:
+    shadowShow 0.4s ease 1.05s forwards,
+    shadowBreath 4.5s ease-in-out 1.4s infinite;
+}
+
+@keyframes shadowShow {
+  to { opacity: 1; }
+}
+
+@keyframes shadowBreath {
+  0%, 100% { transform: translateX(-50%) scaleX(1); }
+  50%      { transform: translateX(-50%) scaleX(0.82); opacity: 0.65; }
+}
+
+/* Polvo de aterrizaje: 6 partículas efímeras */
+.dust {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rs-primary);
+  opacity: 0;
+}
+
+.go .dust {
+  animation: dustPop 0.65s var(--ease-out-cubic) forwards;
+  animation-delay: calc(1.07s + var(--d, 0s));
+}
+
+@keyframes dustPop {
+  0%   { opacity: 0.85; transform: translate(-50%, 0) scale(0.4); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), var(--dy, -20px)) scale(1); }
+}
+
+/* Parpadeo del ojo */
+.scene :global(#kiwi-eye) {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.go :global(#kiwi-eye) {
+  animation: blink 5.2s ease-in-out 2.2s infinite;
+}
+
+@keyframes blink {
+  0%, 93%, 100% { transform: scaleY(1); }
+  96%           { transform: scaleY(0.08); }
+}
+
+/* Hover: wiggle en el svg (capa aparte del wrapper) + ojo curioso */
+.scene:hover .kiwiWrapper svg {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.scene:hover :global(#kiwi-eye) {
+  animation: none;
+  transform: scale(1.2);
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  30%      { transform: rotate(-4deg); }
+  70%      { transform: rotate(3deg); }
+}
+
+@media (max-width: 767px) {
+  .scene { width: 150px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiwiWrapper,
+  .go .kiwiWrapper,
+  .shadow,
+  .go .shadow,
+  .dust,
+  .go .dust,
+  .scene :global(#kiwi-eye),
+  .go :global(#kiwi-eye),
+  .scene:hover .kiwiWrapper svg {
+    animation: none !important;
+  }
+  .kiwiWrapper { opacity: 1; }
+  .shadow { opacity: 1; }
+  .dust { display: none; }
+}

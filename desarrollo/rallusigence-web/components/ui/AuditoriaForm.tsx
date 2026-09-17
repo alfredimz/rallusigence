@@ -10,14 +10,12 @@ interface FormData {
   name: string
   business: string
   whatsapp: string
-  email: string
 }
 
 interface FormErrors {
   name?: string
   business?: string
   whatsapp?: string
-  email?: string
   submit?: string
 }
 
@@ -29,8 +27,7 @@ export default function AuditoriaForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     business: '',
-    whatsapp: '',
-    email: ''
+    whatsapp: ''
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -55,12 +52,6 @@ export default function AuditoriaForm() {
       newErrors.whatsapp = 'Ingresa un número de WhatsApp de 10 dígitos'
     }
 
-    // Email regex estándar
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      newErrors.email = 'Ingresa un email válido'
-    }
-
     return newErrors
   }
 
@@ -82,7 +73,7 @@ export default function AuditoriaForm() {
     setStatus('loading')
 
     try {
-      const response = await fetch('https://formspree.io/f/XXXXXXXX', {
+      const response = await fetch('https://formspree.io/f/mppaojqk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -91,7 +82,6 @@ export default function AuditoriaForm() {
           name: formData.name.trim(),
           business: formData.business.trim(),
           whatsapp: formData.whatsapp.trim(),
-          email: formData.email.trim(),
           message: `Solicitud de auditoría gratis desde ${window.location.hostname}/auditoria-gratis`,
           source: 'auditoría-gratis'
         })
@@ -157,17 +147,6 @@ export default function AuditoriaForm() {
           value={formData.whatsapp}
           onChange={handleInputChange}
           error={errors.whatsapp}
-        />
-
-        <FormField
-          label="Email"
-          name="email"
-          type="email"
-          placeholder="tu@email.com"
-          required
-          value={formData.email}
-          onChange={handleInputChange}
-          error={errors.email}
         />
 
         {errors.submit && (

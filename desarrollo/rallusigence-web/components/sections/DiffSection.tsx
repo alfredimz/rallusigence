@@ -3,7 +3,7 @@ import styles from './DiffSection.module.css'
 const differentiators = [
   {
     title: '3 días, no 30.',
-    description: 'Las agencias tradicionales tienen juntas, cotizaciones, aprobaciones. Nosotros tenemos IA. Tu sitio listo en días.'
+    description: 'Una agencia tradicional en CDMX cobra $40,000–$80,000 MXN y tarda hasta 2 meses. Nosotros trabajamos con IA: tu sitio listo en días, desde $6,000.'
   },
   {
     title: 'Sin cotizaciones que duran semanas.',

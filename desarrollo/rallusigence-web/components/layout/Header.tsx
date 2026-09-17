@@ -44,9 +44,11 @@ export default function Header() {
 
   const navItems = [
     { label: 'Inicio', href: '/' },
+    { label: 'Servicios', href: '/servicios' },
     { label: 'Paquetes', href: '/paquetes' },
     { label: 'Cómo funciona', href: '/como-funciona' },
     { label: 'Portafolio', href: '/portafolio' },
+    { label: 'Auditoría gratis', href: '/auditoria-gratis' },
     { label: 'Contacto', href: '/#contacto' }
   ]
 
@@ -106,6 +108,8 @@ export default function Header() {
           </button>
         </div>
 
+      </header>
+
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div
@@ -140,7 +144,7 @@ export default function Header() {
                   Auditoría gratis
                 </a>
                 <a
-                  href="https://wa.me/52XXXXXXXXXX"
+                  href="https://wa.me/525626171584"
                   className="rs-btn rs-btn--ghost rs-btn--full"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -155,7 +159,6 @@ export default function Header() {
             </div>
           </div>
         )}
-      </header>
     </>
   )
 }

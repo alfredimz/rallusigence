@@ -128,3 +128,53 @@
     aspect-ratio: 16/9;
   }
 }
+
+/* === WOW-1: entrada orquestada === */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(26px); filter: blur(10px); }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+.heroPre { opacity: 0; }
+.heroIn { animation: heroRise 0.7s var(--ease-out-cubic) 0.15s both; }
+.heroIn2 { animation-delay: 0.3s; }
+.heroIn3 { animation-delay: 0.45s; }
+
+/* === WOW-1: orbes vivos === */
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-28px, 20px) scale(1.09); }
+}
+.hero::before { animation: orbDrift 14s ease-in-out infinite; will-change: transform; }
+.hero::after  { animation: orbDrift 18s ease-in-out infinite reverse; will-change: transform; }
+
+@media (max-width: 767px) {
+  .ctas > span { width: 100%; }
+  .ctas > span .rs-btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroIn, .heroIn2, .heroIn3 { animation: none; }
+  .heroPre { opacity: 1; }
+  .hero::before, .hero::after { animation: none; }
+}
+
+/* === WOW-2: parallax scroll-driven (solo navegadores con soporte) === */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .imagePlaceholder {
+      animation: heroParallax linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+@keyframes heroParallax {
+  from { transform: translateY(14px); }
+  to   { transform: translateY(-26px); }
+}
+
+/* === WOW-3: shader detrás del kiwi === */
+.kiwiLayer {
+  position: relative;
+  z-index: 1;
+}

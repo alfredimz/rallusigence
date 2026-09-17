@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import "../globals.css";
+import WhatsAppCta from "@/components/ui/WhatsAppCta";
 import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: 'Auditoría digital gratis — Rallusigence',
   description: 'Revisamos tu web, redes y Google. Detectamos exactamente qué te está costando clientes. Sin compromiso.',
-  keywords: 'auditoría digital gratis, análisis web gratis, revisar sitio web, auditoría SEO México',
   openGraph: {
     title: 'Auditoría digital gratis — Rallusigence',
     description: 'Revisamos tu web, redes y Google. Detectamos exactamente qué te está costando clientes.',
@@ -25,9 +24,8 @@ export default function AuditoriaLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX">
-      <body>
-        {/* Header minimalista */}
+    <>
+      {/* Header minimalista */}
         <header className={styles.header}>
           <div className={styles.headerContainer}>
             <a href="/" className={styles.logo}>
@@ -39,14 +37,9 @@ export default function AuditoriaLayout({
                 priority
               />
             </a>
-            <a
-              href="https://wa.me/52XXXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.whatsappLink}
-            >
+            <WhatsAppCta location="auditoria-header" className={styles.whatsappLink}>
               WhatsApp
-            </a>
+            </WhatsAppCta>
           </div>
         </header>
 
@@ -63,7 +56,6 @@ export default function AuditoriaLayout({
             </a>
           </div>
         </footer>
-      </body>
-    </html>
+    </>
   );
 }

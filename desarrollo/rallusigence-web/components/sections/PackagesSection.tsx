@@ -6,6 +6,10 @@ import ServiceCard from '@/components/ui/ServiceCard'
 import { trackServiceView, trackCtaClick } from '@/lib/analytics'
 import styles from './PackagesSection.module.css'
 
+const WHATSAPP = '525626171584'
+const waLink = (title: string, price: string) =>
+  `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola Rallusigence, quiero el paquete ${title} de ${price}. ¿Cómo empezamos?`)}`
+
 const packages = [
   {
     icon: <Rocket size={24} />,
@@ -23,7 +27,8 @@ const packages = [
       'Código fuente completo tuyo'
     ],
     cta: 'Quiero este paquete',
-    featured: false
+    featured: false,
+    mascot: '/assets/kiwis/kiwi-lanzamiento.svg'
   },
   {
     icon: <Star size={24} />,
@@ -42,7 +47,8 @@ const packages = [
       'Guía en PDF de cómo usar tu sitio'
     ],
     cta: 'Quiero este paquete',
-    featured: true
+    featured: true,
+    mascot: '/assets/kiwis/kiwi-desarrollo.svg'
   },
   {
     icon: <Zap size={24} />,
@@ -61,7 +67,8 @@ const packages = [
       'Capacitación de 30 minutos'
     ],
     cta: 'Quiero este paquete',
-    featured: false
+    featured: false,
+    mascot: '/assets/kiwis/kiwi-carrito.svg'
   }
 ]
 
@@ -106,7 +113,7 @@ export default function PackagesSection() {
 
         <div className={styles.grid}>
           {packages.map((pkg, index) => (
-            <div key={pkg.title} className={`reveal reveal--delay-${index + 1}`}>
+            <div key={pkg.title} className={`reveal reveal--blur reveal--delay-${index + 1}`}>
               <ServiceCard
                 icon={pkg.icon}
                 title={pkg.title}
@@ -116,6 +123,8 @@ export default function PackagesSection() {
                 features={pkg.features}
                 featured={pkg.featured}
                 cta={pkg.cta}
+                href={waLink(pkg.title, pkg.price)}
+                mascot={pkg.mascot}
                 onCtaClick={() => trackCtaClick('paquete', 'packages', pkg.title)}
               />
             </div>

@@ -87,7 +87,9 @@ a { color: inherit; }
   border: none;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.06);
-  transition: var(--transition-base); text-decoration: none; color: inherit;
+  transition: box-shadow var(--duration-normal) var(--ease-out-cubic), transform 0.12s ease-out;
+  transform: perspective(950px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  text-decoration: none; color: inherit;
   position: relative; overflow: hidden;
 }
 .service-card::before {
@@ -101,7 +103,7 @@ a { color: inherit; }
 }
 .service-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.14), 0 0 0 1px rgba(32,180,177,0.20);
-  transform: translateY(-4px);
+  --lift: -4px;
 }
 .service-card:hover::before { opacity: 1; }
 .service-card--featured {
@@ -172,3 +174,173 @@ a { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .text-center { text-align: center; }
 .no-scroll { overflow: hidden; }
+
+/* ============================================================
+   WOW-1 — Sistema de motion (Sprint de asombro 2026-09-08)
+   Regla: solo transform/opacity en loops; todo respeta
+   prefers-reduced-motion al final del bloque.
+   ============================================================ */
+
+/* Transiciones explícitas (antes: transition all — forzaba layout) */
+.rs-btn {
+  transition:
+    background-color var(--duration-fast) ease-in-out,
+    color var(--duration-fast) ease-in-out,
+    border-color var(--duration-fast) ease-in-out,
+    transform var(--duration-fast) ease-in-out,
+    box-shadow var(--duration-fast) ease-in-out,
+    opacity var(--duration-fast) ease-in-out;
+}
+.rs-btn:active { transform: translateY(1px) scale(0.99); transition-duration: 0.08s; }
+.input-field {
+  transition:
+    border-color var(--duration-fast) ease-in-out,
+    box-shadow var(--duration-fast) ease-in-out,
+    background-color var(--duration-fast) ease-in-out;
+}
+
+/* Delays extendidos (fix: el paso 4 de ProcessSection no animaba) */
+.reveal--delay-4 { transition-delay: 0.4s; }
+.reveal--delay-5 { transition-delay: 0.5s; }
+.reveal--delay-6 { transition-delay: 0.6s; }
+
+/* Variante de entrada con blur+scale para cards */
+.reveal--blur {
+  transform: translateY(24px) scale(0.97);
+  filter: blur(8px);
+  transition:
+    opacity 0.5s var(--ease-out-cubic),
+    transform 0.5s var(--ease-out-cubic),
+    filter 0.5s var(--ease-out-cubic);
+}
+.reveal--blur.visible { filter: blur(0); }
+
+/* Card destacada que respira */
+@keyframes featuredGlow {
+  0%, 100% { box-shadow: 0 8px 32px rgba(32,180,177,0.28); }
+  50%      { box-shadow: 0 12px 44px rgba(32,180,177,0.5); }
+}
+.service-card--featured { animation: featuredGlow 3.2s ease-in-out infinite; }
+.service-card--featured:hover { animation-play-state: paused; }
+
+/* Barrido de luz al hover en cards */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease-out-cubic);
+  pointer-events: none;
+}
+.service-card:hover::after { left: 140%; }
+
+/* Shake en campos con error */
+@keyframes inputShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(2px); }
+}
+.input-field--error { animation: inputShake 0.35s ease-in-out; }
+
+/* Checkmarks que brotan (DiffSection) */
+@keyframes checkPop {
+  0%   { transform: scale(0) rotate(-90deg); }
+  70%  { transform: scale(1.25) rotate(8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.differentiator-item.visible .differentiator-item__check {
+  animation: checkPop 0.5s var(--ease-bounce) both;
+}
+
+/* Sacudida de alerta en iconos de dolor (PainSection) */
+@keyframes painAlert {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-3px); }
+  30%, 60%, 90% { transform: translateX(3px); }
+}
+.pain-item.visible span[class*="painIcon"] {
+  animation: painAlert 0.45s ease-in-out 0.25s;
+}
+
+/* Pulso del CTA de WhatsApp */
+@keyframes waPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+.wa-pulse { display: inline-block; animation: waPulse 2.4s ease-in-out infinite; }
+
+/* Celebración de éxito en formularios */
+@keyframes successPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.success-pop { position: relative; animation: successPop 0.55s var(--ease-bounce) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card--featured,
+  .service-card::after,
+  .wa-pulse,
+  .pain-item.visible span[class*="painIcon"],
+  .differentiator-item.visible .differentiator-item__check,
+  .input-field--error,
+  .success-pop {
+    animation: none !important;
+  }
+  .reveal--blur { filter: none; }
+}
+
+/* ============================================================
+   WOW-2 — Textura + transiciones de página
+   ============================================================ */
+
+/* Grano sutil global (estático, se composita una sola vez) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Transiciones entre páginas (View Transitions cross-document, progressive) */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) { animation: vtOut 0.22s ease-in both; }
+::view-transition-new(root) { animation: vtIn 0.3s var(--ease-out-cubic) 0.04s both; }
+@keyframes vtOut { to { opacity: 0; transform: translateY(8px); } }
+@keyframes vtIn { from { opacity: 0; transform: translateY(-8px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  .service-card { transform: none; }
+}
+
+/* === WOW-3: kiwis por sección === */
+.card-kiwi {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 72px;
+  height: 72px;
+  pointer-events: none;
+  transition: transform 0.35s var(--ease-bounce);
+}
+.service-card:hover .card-kiwi {
+  transform: translateY(-5px) rotate(-5deg) scale(1.07);
+}
+@media (max-width: 767px) {
+  .card-kiwi { width: 56px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-card:hover .card-kiwi { transform: none; }
+}

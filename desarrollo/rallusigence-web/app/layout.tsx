@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
+import TabWink from "@/components/ui/TabWink";
 
-const GA_ID = 'G-XXXXXXXXXX' // reemplazar con ID real de GA4
-const META_PIXEL_ID = 'TU_PIXEL_ID' // Alfredo reemplaza con ID real
+const GA_ID = 'G-SN3THQ65T3'
+const GTM_ID = 'GTM-TVTHCLQR'
+const CLARITY_ID = 'y5zfbfdlon'
+// Vacío hasta que Meta apruebe el portfolio — el pixel solo se inyecta si hay ID real
+const META_PIXEL_ID = ''
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rallusigence.net'),
   title: 'Rallusigence — Tu sitio web en 3 días',
   description: 'Sitio web profesional hecho con IA. Precio fijo. Tú eres el dueño desde el primer día. Sin mensualidades, sin letra chica.',
-  keywords: 'sitio web profesional, diseño web México, agencia web México, sitio web barato, sitio web rápido',
   openGraph: {
     title: 'Rallusigence — Tu sitio web en 3 días',
     description: 'Sitio web profesional hecho con IA. Precio fijo desde $6,000 MXN.',
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://rallusigence.net' },
+  verification: { google: 'FX3yrwESW6-D2h45lb2YzpQDa8gd_c--gkBbKXJgpXs' },
 };
 
 export default function RootLayout({
@@ -33,10 +35,20 @@ export default function RootLayout({
   return (
     <html lang="es-MX">
       <body>
+        {/* Preload de fuentes críticas (WOFF2) */}
+        <link rel="preload" href="/design-system/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/design-system/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/design-system/fonts/PlayfairDisplay-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <ScrollRevealProvider />
-        <Header />
+        <TabWink />
         {children}
-        <Footer />
 
         {/* Google Analytics 4 */}
         <Script
@@ -53,27 +65,53 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Meta Pixel (Facebook/Instagram) */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+        {/* Google Tag Manager */}
+        <Script id="gtm-init" strategy="afterInteractive">
           {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window,document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${META_PIXEL_ID}');
-            fbq('track', 'PageView');
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
           `}
         </Script>
-        <noscript>
-          <img height="1" width="1" style={{display:'none'}}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
+
+        {/* Microsoft Clarity */}
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
+          `}
+        </Script>
+
+        {/* Meta Pixel (Facebook/Instagram) — solo con ID real */}
+        {META_PIXEL_ID && (
+          <>
+            <Script id="meta-pixel" strategy="afterInteractive">
+              {`
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window,document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${META_PIXEL_ID}');
+                fbq('track', 'PageView');
+              `}
+            </Script>
+            <noscript>
+              <img height="1" width="1" style={{display:'none'}}
+                src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+                alt=""
+              />
+            </noscript>
+          </>
+        )}
 
         {/* JSON-LD Structured Data */}
         <script
