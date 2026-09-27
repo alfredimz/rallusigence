@@ -1,114 +1,18 @@
 'use client'
 
-import { useState } from 'react'
 import FormField from '@/components/ui/FormField'
 import ConfettiBurst from '@/components/ui/ConfettiBurst'
-import { trackFormSubmit, trackFormError, trackWhatsAppClick } from '@/lib/analytics'
+import { useLeadForm } from '@/lib/useLeadForm'
+import { trackWhatsAppClick } from '@/lib/analytics'
+import { waLink, FORMSPREE } from '@/lib/contacto'
 import styles from './ContactSection.module.css'
 
-interface FormData {
-  name: string
-  business: string
-  whatsapp: string
-}
-
-interface FormErrors {
-  name?: string
-  business?: string
-  whatsapp?: string
-  submit?: string
-}
-
-type FormStatus = 'idle' | 'loading' | 'success' | 'error'
-
 export default function ContactSection() {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    business: '',
-    whatsapp: ''
+  const { formData, errors, status, handleInputChange, handleSubmit } = useLeadForm({
+    endpoint: FORMSPREE.contacto,
+    formType: 'auditoria_home',
+    messageLabel: 'Solicitud de paquete',
   })
-
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [status, setStatus] = useState<FormStatus>('idle')
-
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {}
-
-    // Nombre mínimo 2 caracteres
-    if (!formData.name.trim() || formData.name.trim().length < 2) {
-      newErrors.name = 'El nombre debe tener al menos 2 caracteres'
-    }
-
-    // Tipo de negocio mínimo 2 caracteres
-    if (!formData.business.trim() || formData.business.trim().length < 2) {
-      newErrors.business = 'Describe tu tipo de negocio'
-    }
-
-    // WhatsApp 10 dígitos mexicanos
-    const whatsappDigits = formData.whatsapp.replace(/\D/g, '')
-    if (!whatsappDigits || whatsappDigits.length !== 10) {
-      newErrors.whatsapp = 'Ingresa un número de WhatsApp de 10 dígitos'
-    }
-
-    return newErrors
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const formErrors = validateForm()
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors)
-      // Track error del primer campo con error
-      const firstErrorField = Object.keys(formErrors)[0]
-      if (firstErrorField !== 'submit') {
-        trackFormError(firstErrorField)
-      }
-      return
-    }
-
-    setErrors({})
-    setStatus('loading')
-
-    try {
-      const response = await fetch('https://formspree.io/f/xkjwqlbg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          business: formData.business.trim(),
-          whatsapp: formData.whatsapp.trim(),
-          message: `Solicitud de paquete desde ${window.location.hostname}`
-        })
-      })
-
-      if (response.ok) {
-        setStatus('success')
-        // Track form submission
-        trackFormSubmit('auditoria_home')
-        // Limpiar formulario
-        setFormData({ name: '', business: '', whatsapp: '' })
-      } else {
-        setStatus('error')
-        setErrors({ submit: 'Error al enviar — intenta de nuevo' })
-      }
-    } catch (error) {
-      setStatus('error')
-      setErrors({ submit: 'Error al enviar — intenta de nuevo' })
-    }
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-
-    // Limpiar error del campo al empezar a escribir
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }))
-    }
-  }
 
   return (
     <section id="contacto" aria-labelledby="contacto-title" className={styles.section}>
@@ -125,7 +29,7 @@ export default function ContactSection() {
             <div className={`${styles.alt} reveal reveal--delay-2`}>
               <p>O contáctanos directo:</p>
               <a
-                href="https://wa.me/525626171584"
+                href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="wa-pulse"

@@ -55,9 +55,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   const { frontmatter, body } = postData
   const htmlContent = parseMarkdownToHtml(body)
+  const postUrl = `https://rallusigence.net/blog/${slug}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    datePublished: frontmatter.date,
+    author: { '@type': 'Organization', name: 'Rallusigence' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Rallusigence',
+      logo: { '@type': 'ImageObject', url: 'https://rallusigence.net/assets/kiwi-icon.svg' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+    inLanguage: 'es-MX',
+  }
 
   return (
     <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className={styles.container}>
         {/* Breadcrumb */}
         <nav className={styles.breadcrumb} aria-label="Navegación">

@@ -12,7 +12,7 @@ import fs from 'node:fs'
 
 const BASE = process.env.BASE_URL || 'http://localhost:3006'
 const WIDTHS = [320, 360, 390, 412, 480, 568, 644, 768, 834, 912, 1024, 1280, 1440, 1920]
-const PAGES = ['/', '/paquetes', '/como-funciona', '/portafolio', '/blog', '/auditoria-gratis', '/gracias', '/servicios', '/servicios/seo', '/servicios/bot-whatsapp']
+const PAGES = ['/', '/paquetes', '/como-funciona', '/portafolio', '/nosotros', '/blog', '/auditoria-gratis', '/gracias', '/servicios', '/servicios/seo', '/servicios/bot-whatsapp']
 const OUT_DIR = new URL('./fallos-responsive/', import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1')
 
 fs.mkdirSync(OUT_DIR, { recursive: true })

@@ -1,6 +1,7 @@
 'use client'
 
 import { trackWhatsAppClick } from '@/lib/analytics'
+import { waLink } from '@/lib/contacto'
 
 interface WhatsAppCtaProps {
   location: string
@@ -11,7 +12,7 @@ interface WhatsAppCtaProps {
 
 // Link a WhatsApp con tracking GA4 — usable desde componentes de servidor
 export default function WhatsAppCta({ location, message, className, children }: WhatsAppCtaProps) {
-  const href = `https://wa.me/525626171584${message ? `?text=${encodeURIComponent(message)}` : ''}`
+  const href = waLink(message)
   return (
     <a
       href={href}

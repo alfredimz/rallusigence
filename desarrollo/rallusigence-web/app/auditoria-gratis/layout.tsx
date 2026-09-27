@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import WhatsAppCta from "@/components/ui/WhatsAppCta";
 import styles from "./layout.module.css";
 
@@ -25,10 +26,13 @@ export default function AuditoriaLayout({
 }>) {
   return (
     <>
+      <a href="#main" className="skip-link">
+        Ir al contenido principal
+      </a>
       {/* Header minimalista */}
         <header className={styles.header}>
           <div className={styles.headerContainer}>
-            <a href="/" className={styles.logo}>
+            <Link href="/" className={styles.logo}>
               <Image
                 src="/assets/letras-icono-horizontal.svg"
                 alt="Rallusigence"
@@ -36,7 +40,7 @@ export default function AuditoriaLayout({
                 height={40}
                 priority
               />
-            </a>
+            </Link>
             <WhatsAppCta location="auditoria-header" className={styles.whatsappLink}>
               WhatsApp
             </WhatsAppCta>
@@ -51,9 +55,9 @@ export default function AuditoriaLayout({
             <p className={styles.legal}>
               © 2026 Rallusigence. No emitimos facturas.
             </p>
-            <a href="/aviso-de-privacidad" className={styles.legalLink}>
+            <Link href="/aviso-de-privacidad" className={styles.legalLink}>
               Aviso de privacidad
-            </a>
+            </Link>
           </div>
         </footer>
     </>

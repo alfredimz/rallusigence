@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/gracias', '/api/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://rallusigence.net/sitemap.xml',

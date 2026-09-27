@@ -4,7 +4,10 @@ import "./globals.css";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import TabWink from "@/components/ui/TabWink";
 
-const GA_ID = 'G-SN3THQ65T3'
+// GA4 (G-SN3THQ65T3) NO se carga aquí directamente: el tag debe estar
+// configurado dentro del contenedor GTM-TVTHCLQR (GTM es la fuente única
+// de analítica — evita doble conteo y reduce el LCP móvil). Si el tag de
+// GA4 aún no existe dentro del contenedor, agrégalo en tagmanager.google.com.
 const GTM_ID = 'GTM-TVTHCLQR'
 const CLARITY_ID = 'y5zfbfdlon'
 // Vacío hasta que Meta apruebe el portfolio — el pixel solo se inyecta si hay ID real
@@ -50,22 +53,7 @@ export default function RootLayout({
         <TabWink />
         {children}
 
-        {/* Google Analytics 4 */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', { page_path: window.location.pathname });
-          `}
-        </Script>
-
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager — fuente única de analítica (incluye GA4) */}
         <Script id="gtm-init" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -76,8 +64,8 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Microsoft Clarity */}
-        <Script id="clarity-init" strategy="afterInteractive">
+        {/* Microsoft Clarity — diferido para no competir con el LCP */}
+        <Script id="clarity-init" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -121,7 +109,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "Rallusigence",
-              "description": "Agencia de sitios web con IA para PYMEs mexicanas",
+              "description": "Agencia de sitios web con IA para negocios mexicanos",
               "url": "https://rallusigence.net",
               "areaServed": { "@type": "Country", "name": "Mexico" },
               "priceRange": "$$",

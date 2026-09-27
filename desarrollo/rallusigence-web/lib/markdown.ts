@@ -1,6 +1,6 @@
 // Parser simple de markdown para convertir el contenido a HTML
 export function parseMarkdownToHtml(markdown: string): string {
-  let html = markdown
+  const html = markdown
     // Headers
     .replace(/^### (.*$)/gim, '<h3>$1</h3>')
     .replace(/^## (.*$)/gim, '<h2>$1</h2>')

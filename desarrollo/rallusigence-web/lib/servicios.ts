@@ -55,7 +55,7 @@ export const SERVICIOS: Servicio[] = [
       { q: '¿Qué necesito para empezar?', a: 'Contarnos qué hace tu negocio, a quién le vendes y cómo quieres que te contacten. Fotos y logo si los tienes; si no, te orientamos con opciones.' },
       { q: '¿El sitio es mío de verdad?', a: 'Sí. Hosting y dominio se registran en TUS cuentas y recibes el código fuente completo. No dependes de nosotros para nada después de la entrega.' },
       { q: '¿Cobran mensualidad?', a: 'No. Pagas una vez por la construcción. El hosting que usamos (Firebase) tiene capa gratuita que alcanza para la mayoría de los negocios, y el dominio (~$250 MXN/año) lo pagas directo al proveedor.' },
-      { q: '¿Y si quiero cambios después?', a: 'Los cambios pequeños de la primera semana van incluidos. Después, cotizamos por bloque de cambios — o te enseñamos a hacerlos tú, el código es tuyo.' }
+      { q: '¿Y si quiero cambios después?', a: 'Incluimos 2 rondas de cambios antes de entregar y cambios menores sin costo los primeros 15 días. Después, cotizamos por bloque de cambios — o te enseñamos a hacerlos tú, el código es tuyo.' }
     ],
     ctaMsg: 'Hola Rallusigence, quiero mi sitio web. ¿Cómo empezamos?'
   },

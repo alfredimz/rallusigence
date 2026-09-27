@@ -1,32 +1,37 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { trackWhatsAppClick } from '@/lib/analytics'
+import { EMAIL, WHATSAPP_DISPLAY, waLink } from '@/lib/contacto'
+import { SERVICIOS } from '@/lib/servicios'
 import styles from './Footer.module.css'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const serviceLinks = [
-    { label: 'Todos los servicios', href: '/servicios' },
-    { label: 'Diseño web', href: '/servicios/diseno-web' },
-    { label: 'SEO', href: '/servicios/seo' },
-    { label: 'Agente WhatsApp', href: '/servicios/bot-whatsapp' },
-    { label: 'Paquetes', href: '/#paquetes' },
-    { label: 'Blog', href: '/blog' }
+  const empresaLinks = [
+    { label: 'Nosotros', href: '/nosotros' },
+    { label: 'Portafolio', href: '/portafolio' },
+    { label: 'Cómo funciona', href: '/como-funciona' },
+    { label: 'Paquetes', href: '/paquetes' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contacto', href: '/#contacto' }
   ]
+
+  const serviceLinks = SERVICIOS.map((s) => ({ label: s.nombre, href: `/servicios/${s.slug}` }))
 
   const contactInfo = [
     {
       label: 'WhatsApp',
-      href: 'https://wa.me/525626171584',
-      text: 'WhatsApp: +52 56 2617 1584',
+      href: waLink(),
+      text: `WhatsApp: ${WHATSAPP_DISPLAY}`,
       isWhatsApp: true
     },
     {
       label: 'Email',
-      href: 'mailto:hola@rallusigence.net',
-      text: 'hola@rallusigence.net',
+      href: `mailto:${EMAIL}`,
+      text: EMAIL,
       isWhatsApp: false
     }
   ]
@@ -42,17 +47,29 @@ export default function Footer() {
         <div className={styles.content}>
           {/* Brand Column */}
           <div className={styles.brand}>
-            <a href="/" className={styles.logo}>
+            <Link href="/" className={styles.logo}>
               <Image
                 src="/assets/letras-icono-horizontal.svg"
                 alt="Rallusigence"
                 width={160}
                 height={40}
               />
-            </a>
+            </Link>
             <p className={styles.tagline}>
               Tu negocio en internet en 3 días.
             </p>
+          </div>
+
+          {/* Empresa Column */}
+          <div className={styles.section}>
+            <h3 className={styles.title}>Empresa</h3>
+            <nav aria-label="Enlaces de la empresa">
+              {empresaLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={styles.link}>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
 
           {/* Services Column */}
@@ -60,13 +77,9 @@ export default function Footer() {
             <h3 className={styles.title}>Servicios</h3>
             <nav aria-label="Enlaces de servicios">
               {serviceLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={styles.link}
-                >
+                <Link key={link.href} href={link.href} className={styles.link}>
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -100,13 +113,9 @@ export default function Footer() {
           </p>
           <div className={styles.legalLinks}>
             {legalLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={styles.legalLink}
-              >
+              <Link key={link.href} href={link.href} className={styles.legalLink}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

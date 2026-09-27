@@ -1,76 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { Rocket, Star, Zap } from 'lucide-react'
-import ServiceCard from '@/components/ui/ServiceCard'
-import { trackServiceView, trackCtaClick } from '@/lib/analytics'
+import PackagesGrid from '@/components/sections/PackagesGrid'
+import { trackServiceView } from '@/lib/analytics'
 import styles from './PackagesSection.module.css'
-
-const WHATSAPP = '525626171584'
-const waLink = (title: string, price: string) =>
-  `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola Rallusigence, quiero el paquete ${title} de ${price}. ¿Cómo empezamos?`)}`
-
-const packages = [
-  {
-    icon: <Rocket size={24} />,
-    title: 'Lanzamiento',
-    description: 'Tu presencia digital básica pero profesional. Una página que dice quién eres, qué vendes y cómo contactarte. Optimizada para Google y para celular.',
-    price: '$6,000 MXN',
-    delivery: '3 días',
-    features: [
-      'Landing de 1 página con 5-7 secciones',
-      'Diseño mobile-first',
-      'Formulario de contacto funcional',
-      'SEO básico',
-      'Dominio configurado en tu cuenta',
-      'Hosting en tu cuenta (Firebase gratuito)',
-      'Código fuente completo tuyo'
-    ],
-    cta: 'Quiero este paquete',
-    featured: false,
-    mascot: '/assets/kiwis/kiwi-lanzamiento.svg'
-  },
-  {
-    icon: <Star size={24} />,
-    title: 'Profesional',
-    description: 'Sitio completo con múltiples páginas, blog listo para publicar y SEO configurado para aparecer en búsquedas relevantes de tu industria.',
-    price: '$12,000 MXN',
-    delivery: '7 días',
-    features: [
-      'Todo del paquete Lanzamiento',
-      '5-7 páginas individuales',
-      'Blog listo para publicar artículos',
-      'Galería de fotos',
-      'Google Maps integrado',
-      'Google Analytics configurado',
-      'SEO on-page completo en todas las páginas',
-      'Guía en PDF de cómo usar tu sitio'
-    ],
-    cta: 'Quiero este paquete',
-    featured: true,
-    mascot: '/assets/kiwis/kiwi-desarrollo.svg'
-  },
-  {
-    icon: <Zap size={24} />,
-    title: 'Avanzado',
-    description: 'Sitio completo + tienda online + blog con contenido inicial. Todo listo para generar clientes y ventas desde el primer día.',
-    price: '$20,000 MXN',
-    delivery: '12 días',
-    features: [
-      'Todo del paquete Profesional',
-      'Tienda online con carrito de compras',
-      '5 artículos de blog escritos con IA',
-      'Botón de WhatsApp integrado',
-      'Formulario de cotización automático',
-      'Optimización avanzada de velocidad',
-      'Certificado SSL configurado',
-      'Capacitación de 30 minutos'
-    ],
-    cta: 'Quiero este paquete',
-    featured: false,
-    mascot: '/assets/kiwis/kiwi-carrito.svg'
-  }
-]
 
 export default function PackagesSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -109,27 +42,12 @@ export default function PackagesSection() {
           <h2 id="paquetes-title" className="rs-h2 reveal">
             Elige tu paquete. Precio fijo. Sin sorpresas.
           </h2>
+          <p className={`${styles.lead} reveal reveal--delay-1`}>
+            Tres precios publicados, tres plazos claros. El sitio queda en tus cuentas desde el primer día.
+          </p>
         </div>
 
-        <div className={styles.grid}>
-          {packages.map((pkg, index) => (
-            <div key={pkg.title} className={`reveal reveal--blur reveal--delay-${index + 1}`}>
-              <ServiceCard
-                icon={pkg.icon}
-                title={pkg.title}
-                description={pkg.description}
-                price={pkg.price}
-                delivery={pkg.delivery}
-                features={pkg.features}
-                featured={pkg.featured}
-                cta={pkg.cta}
-                href={waLink(pkg.title, pkg.price)}
-                mascot={pkg.mascot}
-                onCtaClick={() => trackCtaClick('paquete', 'packages', pkg.title)}
-              />
-            </div>
-          ))}
-        </div>
+        <PackagesGrid position="packages" />
       </div>
     </section>
   )

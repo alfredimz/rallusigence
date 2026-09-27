@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { trackWhatsAppClick } from '@/lib/analytics'
+import { trackCtaClick, trackWhatsAppClick } from '@/lib/analytics'
+import { waLink } from '@/lib/contacto'
 import styles from './Header.module.css'
 
 export default function Header() {
@@ -42,14 +44,23 @@ export default function Header() {
     document.body.classList.remove('no-scroll')
   }
 
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isMenuOpen])
+
   const navItems = [
     { label: 'Inicio', href: '/' },
     { label: 'Servicios', href: '/servicios' },
     { label: 'Paquetes', href: '/paquetes' },
-    { label: 'Cómo funciona', href: '/como-funciona' },
     { label: 'Portafolio', href: '/portafolio' },
-    { label: 'Auditoría gratis', href: '/auditoria-gratis' },
-    { label: 'Contacto', href: '/#contacto' }
+    { label: 'Cómo funciona', href: '/como-funciona' },
+    { label: 'Nosotros', href: '/nosotros' },
+    { label: 'Blog', href: '/blog' }
   ]
 
   return (
@@ -61,7 +72,7 @@ export default function Header() {
         className={`nav-header ${isScrolled ? 'nav-header--scrolled' : ''} ${isHidden ? 'nav-header--hidden' : ''}`}
       >
         <div className={styles.container}>
-          <a href="/" className={styles.logo} onClick={closeMenu}>
+          <Link href="/" className={styles.logo} onClick={closeMenu}>
             <Image
               src="/assets/letras-icono-horizontal.svg"
               alt="Rallusigence"
@@ -69,28 +80,29 @@ export default function Header() {
               height={40}
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className={styles.nav} aria-label="Navegación principal">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className={styles.navLink}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-          <a
-            href="/paquetes"
+          <Link
+            href="/auditoria-gratis"
             className={`rs-btn rs-btn--primary rs-btn--sm ${styles.desktopCta}`}
+            onClick={() => trackCtaClick('auditoria', 'header', 'Auditoría gratis')}
           >
-            Ver paquetes
-          </a>
+            Auditoría gratis
+          </Link>
 
           {/* Mobile hamburger */}
           <button
@@ -124,27 +136,30 @@ export default function Header() {
 
               <nav className={styles.mobileNav} aria-label="Navegación móvil">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
                     className={styles.mobileNavLink}
                     onClick={closeMenu}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
 
               <div style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <a
-                  href="/#contacto"
+                <Link
+                  href="/auditoria-gratis"
                   className="rs-btn rs-btn--primary rs-btn--full"
-                  onClick={closeMenu}
+                  onClick={() => {
+                    trackCtaClick('auditoria', 'header-mobile', 'Auditoría gratis')
+                    closeMenu()
+                  }}
                 >
                   Auditoría gratis
-                </a>
+                </Link>
                 <a
-                  href="https://wa.me/525626171584"
+                  href={waLink()}
                   className="rs-btn rs-btn--ghost rs-btn--full"
                   target="_blank"
                   rel="noopener noreferrer"

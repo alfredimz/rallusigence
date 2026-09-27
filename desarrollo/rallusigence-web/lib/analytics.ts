@@ -1,15 +1,23 @@
 // Declaraciones globales para TypeScript
 declare global {
   interface Window {
-    gtag: (...args: unknown[]) => void
+    dataLayer: Record<string, unknown>[]
     fbq: (...args: unknown[]) => void
   }
 }
 
-// form_submit → GA4 + Meta Lead
+// Empuja un evento al dataLayer de GTM (GTM-TVTHCLQR es la fuente única de
+// analítica — el contenedor debe tener un tag de GA4 escuchando estos eventos).
+function pushToDataLayer(event: string, params: Record<string, unknown> = {}) {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push({ event, ...params })
+}
+
+// form_submit → GTM/GA4 + Meta Lead
 export function trackFormSubmit(formType: string) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'form_submit', {
+  pushToDataLayer('form_submit', {
     form_type: formType,
     page_location: window.location.pathname,
     success: true,
@@ -23,10 +31,10 @@ export function trackFormSubmit(formType: string) {
   })
 }
 
-// whatsapp_click → GA4 + Meta InitiateCheckout
+// whatsapp_click → GTM/GA4 + Meta InitiateCheckout
 export function trackWhatsAppClick(location: string) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'whatsapp_click', {
+  pushToDataLayer('whatsapp_click', {
     button_location: location,
     page_location: window.location.pathname,
     cta_text: 'WhatsApp',
@@ -39,20 +47,20 @@ export function trackWhatsAppClick(location: string) {
   })
 }
 
-// cta_click → GA4
+// cta_click → GTM/GA4
 export function trackCtaClick(ctaType: string, position: string, text: string) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'cta_click', {
+  pushToDataLayer('cta_click', {
     cta_type: ctaType,
     cta_position: position,
     cta_text: text,
   })
 }
 
-// service_view → GA4 + Meta ViewContent
+// service_view → GTM/GA4 + Meta ViewContent
 export function trackServiceView() {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'service_view', {
+  pushToDataLayer('service_view', {
     scroll_depth: Math.round((window.scrollY / document.body.scrollHeight) * 100),
   })
   window.fbq?.('track', 'ViewContent', {
@@ -62,19 +70,19 @@ export function trackServiceView() {
   })
 }
 
-// scroll_depth → GA4 (disparar a 25, 50, 75, 100%)
+// scroll_depth → GTM/GA4 (disparar a 25, 50, 75, 100%)
 export function trackScrollDepth(percentage: number) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'scroll_depth', {
+  pushToDataLayer('scroll_depth', {
     page_type: window.location.pathname === '/' ? 'home' : 'auditoria',
     scroll_percentage: percentage,
   })
 }
 
-// form_error → GA4
+// form_error → GTM/GA4
 export function trackFormError(fieldName: string) {
   if (typeof window === 'undefined') return
-  window.gtag?.('event', 'form_error', {
+  pushToDataLayer('form_error', {
     form_type: 'auditoria',
     error_type: 'validation',
     field_error: fieldName,

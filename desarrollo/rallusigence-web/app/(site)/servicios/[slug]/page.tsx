@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import Link from 'next/link'
 import { SERVICIOS, getServicio } from '@/lib/servicios'
 import WhatsAppCta from '@/components/ui/WhatsAppCta'
 import styles from './page.module.css'
@@ -31,6 +32,11 @@ export default async function ServicioPage({ params }: { params: Promise<{ slug:
   const s = getServicio(slug)
   if (!s) return null
 
+  // Extrae el precio numérico de strings como "Desde $6,000 MXN" —
+  // si el servicio es "A cotizar" no hay precio fijo, se omite el Offer.
+  const precioMatch = s.precio.match(/\$([\d,]+)/)
+  const precioNumero = precioMatch ? Number(precioMatch[1].replace(/,/g, '')) : null
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -41,6 +47,9 @@ export default async function ServicioPage({ params }: { params: Promise<{ slug:
         provider: { '@type': 'ProfessionalService', name: 'Rallusigence', url: 'https://rallusigence.net' },
         areaServed: { '@type': 'Country', name: 'Mexico' },
         url: `https://rallusigence.net/servicios/${s.slug}`,
+        ...(precioNumero !== null && {
+          offers: { '@type': 'Offer', priceCurrency: 'MXN', price: precioNumero },
+        }),
       },
       {
         '@type': 'FAQPage',
@@ -49,6 +58,14 @@ export default async function ServicioPage({ params }: { params: Promise<{ slug:
           name: f.q,
           acceptedAnswer: { '@type': 'Answer', text: f.a },
         })),
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://rallusigence.net' },
+          { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://rallusigence.net/servicios' },
+          { '@type': 'ListItem', position: 3, name: s.nombre, item: `https://rallusigence.net/servicios/${s.slug}` },
+        ],
       },
     ],
   }
@@ -63,7 +80,7 @@ export default async function ServicioPage({ params }: { params: Promise<{ slug:
           <div className={styles.heroInner}>
             <img src={s.kiwi} alt="" aria-hidden="true" className={styles.kiwi} width={130} height={130} />
             <p className={styles.crumb}>
-              <a href="/servicios">Servicios</a> › {s.nombre}
+              <Link href="/servicios">Servicios</Link> › {s.nombre}
             </p>
             <h1 className="rs-h1">{s.titulo}</h1>
             <p className={styles.bajada}>{s.bajada}</p>
@@ -75,9 +92,9 @@ export default async function ServicioPage({ params }: { params: Promise<{ slug:
               <WhatsAppCta location={`servicio-${s.slug}`} message={s.ctaMsg} className="rs-btn rs-btn--primary rs-btn--lg">
                 Cotizar por WhatsApp
               </WhatsAppCta>
-              <a href="/auditoria-gratis" className="rs-btn rs-btn--ghost rs-btn--lg">
+              <Link href="/auditoria-gratis" className="rs-btn rs-btn--ghost rs-btn--lg">
                 Auditoría gratis primero
-              </a>
+              </Link>
             </div>
           </div>
         </div>

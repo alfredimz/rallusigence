@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import styles from './IntroOverlay.module.css'
 
 const KEY = 'rs_intro_shown'
@@ -18,6 +19,20 @@ export default function IntroOverlay() {
   const [line2, setLine2] = useState(false)
   const [line3, setLine3] = useState(false)
   const [showCta, setShowCta] = useState(false)
+
+  const skipBtnRef = useRef<HTMLButtonElement>(null)
+  const dismissTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const dismiss = () => {
+    setFading(true)
+    dismissTimerRef.current = setTimeout(() => {
+      setDone(true)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(KEY, new Date().toDateString())
+        markIntroDone()
+      }
+    }, 400) // tiempo del fade-out
+  }
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -42,7 +57,7 @@ export default function IntroOverlay() {
     setVisible(true)
 
     // Secuencia de animaciones
-    const timers: NodeJS.Timeout[] = []
+    const timers: ReturnType<typeof setTimeout>[] = []
 
     // Línea 1: 0ms
     timers.push(setTimeout(() => setLine1(true), 0))
@@ -60,25 +75,32 @@ export default function IntroOverlay() {
     timers.push(setTimeout(() => dismiss(), 5500))
 
     return () => {
-      timers.forEach(timer => clearTimeout(timer))
+      timers.forEach((timer) => clearTimeout(timer))
+      if (dismissTimerRef.current) clearTimeout(dismissTimerRef.current)
     }
   }, [])
 
-  const dismiss = () => {
-    setFading(true)
-    setTimeout(() => {
-      setDone(true)
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(KEY, new Date().toDateString())
-        markIntroDone()
-      }
-    }, 400) // tiempo del fade-out
-  }
+  // Foco inicial en "Saltar" y cierre con Escape (accesibilidad de diálogo modal)
+  useEffect(() => {
+    if (!visible || done) return
+    skipBtnRef.current?.focus()
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') dismiss()
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [visible, done])
 
   if (done) return null
 
   return (
-    <div className={`${styles.overlay} ${fading ? styles.fading : ''}`}>
+    <div
+      className={`${styles.overlay} ${fading ? styles.fading : ''}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Bienvenida a Rallusigence"
+    >
       <div className={styles.content}>
         <div className={`${styles.line1} ${line1 ? styles.visible : ''}`}>
           ¿Tu negocio no aparece en Google?
@@ -93,13 +115,13 @@ export default function IntroOverlay() {
         </div>
 
         <div className={`${styles.ctaWrap} ${showCta ? styles.visible : ''}`}>
-          <a href="/#paquetes" className={styles.cta} onClick={dismiss}>
+          <Link href="/#paquetes" className={styles.cta} onClick={dismiss}>
             Ver paquetes →
-          </a>
+          </Link>
         </div>
       </div>
 
-      <button className={styles.skipBtn} onClick={dismiss} aria-label="Saltar intro">
+      <button ref={skipBtnRef} className={styles.skipBtn} onClick={dismiss} aria-label="Saltar intro">
         Saltar
       </button>
     </div>

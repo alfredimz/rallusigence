@@ -1,0 +1,507 @@
+.main {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* === Breadcrumb === */
+.breadcrumb {
+  padding: 24px 24px 0;
+  font-size: var(--text-small);
+}
+
+.breadcrumbLink {
+  color: var(--rs-primary-text);
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: var(--color-fg-muted);
+}
+
+.breadcrumbCurrent {
+  color: var(--color-fg-muted);
+}
+
+/* === Hero editorial === */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  align-items: center;
+  gap: 48px;
+  padding-top: 48px;
+  padding-bottom: 72px;
+}
+
+.h1 {
+  font-size: 56px;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+
+.heroLead {
+  margin-top: 22px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--color-fg-muted);
+  max-width: 54ch;
+}
+
+.heroKiwi {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  justify-self: end;
+  filter: drop-shadow(0 24px 30px rgba(15,110,99,0.18));
+}
+
+/* === Línea de tiempo === */
+.historia {
+  background: var(--rs-bg-soft);
+  border-top: 1px solid var(--rs-border-soft);
+}
+
+.historia > div {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.timeline {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  position: relative;
+  max-width: 880px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 118px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--rs-primary) 0%, rgba(32,180,177,0.15) 100%);
+}
+
+.hito {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 48px;
+  padding: 0 0 48px;
+  position: relative;
+}
+
+.hito:last-child {
+  padding-bottom: 0;
+}
+
+.hito::before {
+  content: '';
+  position: absolute;
+  left: 113px;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--rs-primary);
+  box-shadow: 0 0 0 4px var(--rs-bg-soft);
+}
+
+.anio {
+  font-family: var(--font-elegant);
+  font-weight: var(--weight-bold);
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-fg);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.hitoBody {
+  padding-top: 6px;
+}
+
+.hitoTitulo {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--color-fg);
+}
+
+.hitoTexto {
+  margin-top: 8px;
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg-muted);
+  max-width: 58ch;
+}
+
+/* === Cifras === */
+.cifras {
+  background: #fff;
+  border-top: 1px solid var(--rs-border-soft);
+  border-bottom: 1px solid var(--rs-border-soft);
+}
+
+.cifrasRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-width: 0;
+  gap: 32px;
+  margin: 0 auto;
+}
+
+.cifra {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-right: 24px;
+}
+
+.cifra + .cifra {
+  border-left: 1px solid var(--rs-border-soft);
+  padding-left: 24px;
+}
+
+.cifraValor {
+  margin: 0;
+  font-family: var(--font-elegant);
+  font-weight: var(--weight-bold);
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--rs-primary-text);
+  order: 1;
+}
+
+.cifraEtiqueta {
+  order: 2;
+  margin-top: 4px;
+  font-size: var(--text-small);
+  line-height: 1.4;
+  font-weight: var(--weight-medium);
+  color: var(--color-fg);
+}
+
+.cifraFuente {
+  order: 3;
+  margin: 2px 0 0;
+  display: block;
+  overflow-wrap: anywhere;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-regular);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--color-fg-subtle);
+}
+
+/* === Valores + Lo que no somos === */
+.valoresSection {
+  background: #fff;
+}
+
+.valoresGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 72px;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.valores {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 28px;
+}
+
+.valorTitulo {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--color-fg);
+}
+
+.valorTexto {
+  margin-top: 8px;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--color-fg-muted);
+}
+
+.noSomos {
+  background: var(--rs-bg-soft);
+  border-radius: 16px;
+  padding: 36px;
+  align-self: start;
+}
+
+.noSomosTitulo {
+  font-size: 28px;
+}
+
+.noLista {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.noItem {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--color-fg);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.noItem:last-child {
+  border-bottom: none;
+}
+
+.noIcon {
+  flex-shrink: 0;
+  color: var(--rs-red-soft);
+  margin-top: 2px;
+}
+
+/* === Cómo operamos (callout ámbar, mismo lenguaje que "Importante") === */
+.operamosWrap {
+  background: #fff;
+}
+
+.operamos {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 28px 32px;
+  background: rgba(248, 184, 78, 0.09);
+  border-left: 4px solid #F8B84E;
+  border-radius: 0 12px 12px 0;
+}
+
+.operamosLabel {
+  font-weight: var(--weight-bold);
+  font-size: var(--text-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #a97817;
+  margin-bottom: 8px;
+}
+
+.operamosTitulo {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-fg);
+}
+
+.operamosTexto {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-fg);
+}
+
+/* === CTA final === */
+.cta {
+  background: linear-gradient(135deg, var(--rs-primary-text) 0%, #0b4f47 100%);
+  color: #fff;
+}
+
+.ctaInner {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.ctaTitulo {
+  color: #fff;
+  max-width: 20ch;
+}
+
+.ctaTexto {
+  margin-top: 14px;
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  color: rgba(255,255,255,0.82);
+  max-width: 48ch;
+}
+
+.ctaActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.ctaBtnLight {
+  background: #fff;
+  color: var(--rs-primary-text);
+}
+
+.ctaBtnLight:hover {
+  background: #f1f7f6;
+}
+
+.ctaBtnGhost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.7);
+}
+
+.ctaBtnGhost:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.ctaBtnLight:focus-visible,
+.ctaBtnGhost:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .h1 {
+    font-size: 44px;
+  }
+  .hero {
+    gap: 32px;
+  }
+  .heroKiwi {
+    max-width: 220px;
+  }
+  .historia > div,
+  .valoresGrid {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+  .valoresGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .cifrasRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+  .cifra + .cifra {
+    border-left: none;
+    padding-left: 0;
+  }
+  .cifra:nth-child(even) {
+    border-left: 1px solid var(--rs-border-soft);
+    padding-left: 24px;
+  }
+  .ctaInner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumb {
+    padding: 16px 16px 0;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 28px;
+    padding-bottom: 40px;
+  }
+  .h1 {
+    font-size: 34px;
+    max-width: none;
+  }
+  .heroLead {
+    font-size: 16px;
+    margin-top: 14px;
+  }
+  .heroKiwi {
+    max-width: 140px;
+    order: -1;
+    justify-self: end;
+    filter: none;
+  }
+  .historia > div,
+  .valoresGrid {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+  .timeline {
+    margin-top: 28px;
+  }
+  .timeline::before {
+    left: 11px;
+  }
+  .hito {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 0 0 32px 36px;
+  }
+  .hito::before {
+    left: 6px;
+    top: 10px;
+  }
+  .anio {
+    text-align: left;
+    font-size: 36px;
+  }
+  .hitoBody {
+    padding-top: 0;
+  }
+  .hitoTitulo {
+    font-size: 18px;
+  }
+  .cifrasRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+  .cifraValor {
+    font-size: 36px;
+    gap: 6px;
+  }
+  .cifra {
+    padding-right: 0;
+  }
+  .cifra:nth-child(even) {
+    padding-left: 16px;
+  }
+  .valores {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .noSomos {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+  .noSomosTitulo {
+    font-size: 24px;
+  }
+  .operamos {
+    padding: 20px 18px;
+  }
+  .operamosTitulo {
+    font-size: 19px;
+  }
+  .ctaTitulo {
+    max-width: none;
+  }
+}

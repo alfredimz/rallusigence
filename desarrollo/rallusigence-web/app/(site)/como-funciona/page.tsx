@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -21,7 +22,7 @@ export default function ComoFuncionaPage() {
       {/* Breadcrumb */}
       <nav aria-label="Navegación" className={`section-wrapper ${styles.breadcrumb}`}>
         <div className={styles.breadcrumbWrapper}>
-          <a href="/" className={styles.breadcrumbLink}>Inicio</a>
+          <Link href="/" className={styles.breadcrumbLink}>Inicio</Link>
           <span className={styles.breadcrumbSeparator}>›</span>
           <span className={styles.breadcrumbCurrent}>Cómo funciona</span>
         </div>
@@ -65,8 +66,8 @@ export default function ComoFuncionaPage() {
               <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>Pagas el 50%</h3>
                 <p className={styles.stepDescription}>
-                  Generás un código de retiro desde tu app bancaria por el 50% del paquete.
-                  Nos lo compartís. En ese momento arrancamos.
+                  Pagas el 50% del paquete para arrancar (con un código de retiro desde tu app
+                  bancaria). En ese momento empezamos.
                 </p>
                 <div className={styles.stepTime}>
                   💳 Inmediato
@@ -80,7 +81,7 @@ export default function ComoFuncionaPage() {
                 <h3 className={styles.stepTitle}>Construimos en días</h3>
                 <p className={styles.stepDescription}>
                   Con IA y experiencia, construimos tu sitio mientras tú sigues atendiendo tu negocio.
-                  Te mandamos avances para que lo veas.
+                  Te mandamos avances y tienes 2 rondas de cambios antes de la entrega.
                 </p>
                 <div className={styles.stepTime}>
                   ⚙️ 3-12 días según el paquete
@@ -94,7 +95,8 @@ export default function ComoFuncionaPage() {
                 <h3 className={styles.stepTitle}>Te entregamos todo</h3>
                 <p className={styles.stepDescription}>
                   El sitio va a tu hosting, tu dominio queda en tus cuentas, recibes el código completo.
-                  Pagas el 50% restante. El sitio es tuyo para siempre.
+                  Pagas el 50% restante. Cambios menores sin costo los primeros 15 días. El sitio es
+                  tuyo para siempre.
                 </p>
                 <div className={styles.stepTime}>
                   🚀 Desde el primer día
@@ -114,7 +116,9 @@ export default function ComoFuncionaPage() {
 
           <div className={styles.paymentExplanation}>
             <p className={styles.paymentIntro}>
-              Manejamos pagos por <strong>retiro sin tarjeta en cajero automático</strong>.
+              Cobramos en dos partes: <strong>50% para arrancar y 50% al entregar</strong>. Si el sitio no
+              cumple lo acordado, lo corregimos antes de cobrar el segundo 50%. El pago se hace por
+              <strong>retiro sin tarjeta en cajero automático</strong>.
             </p>
             <p className={styles.paymentReason}>
               Somos un equipo de profesionistas independientes. Al trabajar fuera de la estructura
@@ -132,11 +136,11 @@ export default function ComoFuncionaPage() {
               </div>
               <div className={`${styles.paymentStep} reveal reveal--delay-1`}>
                 <div className={styles.paymentStepNumber}>2</div>
-                <p>Generás un código de retiro desde tu app bancaria (BBVA, Banorte, HSBC, Santander, etc.)</p>
+                <p>Generas un código de retiro desde tu app bancaria (BBVA, Banorte, HSBC, Santander, etc.)</p>
               </div>
               <div className={`${styles.paymentStep} reveal reveal--delay-2`}>
                 <div className={styles.paymentStepNumber}>3</div>
-                <p>Nos compartís los dígitos</p>
+                <p>Nos compartes los dígitos</p>
               </div>
               <div className={`${styles.paymentStep} reveal reveal--delay-3`}>
                 <div className={styles.paymentStepNumber}>4</div>
@@ -165,9 +169,9 @@ export default function ComoFuncionaPage() {
             ¿Listo para empezar?
           </h2>
           <div className={styles.ctaActions}>
-            <a href="/#contacto" className="rs-btn rs-btn--ghost" style={{ backgroundColor: '#fff', color: 'var(--rs-primary)', borderColor: '#fff' }}>
+            <Link href="/#contacto" className="rs-btn rs-btn--ghost" style={{ backgroundColor: '#fff', color: 'var(--rs-primary-text)', borderColor: '#fff' }}>
               Solicitar auditoría gratis
-            </a>
+            </Link>
           </div>
         </div>
       </section>

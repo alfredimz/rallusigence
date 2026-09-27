@@ -3,258 +3,347 @@
   background-color: var(--color-bg);
 }
 
-/* Breadcrumb */
+/* === Breadcrumb === */
 .breadcrumb {
   padding: 24px 24px 0;
-  background-color: var(--rs-bg-soft);
-}
-
-.breadcrumbWrapper {
-  max-width: var(--container-max);
-  margin: 0 auto;
+  font-size: var(--text-small);
 }
 
 .breadcrumbLink {
-  color: var(--rs-primary);
+  color: var(--rs-primary-text);
   text-decoration: none;
-  font-size: var(--text-small);
-  transition: color 0.2s ease;
 }
 
 .breadcrumbLink:hover {
-  color: var(--rs-primary-dark);
+  text-decoration: underline;
 }
 
 .breadcrumbSeparator {
   margin: 0 8px;
   color: var(--color-fg-muted);
-  font-size: var(--text-small);
 }
 
 .breadcrumbCurrent {
   color: var(--color-fg-muted);
-  font-size: var(--text-small);
 }
 
-/* Hero Section */
-.heroWrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.heroDescription {
-  margin-top: 16px;
-  font-size: 18px;
-  color: var(--color-fg-muted);
-  line-height: 1.6;
-}
-
-@media (max-width: 767px) {
-  .heroDescription {
-    font-size: 16px;
-  }
-}
-
-/* Cases Section */
-.casesSection {
-  background-color: var(--rs-bg-soft);
-}
-
-.casesGrid {
+/* === Hero editorial === */
+.hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 32px;
-  max-width: 1000px;
-  margin: 0 auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-@media (max-width: 480px) {
-  .casesGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
+.heroText {
+  max-width: 720px;
 }
 
-.caseCard {
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: var(--transition-base);
+.h1 {
+  font-size: 56px;
+  text-wrap: balance;
 }
 
-.caseCard:hover {
-  border-color: var(--rs-primary);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
+.heroLead {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-fg-muted);
+  max-width: 62ch;
 }
 
-.caseImagePlaceholder {
+.heroKiwi {
+  width: 180px;
   height: 180px;
-  background: linear-gradient(135deg, rgba(32,180,177,0.1), rgba(32,180,177,0.2));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: -8px;
 }
 
-.caseContent {
-  padding: 24px;
+/* === Cabeceras de sección === */
+.sectionHead {
+  max-width: 720px;
+  margin-bottom: 36px;
 }
 
-.caseHeader {
-  margin-bottom: 20px;
-}
-
-.caseTitle {
-  margin: 0 0 4px 0;
-  font-family: var(--font-primary);
-  font-weight: var(--weight-semibold);
-  font-size: 20px;
-  color: var(--color-fg);
-}
-
-.caseType {
-  font-size: var(--text-small);
-  color: var(--rs-primary);
-  font-weight: var(--weight-medium);
-  margin-bottom: 2px;
-}
-
-.caseLocation {
-  font-size: var(--text-micro);
+.sectionLead {
+  margin-top: 14px;
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
   color: var(--color-fg-muted);
 }
 
-.caseDetails {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 20px;
+/* === Demos === */
+.demosSection {
+  background: var(--rs-bg-soft);
+  border-top: 1px solid var(--rs-border-soft);
 }
 
-.caseDetail {
+.demosSection > div {
+  padding-top: 72px;
+  padding-bottom: 96px;
+}
+
+/* === Trayectoria: mosaico === */
+.casosSection {
+  background: #fff;
+}
+
+.casosSection > div {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.mosaico {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.caso {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  scroll-margin-top: 96px;
+  transition: box-shadow var(--duration-normal) var(--ease-out-cubic), border-color var(--duration-normal) ease-in-out;
 }
 
-.caseDetailLabel {
-  font-size: var(--text-micro);
-  color: var(--color-fg-muted);
-  font-weight: var(--weight-medium);
+.caso:hover {
+  border-color: rgba(32,180,177,0.4);
+  box-shadow: 0 14px 34px -16px rgba(15,110,99,0.3);
 }
 
-.caseDetailValue {
-  font-size: var(--text-small);
-  color: var(--color-fg);
-  font-weight: var(--weight-semibold);
+.casoGrande {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
-.caseResult {
-  background-color: var(--rs-bg-soft);
-  border-radius: var(--radius-sm);
-  padding: 16px;
-  text-align: center;
-  margin-bottom: 16px;
+.casoMedia {
+  aspect-ratio: 16 / 10;
+  background: var(--rs-bg-soft);
+  overflow: hidden;
+  border-bottom: 1px solid var(--rs-border-soft);
 }
 
-.caseResultNumber {
-  font-family: var(--font-primary);
-  font-weight: var(--weight-bold);
-  font-size: 28px;
-  color: var(--rs-primary);
-  line-height: 1;
+.casoGrande .casoMedia {
+  aspect-ratio: 16 / 11;
 }
 
-.caseResultText {
-  font-size: var(--text-small);
-  color: var(--color-fg);
-  margin-top: 4px;
+.casoMedia img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
-.caseDescription {
-  margin: 0;
-  font-size: 14px;
-  color: var(--color-fg-muted);
-  line-height: 1.5;
-}
-
-/* Note Section */
-.noteSection {
-  background-color: var(--color-bg);
-}
-
-.noteWrapper {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.noteCard {
-  padding: 32px;
-  background-color: var(--color-bg);
-  border: 2px dashed var(--rs-border-soft);
-  border-radius: var(--radius-md);
-  text-align: center;
-}
-
-.noteTitle {
-  margin: 0 0 16px 0;
-  font-family: var(--font-primary);
-  font-weight: var(--weight-semibold);
-  font-size: 18px;
-  color: var(--color-fg);
-}
-
-.noteText {
-  margin: 0 0 24px 0;
-  font-size: 15px;
-  color: var(--color-fg-muted);
-  line-height: 1.5;
-}
-
-.noteActions {
+.casoBody {
+  padding: 14px 16px 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.casoGrande .casoBody {
+  padding: 20px 22px 22px;
+}
+
+.casoGiro {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  color: var(--rs-primary-text);
+}
+
+.casoNombre {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-semibold);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--color-fg);
+}
+
+.casoGrande .casoNombre {
+  font-size: 22px;
+}
+
+.casoResumen {
+  margin-top: 6px;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--color-fg-muted);
+}
+
+.logros {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.logros li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-fg-muted);
+}
+
+.logros li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rs-primary);
+}
+
+.casoLink {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--rs-primary-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  width: fit-content;
+}
+
+/* === Cierre === */
+.cierre {
+  background: linear-gradient(180deg, var(--rs-bg-soft) 0%, rgba(32,180,177,0.06) 100%);
+  border-top: 1px solid var(--rs-border-soft);
+}
+
+.cierreGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.cierreText {
+  max-width: 480px;
+}
+
+.cierreActions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cierreTestimonios {
+  display: grid;
+  gap: 18px;
+}
+
+.cierreTestimonios > div:nth-child(2) {
+  margin-left: 48px;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .h1 {
+    font-size: 44px;
+  }
+  .mosaico {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .demosSection > div,
+  .casosSection > div {
+    padding-top: 64px;
+    padding-bottom: 72px;
+  }
+  .cierreGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .cierreTestimonios > div:nth-child(2) {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 767px) {
-  .caseCard {
-    border-radius: var(--radius-sm);
+  .breadcrumb {
+    padding: 16px 16px 0;
   }
-
-  .caseContent {
-    padding: 20px;
-  }
-
-  .caseDetails {
+  .hero {
+    grid-template-columns: 1fr;
     gap: 16px;
+    padding-top: 28px;
+    padding-bottom: 32px;
   }
-
-  .caseResult {
+  .h1 {
+    font-size: 34px;
+  }
+  .heroLead {
+    font-size: 16px;
+    margin-top: 14px;
+  }
+  .heroKiwi {
+    width: 96px;
+    height: 96px;
+    margin: 0;
+    justify-self: end;
+    order: -1;
+  }
+  .sectionHead {
+    margin-bottom: 24px;
+  }
+  .demosSection > div,
+  .casosSection > div {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+  .mosaico {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .casoGrande {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .casoGrande .casoMedia {
+    aspect-ratio: 16 / 10;
+  }
+  .casoBody {
     padding: 12px;
   }
-
-  .caseResultNumber {
-    font-size: 24px;
+  .casoGrande .casoBody {
+    padding: 16px;
   }
-
-  .noteCard {
-    padding: 24px;
+  .casoNombre {
+    font-size: 15px;
   }
-
-  .casesGrid {
-    grid-template-columns: 1fr;
+  .caso:not(.casoGrande) .logros li:nth-child(2) {
+    display: none;
+  }
+  .cierreActions .rs-btn {
+    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .caseImagePlaceholder {
-    height: 140px;
+@media (max-width: 420px) {
+  .mosaico {
+    grid-template-columns: 1fr;
   }
-
-  .noteCard {
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
+  .casoGrande {
+    grid-column: auto;
+  }
+  .caso:not(.casoGrande) .logros li:nth-child(2) {
+    display: block;
   }
 }

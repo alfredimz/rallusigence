@@ -131,7 +131,7 @@
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
 }
-.benefitIcon { animation: iconPop 0.45s var(--ease-bounce) both; }
+.benefitIcon { animation: iconPop 0.45s var(--ease-out-cubic) both; }
 .benefit:nth-child(1) .benefitIcon { animation-delay: 0.75s; }
 .benefit:nth-child(2) .benefitIcon { animation-delay: 1.15s; }
 .benefit:nth-child(3) .benefitIcon { animation-delay: 1.55s; }

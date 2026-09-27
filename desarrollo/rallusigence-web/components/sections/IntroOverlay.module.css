@@ -74,7 +74,7 @@
   gap: 8px;
   height: 48px;
   padding: 12px 32px;
-  background-color: #20B4B1;
+  background-color: var(--rs-primary-text);
   color: #ffffff;
   font-family: var(--font-primary);
   font-weight: var(--weight-semibold);

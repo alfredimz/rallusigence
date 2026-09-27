@@ -1,0 +1,41 @@
+# Rallusigence
+
+Rallusigence es una agencia mexicana fundada en 2015 (antes Kiwinet y Apterynet) que construye sitios web profesionales con IA supervisada por especialistas, con precio fijo y sin mensualidades. 66 negocios atendidos y más de 50 sitios construidos desde 2015.
+
+## Precios
+
+- Lanzamiento: $6,000 MXN — entrega en 3 días. Landing de 1 página.
+- Profesional: $12,000 MXN — entrega en 7 días. Sitio de varias páginas con blog y Analytics.
+- Avanzado: $20,000 MXN — entrega en 12 días. Todo lo anterior + tienda online + WhatsApp integrado.
+
+Sin mensualidades: el sitio se entrega en las cuentas del cliente (hosting, dominio y código fuente), no en las de Rallusigence.
+
+## Enlaces
+
+- Servicios: https://rallusigence.net/servicios
+- Paquetes: https://rallusigence.net/paquetes
+- Cómo funciona: https://rallusigence.net/como-funciona
+- Portafolio y demos por giro (18 demos): https://rallusigence.net/portafolio
+- Nosotros (historia desde 2015): https://rallusigence.net/nosotros
+- Blog: https://rallusigence.net/blog
+- Auditoría gratis: https://rallusigence.net/auditoria-gratis
+
+## Preguntas frecuentes
+
+P: ¿Cuánto cuesta un sitio web con Rallusigence?
+R: Precio fijo desde $6,000 MXN (paquete Lanzamiento), $12,000 MXN (Profesional) o $20,000 MXN (Avanzado). Sin cotizaciones ni extras sorpresa.
+
+P: ¿En cuánto tiempo entregan el sitio?
+R: Entre 3 y 12 días hábiles según el paquete, contados desde que el cliente entrega su información completa.
+
+P: ¿Quién es dueño del dominio y el hosting?
+R: El cliente. Dominio, hosting y código fuente quedan registrados en sus propias cuentas desde el primer día.
+
+P: ¿Cobran mensualidad?
+R: No. Se paga una sola vez por la construcción del sitio. El hosting (Firebase) tiene capa gratuita y el dominio se paga aparte, directo al proveedor.
+
+P: ¿Qué pasa si no me gusta el resultado?
+R: Se corrige sin costo antes de cobrar el 50% restante del pago. Incluye 2 rondas de cambios antes de entregar y cambios menores sin costo los primeros 15 días.
+
+P: ¿Desde cuándo existe Rallusigence?
+R: La agencia opera desde octubre de 2015 en Ciudad de México, primero como Kiwinet, después como Apterynet y desde 2026 como Rallusigence.

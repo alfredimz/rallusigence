@@ -4,7 +4,7 @@ import styles from './page.module.css'
 
 export const metadata = {
   title: 'Blog — Sitios web e IA para tu negocio | Rallusigence',
-  description: 'Artículos sobre sitios web, IA y marketing digital para PYMEs mexicanas.',
+  description: 'Artículos sobre sitios web, IA y marketing digital para negocios mexicanos.',
 }
 
 function formatDate(dateString: string): string {

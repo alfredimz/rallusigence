@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function StickyCTA() {
   const [visible, setVisible] = useState(false)
@@ -15,12 +16,12 @@ export default function StickyCTA() {
   }, [])
 
   return (
-    <a
+    <Link
       href="/#paquetes"
       className={`btn-sticky ${visible ? 'btn-sticky--visible' : ''}`}
       aria-label="Ver paquetes"
     >
       Ver paquetes
-    </a>
+    </Link>
   )
 }

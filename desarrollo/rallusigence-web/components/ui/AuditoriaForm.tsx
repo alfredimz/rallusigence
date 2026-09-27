@@ -1,117 +1,21 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import FormField from '@/components/ui/FormField'
-import { trackFormSubmit, trackFormError } from '@/lib/analytics'
+import { useLeadForm } from '@/lib/useLeadForm'
+import { FORMSPREE } from '@/lib/contacto'
 import styles from './AuditoriaForm.module.css'
-
-interface FormData {
-  name: string
-  business: string
-  whatsapp: string
-}
-
-interface FormErrors {
-  name?: string
-  business?: string
-  whatsapp?: string
-  submit?: string
-}
-
-type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export default function AuditoriaForm() {
   const router = useRouter()
 
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    business: '',
-    whatsapp: ''
+  const { formData, errors, status, handleInputChange, handleSubmit } = useLeadForm({
+    endpoint: FORMSPREE.auditoria,
+    formType: 'auditoria_landing',
+    messageLabel: 'Solicitud de auditoría gratis',
+    extraFields: { source: 'auditoría-gratis' },
+    onSuccess: () => router.push('/gracias'),
   })
-
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [status, setStatus] = useState<FormStatus>('idle')
-
-  const validateForm = (): FormErrors => {
-    const newErrors: FormErrors = {}
-
-    // Nombre mínimo 2 caracteres
-    if (!formData.name.trim() || formData.name.trim().length < 2) {
-      newErrors.name = 'El nombre debe tener al menos 2 caracteres'
-    }
-
-    // Tipo de negocio mínimo 2 caracteres
-    if (!formData.business.trim() || formData.business.trim().length < 2) {
-      newErrors.business = 'Describe tu tipo de negocio'
-    }
-
-    // WhatsApp 10 dígitos mexicanos
-    const whatsappDigits = formData.whatsapp.replace(/\D/g, '')
-    if (!whatsappDigits || whatsappDigits.length !== 10) {
-      newErrors.whatsapp = 'Ingresa un número de WhatsApp de 10 dígitos'
-    }
-
-    return newErrors
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    const formErrors = validateForm()
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors)
-      // Track error del primer campo con error
-      const firstErrorField = Object.keys(formErrors)[0]
-      if (firstErrorField !== 'submit') {
-        trackFormError(firstErrorField)
-      }
-      return
-    }
-
-    setErrors({})
-    setStatus('loading')
-
-    try {
-      const response = await fetch('https://formspree.io/f/mppaojqk', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          business: formData.business.trim(),
-          whatsapp: formData.whatsapp.trim(),
-          message: `Solicitud de auditoría gratis desde ${window.location.hostname}/auditoria-gratis`,
-          source: 'auditoría-gratis'
-        })
-      })
-
-      if (response.ok) {
-        setStatus('success')
-        // Track form submission
-        trackFormSubmit('auditoria_landing')
-        // Redirect a página de gracias
-        router.push('/gracias')
-      } else {
-        setStatus('error')
-        setErrors({ submit: 'Error al enviar — intenta de nuevo' })
-      }
-    } catch (error) {
-      setStatus('error')
-      setErrors({ submit: 'Error al enviar — intenta de nuevo' })
-    }
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-
-    // Limpiar error del campo al empezar a escribir
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }))
-    }
-  }
 
   return (
     <div className={styles.formContainer}>

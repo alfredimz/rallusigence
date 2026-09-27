@@ -4,7 +4,8 @@ import { useRef, useEffect } from 'react'
 import { Check } from 'lucide-react'
 
 interface ServiceCardProps {
-  icon: React.ReactNode
+  id?: string
+  icon?: React.ReactNode
   title: string
   description: string
   price: string
@@ -18,6 +19,7 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({
+  id,
   icon,
   title,
   description,
@@ -98,7 +100,7 @@ export default function ServiceCard({
   }, [price])
 
   return (
-    <div className={cardClasses} ref={cardRef}>
+    <div className={cardClasses} ref={cardRef} id={id}>
       {mascot && (
         <img
           src={mascot}
@@ -110,16 +112,17 @@ export default function ServiceCard({
           loading="lazy"
         />
       )}
-      {/* Icon */}
-      <div
-        style={{
-          fontSize: '24px',
-          color: featured ? '#fff' : 'var(--rs-primary)',
-          marginBottom: '16px'
-        }}
-      >
-        {icon}
-      </div>
+      {icon && (
+        <div
+          style={{
+            fontSize: '24px',
+            color: featured ? '#fff' : 'var(--rs-primary)',
+            marginBottom: '16px'
+          }}
+        >
+          {icon}
+        </div>
+      )}
 
       {/* Title */}
       <h3
@@ -197,8 +200,10 @@ export default function ServiceCard({
         className="price-tag"
         style={{
           marginBottom: '8px',
-          backgroundColor: featured ? 'rgba(255, 255, 255, 0.2)' : 'rgba(32, 180, 177, 0.1)',
-          color: featured ? '#fff' : 'var(--rs-primary)'
+          // Featured: overlay oscuro (no translúcido claro) para que el texto
+          // blanco mantenga ≥4.5:1 sobre cualquier punto del gradiente teal.
+          backgroundColor: featured ? 'rgba(0, 0, 0, 0.32)' : 'rgba(32, 180, 177, 0.1)',
+          color: featured ? '#fff' : 'var(--rs-primary-text)'
         }}
       >
         {price}
@@ -227,7 +232,7 @@ export default function ServiceCard({
         style={featured ? {
           alignSelf: 'flex-start',
           backgroundColor: '#fff',
-          color: 'var(--rs-primary)',
+          color: 'var(--rs-primary-text)',
           borderColor: '#fff'
         } : undefined}
       >

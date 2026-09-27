@@ -16,7 +16,13 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
+}
+
+@media (max-width: 1180px) {
+  .nav {
+    gap: 20px;
+  }
 }
 
 .navLink {
@@ -34,11 +40,14 @@
 
 .hamburger {
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  margin: -8px;
+  margin: -10px -10px -10px 0;
   color: var(--color-fg);
   transition: color var(--duration-fast) ease-in-out;
 }
@@ -111,18 +120,25 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mobileOverlay {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 /* Responsive breakpoints */
 .desktopCta {
   margin-left: 24px;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .desktopCta {
     display: none;
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .nav {
     display: none;
   }
