@@ -35,7 +35,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'SIPSAA',
     giro: 'Despacho contable',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-analista.svg'
+    kiwi: '/assets/kiwis/kiwi-tiempo.svg'
   },
   {
     id: 'eduardo-jea',
@@ -62,7 +62,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'SEM',
     giro: 'Mantenimiento y desazolve de drenajes',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-desarrollo.svg'
+    kiwi: '/assets/kiwis/kiwi-dominios.svg'
   },
   {
     id: 'jacinto-hands',
@@ -81,7 +81,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Consultorio de terapia',
     anio: 2019,
     casoSlug: 'liquen',
-    kiwi: '/assets/kiwis/kiwi-buho.svg'
+    kiwi: '/assets/kiwis/kiwi-pintor.svg'
   },
   {
     id: 'mary-acacnx',
@@ -129,7 +129,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'Perfecciona',
     giro: 'Consultoría empresarial',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-analista.svg'
+    kiwi: '/assets/kiwis/kiwi-tiempo.svg'
   },
   {
     id: 'elsa-sactei',
@@ -139,7 +139,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Automatización industrial y suministros',
     anio: 2019,
     casoSlug: 'sactei',
-    kiwi: '/assets/kiwis/kiwi-desarrollo.svg'
+    kiwi: '/assets/kiwis/kiwi-dominios.svg'
   },
   {
     id: 'pio-solfog',
@@ -149,7 +149,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Cosméticos y cuidado de la piel (marca coreana)',
     anio: 2019,
     casoSlug: 'solfog',
-    kiwi: '/assets/kiwis/kiwi-carrito.svg'
+    kiwi: '/assets/kiwis/kiwi-tiendita.svg'
   },
   {
     id: 'raul-ibroken',
@@ -195,7 +195,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Seguridad privada',
     anio: 2019,
     casoSlug: 'seprimex',
-    kiwi: '/assets/kiwis/kiwi-huellas.svg'
+    kiwi: '/assets/kiwis/kiwi-base.svg'
   }
 ]
 

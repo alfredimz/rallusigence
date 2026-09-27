@@ -22,6 +22,7 @@ export default function ScrollKiwi() {
       const p = max > 0 ? Math.min(1, window.scrollY / max) : 0
       bar.style.transform = `scaleX(${p.toFixed(4)})`
       kiwi.style.transform = `translateX(${(p * (window.innerWidth - 30)).toFixed(1)}px)`
+      kiwi.classList.toggle(styles.shown, p > 0.01)
       kiwi.classList.add(styles.walking)
       if (idleTimer) clearTimeout(idleTimer)
       idleTimer = setTimeout(() => kiwi.classList.remove(styles.walking), 200)

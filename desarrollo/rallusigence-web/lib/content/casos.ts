@@ -30,7 +30,6 @@ export const CASOS: Caso[] = [
     resumen: 'Sitio de una sección con copy e identidad creados desde cero para una empresa de guardias intramuros, custodias y CCTV.',
     logros: [
       'Código HTML/CSS in-line, optimizado para evitar filtros antispam',
-      'Origen directo de la plantilla comercial "Seguridad Privada" (2026)'
     ],
     tipo: 'sitio',
     imagen: '/portafolio/casos/seprimex.webp',
@@ -63,7 +62,6 @@ export const CASOS: Caso[] = [
       'Cliente activo desde 2007 (18 años de relación con la agencia)',
       '347 cotizaciones generadas para el cliente entre 2007 y 2025',
       'Sitio vigente en creativosespacios.mx',
-      'Origen directo de la plantilla comercial "Arquitectura Modular" (2026)'
     ],
     tipo: 'sitio',
     imagen: '/portafolio/casos/creativos-espacios.webp',
@@ -77,8 +75,6 @@ export const CASOS: Caso[] = [
     resumen: 'El único cliente con cotización formal completa de dos fases: research + design system, y desarrollo del sitio.',
     logros: [
       'Fases 1 y 2 documentadas, con 3 manuales de marca',
-      'Sitio lanzado en transportesmontes.com.mx',
-      'Origen directo de la plantilla comercial "Grúas & Maniobras" (2026)'
     ],
     tipo: 'sitio',
     imagen: '/portafolio/casos/transportes-montes.webp',
@@ -94,7 +90,6 @@ export const CASOS: Caso[] = [
       'Relación activa de 2015 a 2022 (7 años)',
       '2 versiones de sitio construidas (V1 y V2)',
       'Paquete digital 2020: Adwords + landing + videos + diseños por $8,400 MXN',
-      'Origen directo de la plantilla comercial "Limpieza a Vapor" (2026)'
     ],
     tipo: 'seo',
     imagen: '/portafolio/casos/steamcleaning.webp',
@@ -170,7 +165,6 @@ export const CASOS: Caso[] = [
     resumen: 'Renovación de imagen de marca para una academia que buscaba verse más fresca y actual.',
     logros: [
       'Testimonio directo del cliente: "nuestra imagen ahora es mejor, más fresca"',
-      'Origen directo de la plantilla comercial "Academia de Baile" (2026)'
     ],
     tipo: 'sitio',
     imagen: '/portafolio/casos/acacnx.webp',
@@ -200,7 +194,6 @@ export const CASOS: Caso[] = [
     giro: 'Despacho contable y asesoría fiscal',
     resumen: 'Sitio histórico de un despacho contable, modernizado hoy como base de la plantilla comercial para contadores.',
     logros: [
-      'Origen directo de la plantilla comercial "Despacho Contable" (2026)',
       'Catálogo de honorarios por régimen fiscal (RESICO, Actividad Empresarial, Persona Moral)'
     ],
     tipo: 'sitio',

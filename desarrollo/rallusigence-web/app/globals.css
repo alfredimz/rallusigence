@@ -96,7 +96,15 @@ a { color: inherit; }
   box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.14), 0 0 0 1px rgba(32,180,177,0.20);
   --lift: -4px;
 }
+.service-card--featured {
+  background: linear-gradient(145deg, var(--rs-primary) 0%, var(--rs-primary-dark) 100%);
+  border: none;
+  box-shadow: 0 8px 32px rgba(32,180,177,0.28);
+  color: #fff;
+}
 .service-card--featured::before { background: rgba(255,255,255,0.25); opacity: 1; }
+/* El kiwi de la card (72px, esquina superior derecha) no debe pisar título ni descripción */
+.service-card h3, .service-card h3 + p { padding-right: 84px; }
 .service-card--featured:hover {
   background: linear-gradient(145deg, var(--rs-primary-dark) 0%, #107060 100%);
   box-shadow: 0 16px 48px rgba(32,180,177,0.38);
@@ -324,6 +332,7 @@ body::after {
 }
 @media (max-width: 767px) {
   .card-kiwi { width: 56px; height: 56px; }
+  .service-card h3, .service-card h3 + p { padding-right: 64px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .service-card:hover .card-kiwi { transform: none; }

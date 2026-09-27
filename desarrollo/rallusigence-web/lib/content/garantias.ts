@@ -26,7 +26,7 @@ export const GARANTIAS: Garantia[] = [
     id: 'precio-fijo-publicado',
     titulo: 'Precio fijo publicado',
     texto: '$6,000, $12,000 o $20,000 MXN. El precio está publicado, sin cotizar.',
-    kiwi: '/assets/kiwis/kiwi-bolsas.svg'
+    kiwi: '/assets/kiwis/kiwi-cool.svg'
   },
   {
     id: 'sin-mensualidades',

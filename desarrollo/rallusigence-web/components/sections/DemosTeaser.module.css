@@ -60,17 +60,30 @@
 }
 
 .slideEnd {
-  flex: 0 0 200px;
+  flex: 0 0 240px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px dashed rgba(32, 180, 177, 0.45);
+  border-radius: 16px;
+  background: rgba(32, 180, 177, 0.04);
 }
 
 .endLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1.5px solid var(--rs-primary);
+  border-radius: 999px;
   font-weight: var(--weight-semibold);
   color: var(--rs-primary-text);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease-out-cubic), color 0.2s var(--ease-out-cubic);
+}
+.endLink:hover, .endLink:focus-visible {
+  background: var(--rs-primary-text);
+  color: #fff;
 }
 
 @media (max-width: 1024px) {
