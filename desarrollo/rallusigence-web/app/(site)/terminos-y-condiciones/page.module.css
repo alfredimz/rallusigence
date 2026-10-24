@@ -25,7 +25,7 @@
   margin-bottom: 8px;
 }
 
-.updated {
+.content .updated {
   color: var(--rs-text-subtle);
   font-size: var(--text-small);
   margin-bottom: 40px;
@@ -70,7 +70,7 @@
     margin-bottom: 28px;
   }
 
-  .updated {
+  .content .updated {
     margin-bottom: 32px;
   }
 }

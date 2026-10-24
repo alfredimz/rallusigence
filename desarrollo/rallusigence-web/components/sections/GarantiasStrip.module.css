@@ -69,6 +69,19 @@
   }
 }
 
+/* Tablet angosta: 2 columnas (4 no caben con textos de dos líneas) */
+@media (min-width: 768px) and (max-width: 900px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 20px;
+  }
+  .item:nth-child(odd) {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
 /* Móvil: fila deslizable con scroll-snap; cada badge ocupa ~78% del ancho */
 @media (max-width: 767px) {
   .list {

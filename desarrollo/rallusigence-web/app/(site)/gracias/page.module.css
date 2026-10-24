@@ -50,7 +50,9 @@
 }
 
 .backLink {
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   color: var(--rs-text-subtle);
   text-decoration: underline;
   text-decoration-color: var(--rs-border-soft);

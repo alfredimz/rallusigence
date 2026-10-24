@@ -11,6 +11,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const empresaLinks = [
+    { label: 'Inicio', href: '/' },
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Portafolio', href: '/portafolio' },
     { label: 'Cómo funciona', href: '/como-funciona' },
@@ -109,7 +110,7 @@ export default function Footer() {
         {/* Legal Section */}
         <div className={styles.legal}>
           <p className={styles.copyright}>
-            © {currentYear} Rallusigence. Operamos como grupo de profesionistas independientes. No emitimos facturas.
+            © {currentYear} Rallusigence. Operamos como grupo de profesionistas independientes.
           </p>
           <div className={styles.legalLinks}>
             {legalLinks.map((link) => (

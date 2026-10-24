@@ -201,6 +201,17 @@
   line-height: 1.6;
 }
 
+.ctaBtn {
+  background: #fff;
+  color: var(--rs-primary-text);
+  border: 1.5px solid #fff;
+}
+
+.ctaBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--rs-primary-dark);
+}
+
 /* === BACK NAVIGATION === */
 .backNav {
   text-align: center;

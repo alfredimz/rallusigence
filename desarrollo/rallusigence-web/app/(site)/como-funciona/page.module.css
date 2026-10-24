@@ -6,7 +6,6 @@
 /* Breadcrumb */
 .breadcrumb {
   padding: 24px 24px 0;
-  background-color: var(--rs-bg-soft);
 }
 
 .breadcrumbWrapper {
@@ -57,6 +56,12 @@
 }
 
 /* Process Section */
+/* Bandas a todo el ancho: el contenido lo centra .processWrapper / .ctaWrapper */
+.main .processSection,
+.main .ctaSection {
+  max-width: none;
+}
+
 .processSection {
   background-color: var(--rs-bg-soft);
 }

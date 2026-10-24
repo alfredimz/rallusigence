@@ -82,7 +82,7 @@ export default function PaquetesPage() {
       <section className={`section-wrapper ${styles.ctaSection}`} aria-labelledby="cta-title">
         <div className={styles.ctaWrapper}>
           <h2 id="cta-title" className={`rs-h2 ${styles.ctaTitle}`}>
-            ¿Cuál es el tuyo?
+            ¿Cuál paquete es el tuyo?
           </h2>
           <p className={styles.ctaText}>
             Si dudas entre dos, escríbenos y te decimos cuál conviene en 2 minutos. Sin junta.

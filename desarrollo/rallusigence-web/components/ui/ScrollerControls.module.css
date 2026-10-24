@@ -1,0 +1,42 @@
+/* Flechas de carrusel: solo donde hay mouse; en touch la pista se desliza con el dedo */
+.controls {
+  display: none;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .controls {
+    display: inline-flex;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rs-primary);
+  background: #fff;
+  color: var(--rs-primary-text);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease-in-out, color var(--duration-fast) ease-in-out, border-color var(--duration-fast) ease-in-out, opacity var(--duration-fast) ease-in-out;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--rs-primary-text);
+  border-color: var(--rs-primary-text);
+  color: #fff;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--rs-primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}

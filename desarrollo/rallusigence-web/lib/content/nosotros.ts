@@ -96,13 +96,12 @@ export const nosotros = {
     'No somos una agencia de marketing: no hacemos campañas ni redes sociales (por ahora).',
     'No cobramos mensualidades de mantenimiento: entregamos y tú eres dueño total.',
     'No hacemos citas ni visitas presenciales: todo por WhatsApp o chat.',
-    'No emitimos facturas: somos profesionistas independientes; el precio es lo que te ahorras en overhead corporativo.',
     'No usamos plantillas genéricas de Wix o Squarespace: cada sitio se construye específicamente para tu negocio.'
   ],
 
   modeloAnonimo: {
-    titulo: 'Por qué no tenemos factura (y por qué eso te conviene)',
-    texto: 'Operamos como un grupo de profesionistas independientes, no como una empresa con RFC y estructura corporativa. Eso nos permite cobrar precios más bajos porque no te trasladamos ese costo. A cambio, tienes tres garantías reales: si no cumplimos el plazo del paquete Lanzamiento, te devolvemos el 50% del anticipo; el código, el dominio y el hosting quedan en tus cuentas desde el primer día; y si el sitio no cumple lo acordado, lo corregimos antes de cobrarte el 50% restante.'
+    titulo: 'Por qué operamos sin estructura corporativa (y por qué eso te conviene)',
+    texto: 'Operamos como un grupo de profesionistas independientes, sin la estructura de una empresa tradicional. Eso nos permite cobrar precios más bajos porque no te trasladamos ese costo. A cambio, tienes tres garantías reales: si no cumplimos el plazo del paquete Lanzamiento, te devolvemos el 50% del anticipo; el código, el dominio y el hosting quedan en tus cuentas desde el primer día; y si el sitio no cumple lo acordado, lo corregimos antes de cobrarte el 50% restante.'
   }
 }
 

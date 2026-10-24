@@ -17,8 +17,13 @@ export function parseMarkdownToHtml(markdown: string): string {
     .map(para => {
       const trimmed = para.trim()
       if (trimmed === '') return ''
-      if (trimmed.startsWith('<h')) return trimmed
-      if (trimmed.includes('\n- ')) {
+      if (trimmed.startsWith('<h')) {
+        // Encabezado solo, o encabezado seguido de más líneas (p. ej. una lista)
+        const nl = trimmed.indexOf('\n')
+        if (nl === -1) return trimmed
+        return trimmed.slice(0, nl) + parseMarkdownToHtml(trimmed.slice(nl + 1))
+      }
+      if (trimmed.includes('\n- ') || trimmed.startsWith('- ')) {
         // List handling
         const lines = trimmed.split('\n')
         const listItems = lines

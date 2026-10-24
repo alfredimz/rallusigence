@@ -80,7 +80,7 @@ export default function PortafolioPage() {
             <p className={styles.sectionLead}>
               Cada demo es un sitio funcional: cotizadores, agendas, menús y formularios ya resueltos.
               Cuando contratas, tomamos la de tu giro y la adaptamos a tu marca, tus precios y tus fotos.
-              Pasa el cursor sobre una para ver cómo se ve en celular.
+              <span className={styles.soloHover}> Pasa el cursor sobre una para ver cómo se ve en celular.</span>
             </p>
           </div>
           <DemoGrid demos={DEMOS} />

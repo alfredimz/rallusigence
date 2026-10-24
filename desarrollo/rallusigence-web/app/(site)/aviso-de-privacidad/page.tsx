@@ -1,4 +1,5 @@
 import styles from './page.module.css'
+import { EMAIL } from '@/lib/contacto'
 
 export default function AvisoDePrivacidad() {
   return (
@@ -14,7 +15,7 @@ export default function AvisoDePrivacidad() {
             <p>
               Rallusigence es operado por un grupo de profesionistas independientes
               con sede en Tizayuca, Hidalgo, México. Para ejercer tus derechos o
-              cualquier consulta, escríbenos a: <strong>[correo placeholder]</strong>.
+              cualquier consulta, escríbenos a: <strong>{EMAIL}</strong>.
             </p>
           </section>
 
@@ -22,7 +23,7 @@ export default function AvisoDePrivacidad() {
             <h2 className="rs-h3">Datos que recopilamos</h2>
             <p>
               Al llenar nuestro formulario de contacto recopilamos: nombre completo,
-              tipo de negocio, número de WhatsApp y correo electrónico.
+              tipo de negocio y número de WhatsApp.
             </p>
           </section>
 

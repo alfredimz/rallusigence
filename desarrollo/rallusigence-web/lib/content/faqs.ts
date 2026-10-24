@@ -16,7 +16,7 @@ export const FAQS_PAQUETES: Faq[] = [
   {
     id: 'sitio-me-pertenece',
     q: '¿El sitio me pertenece después de la entrega?',
-    a: 'Sí, completamente. Código, hosting y dominio quedan en tus cuentas. Sin dependencias.',
+    a: 'Sí, completamente. Código, hosting y dominio se registran en tus propias cuentas desde el día uno: no dependes de nosotros para nada después de la entrega.',
     tags: ['general', 'entrega'],
   },
   {
@@ -33,27 +33,15 @@ export const FAQS_PAQUETES: Faq[] = [
   },
   {
     id: 'no-quedo-satisfecho',
-    q: '¿Qué pasa si no quedo satisfecho?',
-    a: 'Si el sitio no cumple con lo acordado, lo corregimos sin costo antes de cobrar el 50% restante.',
+    q: '¿Qué pasa si no quedo satisfecho con el resultado?',
+    a: 'Si el sitio no cumple con lo acordado, lo corregimos sin costo antes de cobrar el 50% restante. Tienes 2 rondas de cambios antes de la entrega y cambios menores gratis 15 días después.',
     tags: ['pago', 'general'],
-  },
-  {
-    id: 'dueno-dominio-hosting',
-    q: '¿Quién es dueño del dominio y el hosting?',
-    a: 'Tú. Se registran en tus propias cuentas desde el día uno — no dependes de nosotros para nada después de la entrega.',
-    tags: ['general', 'entrega'],
   },
   {
     id: 'rondas-de-cambios',
     q: '¿Cuántas rondas de cambios incluye?',
     a: '2 rondas antes de entregar. Después, cambios menores sin costo los primeros 15 días.',
     tags: ['entrega'],
-  },
-  {
-    id: 'no-me-gusta-resultado',
-    q: '¿Qué pasa si no me gusta el resultado?',
-    a: 'Lo corregimos sin costo antes de cobrar el 50% restante.',
-    tags: ['pago', 'entrega'],
   },
   {
     id: 'pagar-en-partes',

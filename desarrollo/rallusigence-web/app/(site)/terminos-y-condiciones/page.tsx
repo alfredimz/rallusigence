@@ -54,10 +54,10 @@ export default function TerminosYCondiciones() {
           </section>
 
           <section className={styles.section}>
-            <h2 className="rs-h3">Sin facturación</h2>
+            <h2 className="rs-h3">Forma de operar</h2>
             <p>
-              Operamos como grupo de profesionistas independientes. No emitimos
-              facturas ni tickets. Los pagos son transacciones directas entre partes.
+              Operamos como grupo de profesionistas independientes. Los pagos son
+              transacciones directas entre partes, por retiro sin tarjeta en cajero automático.
             </p>
           </section>
 

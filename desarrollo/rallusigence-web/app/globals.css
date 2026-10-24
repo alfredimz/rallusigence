@@ -72,7 +72,7 @@ a { color: inherit; }
 .input-field:focus { outline: none; border-color: var(--rs-primary); box-shadow: 0 0 0 3px rgba(32,180,177,0.1); }
 .input-field--error { border-color: var(--rs-error); box-shadow: 0 0 0 3px rgba(239,68,68,0.1); }
 .input-field--textarea { height: auto; min-height: 120px; resize: vertical; }
-.input-error { display: block; margin-top: 4px; color: var(--rs-error); font-size: var(--text-micro); line-height: 1.4; min-height: 16px; }
+.input-error { display: block; margin-top: 6px; color: var(--rs-error); font-size: var(--text-small); font-weight: var(--weight-medium); line-height: 1.4; min-height: 16px; }
 @media (max-width: 767px) { .form-group { margin-bottom: 20px; } }
 
 /* === FORM CARD === */

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { DEMOS, type Demo } from '@/lib/content/demos'
 import DemoCard from '@/components/ui/DemoCard'
+import ScrollerControls from '@/components/ui/ScrollerControls'
 import styles from './DemosTeaser.module.css'
 
 interface DemosTeaserProps {
@@ -36,13 +37,17 @@ export default function DemosTeaser({
             <h2 id={`${id}-title`} className="rs-h2 reveal">{titulo}</h2>
             <p className={`${styles.bajada} reveal reveal--delay-1`}>{bajada}</p>
           </div>
-          <Link href="/portafolio" className={`rs-btn rs-btn--ghost ${styles.headCta} reveal reveal--delay-2`}>
-            Ver las {DEMOS.length} demos
-          </Link>
+          <div className={`${styles.headActions} reveal reveal--delay-2`}>
+            <ScrollerControls trackId={`${id}-track`} label="demos" />
+            <Link href="/portafolio" className={`rs-btn rs-btn--ghost ${styles.headCta}`}>
+              Ver las {DEMOS.length} demos
+            </Link>
+          </div>
         </div>
       </div>
 
       <div
+        id={`${id}-track`}
         className={styles.track}
         role="group"
         aria-label="Demos por giro"

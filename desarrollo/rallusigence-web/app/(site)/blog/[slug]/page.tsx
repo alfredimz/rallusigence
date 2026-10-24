@@ -117,7 +117,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </p>
             <Link
               href="/auditoria-gratis"
-              className="rs-btn rs-btn--primary rs-btn--lg"
+              className={`rs-btn rs-btn--lg ${styles.ctaBtn}`}
             >
               Solicita tu auditoría gratis
             </Link>

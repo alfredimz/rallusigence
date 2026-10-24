@@ -3,6 +3,13 @@
   background-color: var(--color-bg);
 }
 
+/* El aviso de "pasa el cursor" no aplica en pantallas táctiles */
+@media (hover: none) {
+  .soloHover {
+    display: none;
+  }
+}
+
 /* === Breadcrumb === */
 .breadcrumb {
   padding: 24px 24px 0;

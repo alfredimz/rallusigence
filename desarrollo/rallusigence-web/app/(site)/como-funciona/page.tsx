@@ -117,13 +117,13 @@ export default function ComoFuncionaPage() {
           <div className={styles.paymentExplanation}>
             <p className={styles.paymentIntro}>
               Cobramos en dos partes: <strong>50% para arrancar y 50% al entregar</strong>. Si el sitio no
-              cumple lo acordado, lo corregimos antes de cobrar el segundo 50%. El pago se hace por
+              cumple lo acordado, lo corregimos antes de cobrar el segundo 50%. El pago se hace por{' '}
               <strong>retiro sin tarjeta en cajero automático</strong>.
             </p>
             <p className={styles.paymentReason}>
               Somos un equipo de profesionistas independientes. Al trabajar fuera de la estructura
-              corporativa tradicional, no emitimos tickets ni facturas — esto nos permite evitar
-              cargas fiscales y operativas que tendríamos que trasladarte en el precio.
+              corporativa tradicional evitamos cargas operativas que tendríamos que trasladarte
+              en el precio: por eso el pago es directo, sin intermediarios.
             </p>
           </div>
 

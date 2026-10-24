@@ -28,6 +28,11 @@
   width: fit-content;
 }
 
+/* El SVG del logo trae fondo blanco: fundirlo con el gris del footer */
+.logo img {
+  mix-blend-mode: multiply;
+}
+
 .tagline {
   color: var(--color-fg-muted);
   font-family: var(--font-primary);
@@ -135,7 +140,17 @@
     gap: 28px 20px;
     margin-bottom: 24px;
   }
-  .brand {
+
+  .link {
+    padding: 7px 0;
+    margin-bottom: 0;
+  }
+
+  .legalLink {
+    padding: 8px 4px;
+  }
+  .brand,
+  .section:last-child {
     grid-column: 1 / -1;
   }
 
