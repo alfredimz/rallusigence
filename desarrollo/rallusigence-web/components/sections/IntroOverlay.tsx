@@ -25,13 +25,12 @@ export default function IntroOverlay() {
 
   const dismiss = () => {
     setFading(true)
-    dismissTimerRef.current = setTimeout(() => {
-      setDone(true)
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(KEY, new Date().toDateString())
-        markIntroDone()
-      }
-    }, 400) // tiempo del fade-out
+    // El hero arranca su entrada mientras el overlay se desvanece (sin pantalla en blanco)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(KEY, new Date().toDateString())
+      markIntroDone()
+    }
+    dismissTimerRef.current = setTimeout(() => setDone(true), 400) // tiempo del fade-out
   }
 
   useEffect(() => {
@@ -53,7 +52,8 @@ export default function IntroOverlay() {
       return
     }
 
-    // Mostrar overlay
+    // Mostrar overlay (y avisar al hero de que sí hubo intro, para que anime su entrada)
+    document.documentElement.dataset.rsIntroShown = '1'
     setVisible(true)
 
     // Secuencia de animaciones
@@ -62,17 +62,17 @@ export default function IntroOverlay() {
     // Línea 1: 0ms
     timers.push(setTimeout(() => setLine1(true), 0))
 
-    // Línea 2: 1500ms
-    timers.push(setTimeout(() => setLine2(true), 1500))
+    // Línea 2: 900ms
+    timers.push(setTimeout(() => setLine2(true), 900))
 
-    // Línea 3: 3000ms
-    timers.push(setTimeout(() => setLine3(true), 3000))
+    // Línea 3: 1800ms
+    timers.push(setTimeout(() => setLine3(true), 1800))
 
-    // CTA: 4000ms
-    timers.push(setTimeout(() => setShowCta(true), 4000))
+    // CTA: 2400ms
+    timers.push(setTimeout(() => setShowCta(true), 2400))
 
-    // Auto-dismiss: 5500ms
-    timers.push(setTimeout(() => dismiss(), 5500))
+    // Auto-dismiss: 3400ms (antes 5500; el hero ya no depende de esto para pintarse)
+    timers.push(setTimeout(() => dismiss(), 3400))
 
     return () => {
       timers.forEach((timer) => clearTimeout(timer))

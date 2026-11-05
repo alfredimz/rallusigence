@@ -6,6 +6,7 @@ import { waLink } from '@/lib/contacto'
 import KiwiMascot from '@/components/ui/KiwiMascot'
 import HeroShader from '@/components/ui/HeroShader'
 import Magnetic from '@/components/ui/Magnetic'
+import { useEffect, useState } from 'react'
 import useIntroDone from '@/components/ui/useIntroDone'
 import { nosotros } from '@/lib/content/nosotros'
 import styles from './HeroSection.module.css'
@@ -15,7 +16,12 @@ const FUNDACION = nosotros.cifras.find((c) => c.etiqueta.startsWith('año de fun
 
 export default function HeroSection() {
   const introDone = useIntroDone()
-  const inClass = (extra = '') => introDone ? `${styles.heroIn} ${extra}` : styles.heroPre
+  // El hero se pinta visible desde el HTML (LCP). Solo anima su entrada si el intro realmente se mostró.
+  const [animate, setAnimate] = useState(false)
+  useEffect(() => {
+    if (introDone && document.documentElement.dataset.rsIntroShown === '1') setAnimate(true)
+  }, [introDone])
+  const inClass = (extra = '') => animate ? `${styles.heroIn} ${extra}` : ''
   return (
     <section id="inicio" className={styles.hero}>
       <div className={styles.inner}>

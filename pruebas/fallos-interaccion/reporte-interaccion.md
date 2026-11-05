@@ -1,6 +1,6 @@
-# Matriz de interacción — https://rallusigence.net — 2026-10-24T21:56:40.253Z
+# Matriz de interacción — http://localhost:3007 — 2026-10-24T23:43:39.452Z
 
-Páginas: 18 · viewports: 2 · FAIL: 0 · WARN: 18
+Páginas: 17 · viewports: 2 · FAIL: 0 · WARN: 17
 
 - ⚠️ / @ movil [tap-target] 32 controles entre 24 y 44 px
 - ⚠️ /paquetes @ movil [tap-target] 30 controles entre 24 y 44 px
@@ -11,7 +11,6 @@ Páginas: 18 · viewports: 2 · FAIL: 0 · WARN: 18
 - ⚠️ /servicios @ movil [tap-target] 15 controles entre 24 y 44 px
 - ⚠️ /servicios/diseno-web @ movil [tap-target] 15 controles entre 24 y 44 px
 - ⚠️ /servicios/seo @ movil [tap-target] 15 controles entre 24 y 44 px
-- ⚠️ /servicios/bot-whatsapp @ movil [tap-target] 15 controles entre 24 y 44 px
 - ⚠️ /servicios/tienda-online @ movil [tap-target] 15 controles entre 24 y 44 px
 - ⚠️ /servicios/anuncios @ movil [tap-target] 15 controles entre 24 y 44 px
 - ⚠️ /servicios/automatizacion @ movil [tap-target] 15 controles entre 24 y 44 px

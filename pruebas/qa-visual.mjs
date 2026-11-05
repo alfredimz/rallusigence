@@ -15,7 +15,7 @@ fs.mkdirSync(OUT, { recursive: true })
 
 const PAGES = [
   '/', '/paquetes', '/auditoria-gratis', '/como-funciona', '/portafolio', '/nosotros',
-  '/servicios', '/servicios/diseno-web', '/servicios/seo', '/servicios/bot-whatsapp',
+  '/servicios', '/servicios/diseno-web', '/servicios/seo', '/servicios/automatizacion',
   '/servicios/tienda-online', '/servicios/anuncios', '/servicios/automatizacion',
   '/blog', '/blog/como-conseguir-clientes-internet', '/aviso-de-privacidad',
   '/terminos-y-condiciones', '/gracias',

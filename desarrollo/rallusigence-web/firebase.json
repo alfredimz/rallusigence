@@ -35,6 +35,13 @@
         ]
       }
     ],
-    "cleanUrls": true
+    "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/servicios/bot-whatsapp",
+        "destination": "/servicios/automatizacion",
+        "type": 301
+      }
+    ]
   }
 }

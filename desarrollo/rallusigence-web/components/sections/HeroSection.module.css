@@ -147,7 +147,7 @@
   from { opacity: 0; transform: translateY(26px); filter: blur(10px); }
   to   { opacity: 1; transform: none; filter: blur(0); }
 }
-.heroPre { opacity: 0; }
+/* .heroPre eliminado (2026-10-24): el hero ya no arranca en opacity:0 — era la causa del LCP de 6.8 s en móvil */
 .heroIn { animation: heroRise 0.7s var(--ease-out-cubic) 0.15s both; }
 .heroIn2 { animation-delay: 0.3s; }
 .heroIn3 { animation-delay: 0.45s; }
@@ -168,7 +168,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroIn, .heroIn2, .heroIn3, .heroIn4 { animation: none; }
-  .heroPre { opacity: 1; }
   .hero::before, .hero::after { animation: none; }
 }
 

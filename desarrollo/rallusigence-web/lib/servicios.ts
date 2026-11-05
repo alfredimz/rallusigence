@@ -98,43 +98,6 @@ export const SERVICIOS: Servicio[] = [
     ctaMsg: 'Hola Rallusigence, me interesa el SEO para mi negocio. ¿Cómo funciona?'
   },
   {
-    slug: 'bot-whatsapp',
-    nombre: 'Agente de WhatsApp con IA',
-    kiwi: '/assets/kiwis/kiwi-whatsapp.svg',
-    titulo: 'Un agente que atiende tu WhatsApp 24/7',
-    bajada: 'Responde al instante, califica clientes y agenda citas — mientras tú trabajas o duermes.',
-    precio: 'Desde $3,500 MXN/mes',
-    precioNota: 'configuración inicial + operación mensual',
-    queEs: [
-      'El 80% de los mensajes que recibe tu negocio son las mismas 10 preguntas: precios, horarios, ubicación, disponibilidad. Cada una que tardas horas en contestar es un cliente que le escribió a otro.',
-      'Configuramos un agente con IA en tu WhatsApp que responde al instante, con tu información y tu tono. Entiende lenguaje natural — no es un menú robótico de "marque 1".',
-      'Cuando la conversación requiere criterio humano (una negociación, un caso especial), el agente te la pasa con el contexto completo. Tú entras solo donde de verdad haces falta.'
-    ],
-    incluye: [
-      'Agente con IA entrenado con la información de TU negocio',
-      'Respuestas al instante, 24 horas, los 7 días',
-      'Calificación de clientes: separa curiosos de compradores',
-      'Toma de datos de contacto y motivo (leads listos)',
-      'Transferencia a humano con contexto cuando hace falta',
-      'Tono y personalidad configurados a tu marca',
-      'Panel de conversaciones: ves todo lo que responde',
-      'Ajustes mensuales según lo que pregunta la gente real'
-    ],
-    ventajas: {
-      costos: 'Menos que medio sueldo de un asistente — y no pide vacaciones ni contesta de malas a las 11 de la noche.',
-      tiempo: 'Configurado y respondiendo en menos de una semana.',
-      resultados: 'Cero mensajes sin responder. El cliente que escribe a las 10 pm recibe respuesta a las 10 pm.'
-    },
-    importante: 'El agente resuelve lo repetitivo brillantemente, pero no reemplaza tu criterio: los casos complejos te los transfiere. Y necesita que mantengas su información al día — si cambias precios y no nos avisas, responderá los precios viejos.',
-    faq: [
-      { q: '¿Suena robótico?', a: 'No. Usa IA de lenguaje natural (la misma tecnología de ChatGPT) con tu tono. Tus clientes conversan normal, sin menús de números.' },
-      { q: '¿Necesito un número nuevo?', a: 'Funciona con tu número actual de WhatsApp o con uno nuevo si prefieres separar. Te asesoramos según tu caso.' },
-      { q: '¿Qué pasa con las conversaciones difíciles?', a: 'El agente detecta cuándo necesita ayuda humana y te transfiere la conversación con resumen incluido. Nunca inventa respuestas de cosas que no sabe.' },
-      { q: '¿Puedo ver lo que responde?', a: 'Todo. Tienes acceso al historial completo de conversaciones y cada mes revisamos juntos qué preguntó la gente para afinar respuestas.' }
-    ],
-    ctaMsg: 'Hola Rallusigence, quiero el agente de WhatsApp con IA para mi negocio.'
-  },
-  {
     slug: 'tienda-online',
     nombre: 'Tienda online',
     kiwi: '/assets/kiwis/kiwi-carrito.svg',

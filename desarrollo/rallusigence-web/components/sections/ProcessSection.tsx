@@ -13,7 +13,7 @@ const steps = [
   {
     number: 2,
     title: 'Pagas el 50%',
-    description: 'Genera un código de retiro desde tu app bancaria y compártelo con nosotros. En ese momento arrancamos.',
+    description: 'Desde la app de tu banco generas un código para retirar efectivo sin tarjeta y nos lo compartes. Nosotros lo cobramos en el cajero y en ese momento arrancamos.',
     time: 'mismo día'
   },
   {

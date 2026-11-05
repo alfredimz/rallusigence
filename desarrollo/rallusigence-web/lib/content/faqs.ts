@@ -46,7 +46,7 @@ export const FAQS_PAQUETES: Faq[] = [
   {
     id: 'pagar-en-partes',
     q: '¿Puedo pagar en partes?',
-    a: '50% para arrancar, 50% al entregar. Por ahora sin meses sin intereses.',
+    a: '50% para arrancar y 50% al entregar. El pago es por retiro sin tarjeta: desde la app de tu banco (BBVA, Banorte, HSBC, Santander, Banamex, Scotiabank) generas un código de retiro, nos lo compartes y nosotros lo cobramos en el cajero. Por ahora sin meses sin intereses.',
     tags: ['pago'],
   },
   {
