@@ -8,6 +8,7 @@ export default function NotFound() {
         <div className={styles.content}>
           {/* Número 404 decorativo */}
           <div className={styles.numberBg} aria-hidden="true">404</div>
+          <img src="/assets/kiwis/kiwi-perfil.svg" alt="" aria-hidden="true" width={150} height={150} className={styles.kiwi} />
 
           <h1 className="rs-h1">Página no encontrada</h1>
 

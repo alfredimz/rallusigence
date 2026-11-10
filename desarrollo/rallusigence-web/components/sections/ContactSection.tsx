@@ -16,7 +16,7 @@ export default function ContactSection() {
 
   return (
     <section id="contacto" aria-labelledby="contacto-title" className={styles.section}>
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper--loose">
         <div className={styles.inner}>
           {/* Texto izquierda */}
           <div className={styles.copy}>
@@ -32,7 +32,7 @@ export default function ContactSection() {
                 href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="wa-pulse"
+                className={styles.waLink}
                 onClick={() => trackWhatsAppClick('contacto')}
               >
                 WhatsApp
@@ -55,6 +55,7 @@ export default function ContactSection() {
             {status === 'success' ? (
               <div className={`${styles.successMessage} success-pop`}>
                 <ConfettiBurst />
+                <img src="/assets/kiwis/kiwi-sorpresa.svg" alt="" aria-hidden="true" width={120} height={120} className={styles.successKiwi} />
                 <h3>Solicitud enviada ✓</h3>
                 <p>Te contactamos en 24 horas</p>
               </div>

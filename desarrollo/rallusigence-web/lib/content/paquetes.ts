@@ -37,7 +37,7 @@ export const PAQUETES: Paquete[] = [
       'Código fuente completo tuyo'
     ],
     destacado: false,
-    kiwi: '/assets/kiwis/kiwi-lanzamiento.svg',
+    kiwi: '/assets/kiwis/kiwi-goggles.svg',
     waMsg: 'Hola Rallusigence, quiero el paquete Lanzamiento de $6,000 MXN. ¿Cómo empezamos?'
   },
   {
@@ -58,7 +58,7 @@ export const PAQUETES: Paquete[] = [
       'Guía en PDF de cómo usar tu sitio'
     ],
     destacado: true,
-    kiwi: '/assets/kiwis/kiwi-desarrollo.svg',
+    kiwi: '/assets/kiwis/kiwi-traje.svg',
     waMsg: 'Hola Rallusigence, quiero el paquete Profesional de $12,000 MXN. ¿Cómo empezamos?'
   },
   {
@@ -79,7 +79,7 @@ export const PAQUETES: Paquete[] = [
       'Capacitación de 30 minutos'
     ],
     destacado: false,
-    kiwi: '/assets/kiwis/kiwi-carrito.svg',
+    kiwi: '/assets/kiwis/kiwi-carrito-dentro.svg',
     waMsg: 'Hola Rallusigence, quiero el paquete Avanzado de $20,000 MXN. ¿Cómo empezamos?'
   }
 ]

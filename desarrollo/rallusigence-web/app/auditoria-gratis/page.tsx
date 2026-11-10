@@ -9,7 +9,7 @@ export default function AuditoriaGratis() {
       <section className={styles.hero}>
         <div className={styles.container}>
           <img
-            src="/assets/kiwis/kiwi-analista.svg"
+            src="/assets/kiwis/kiwi-lupa.svg"
             alt=""
             aria-hidden="true"
             className={styles.analista}

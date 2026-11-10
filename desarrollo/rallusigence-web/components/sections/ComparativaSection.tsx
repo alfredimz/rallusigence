@@ -8,7 +8,7 @@ export default function ComparativaSection() {
     <section id="comparativa" aria-labelledby="comparativa-title" className={styles.section}>
       <div className="section-wrapper">
         <div className={styles.head}>
-          <h2 id="comparativa-title" className="rs-h2 reveal">
+          <h2 id="comparativa-title" className="rs-h2 reveal reveal--wipe">
             Rallusigence vs. las otras opciones
           </h2>
           <p className={`${styles.lead} reveal reveal--delay-1`}>

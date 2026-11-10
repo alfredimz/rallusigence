@@ -1,4 +1,3 @@
-import { CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import WhatsAppCta from '@/components/ui/WhatsAppCta'
 import ConfettiBurst from '@/components/ui/ConfettiBurst'
@@ -12,10 +11,13 @@ export default function Gracias() {
         <div className={styles.content}>
           {/* Ícono de confirmación */}
           <span className={styles.iconWrap}>
-            <CheckCircle
-              size={64}
-              className={styles.icon}
+            <img
+              src="/assets/kiwis/kiwi-sorpresa.svg"
+              alt=""
               aria-hidden="true"
+              width={140}
+              height={140}
+              className={styles.icon}
             />
             <ConfettiBurst />
           </span>

@@ -37,7 +37,7 @@ export default function PackagesSection() {
       className={styles.section}
       ref={sectionRef}
     >
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper--loose">
         <div className={styles.titleWrap}>
           <h2 id="paquetes-title" className="rs-h2 reveal">
             Elige tu paquete. Precio fijo. Sin sorpresas.

@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
 
   return (
     <section id="testimonios" aria-labelledby="testimonios-title" className={styles.section}>
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper--loose">
         <div className={styles.layout}>
           <div className={styles.intro}>
             <h2 id="testimonios-title" className="rs-h2 reveal">

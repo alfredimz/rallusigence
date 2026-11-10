@@ -6,24 +6,28 @@ import styles from './ProcessSection.module.css'
 const steps = [
   {
     number: 1,
+    kiwi: '/assets/kiwis/kiwi-telefono.svg',
     title: 'Escríbenos',
     description: 'Mándanos un mensaje por WhatsApp o llena el formulario. Te respondemos en menos de 2 horas.',
     time: '< 2 horas'
   },
   {
     number: 2,
+    kiwi: '/assets/kiwis/kiwi-moneda.svg',
     title: 'Pagas el 50%',
     description: 'Desde la app de tu banco generas un código para retirar efectivo sin tarjeta y nos lo compartes. Nosotros lo cobramos en el cajero y en ese momento arrancamos.',
     time: 'mismo día'
   },
   {
     number: 3,
+    kiwi: '/assets/kiwis/kiwi-director.svg',
     title: 'Construimos',
     description: 'Con IA y experiencia, construimos tu sitio mientras tú sigues atendiendo tu negocio. Te mandamos avances.',
     time: '3–12 días'
   },
   {
     number: 4,
+    kiwi: '/assets/kiwis/kiwi-caja.svg',
     title: 'Te entregamos todo',
     description: 'El sitio va a tu hosting, tu dominio queda en tus cuentas, recibes el código completo. Pagas el 50% restante.',
     time: 'día de entrega'
@@ -81,8 +85,9 @@ export default function ProcessSection() {
 
   return (
     <section id="como-funciona" aria-labelledby="proceso-title" className={styles.section} data-theme="dark">
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper--loose">
         <div className={styles.titleWrap}>
+          <p className={`${styles.eyebrow} reveal`}>Cómo funciona</p>
           <h2 id="proceso-title" className="rs-h2 reveal">
             De cero a tu sitio en línea. Sin reuniones, sin esperas.
           </h2>
@@ -95,11 +100,21 @@ export default function ProcessSection() {
           {steps.map((step, index) => (
             <div key={step.number} className={`step-item reveal reveal--delay-${index + 1}`}>
               <div className="step-item__number">{step.number}</div>
-              <div>
+              <div className={styles.stepBody}>
                 <p className={styles.stepTitle}>{step.title}</p>
                 <p className={styles.stepDesc}>{step.description}</p>
                 <span className={styles.stepTime}>{step.time}</span>
               </div>
+              <img
+                src={step.kiwi}
+                alt=""
+                aria-hidden="true"
+                className={styles.stepKiwi}
+                width={88}
+                height={88}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           ))}
         </div>

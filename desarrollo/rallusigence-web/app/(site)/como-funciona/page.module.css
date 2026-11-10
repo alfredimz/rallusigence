@@ -38,8 +38,14 @@
 /* Hero Section */
 .heroWrapper {
   max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+}
+
+.stepKiwi {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  align-self: flex-start;
 }
 
 .heroDescription {
@@ -47,6 +53,7 @@
   font-size: 18px;
   color: var(--color-fg-muted);
   line-height: 1.6;
+  max-width: 56ch;
 }
 
 @media (max-width: 767px) {
@@ -111,7 +118,6 @@
 
 .paymentExplanation {
   margin-top: 32px;
-  text-align: center;
 }
 
 .paymentIntro {

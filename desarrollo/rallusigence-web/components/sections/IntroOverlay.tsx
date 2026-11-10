@@ -62,17 +62,17 @@ export default function IntroOverlay() {
     // Línea 1: 0ms
     timers.push(setTimeout(() => setLine1(true), 0))
 
-    // Línea 2: 900ms
-    timers.push(setTimeout(() => setLine2(true), 900))
+    // Línea 2: 700ms
+    timers.push(setTimeout(() => setLine2(true), 700))
 
-    // Línea 3: 1800ms
-    timers.push(setTimeout(() => setLine3(true), 1800))
+    // Línea 3: 1400ms
+    timers.push(setTimeout(() => setLine3(true), 1400))
 
-    // CTA: 2400ms
-    timers.push(setTimeout(() => setShowCta(true), 2400))
+    // CTA: 1900ms
+    timers.push(setTimeout(() => setShowCta(true), 1900))
 
-    // Auto-dismiss: 3400ms (antes 5500; el hero ya no depende de esto para pintarse)
-    timers.push(setTimeout(() => dismiss(), 3400))
+    // Auto-dismiss: 2600ms (Sprint C: intro corto; el hero ya está pintado debajo)
+    timers.push(setTimeout(() => dismiss(), 2600))
 
     return () => {
       timers.forEach((timer) => clearTimeout(timer))

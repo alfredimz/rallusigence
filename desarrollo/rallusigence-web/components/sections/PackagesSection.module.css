@@ -15,23 +15,28 @@
   color: var(--color-fg-muted);
 }
 
+/* Rejilla asimétrica: la card destacada (Profesional) es más ancha y sube; las otras dos no son gemelas */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.16fr) minmax(0, 0.92fr);
   gap: 24px;
   align-items: start;
 }
 
-/* La card destacada (Profesional) sube 16px para romper la fila uniforme */
 .grid > div:nth-child(2) {
-  margin-top: -16px;
+  margin-top: -24px;
+}
+
+.grid > div:nth-child(3) {
+  margin-top: 24px;
 }
 
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .grid > div:nth-child(2) {
+  .grid > div:nth-child(2),
+  .grid > div:nth-child(3) {
     margin-top: 0;
   }
 }

@@ -1,43 +1,33 @@
+/* Hero editorial (Sprint B, 2026-11-07): sin orbes ni shader. Texto a la izquierda en Playfair display,
+   escenario a la derecha con una demo real (laptop + teléfono) y el kiwi aterrizando encima. */
+
 .hero {
-  background: linear-gradient(135deg, #ffffff 0%, rgba(32,180,177,0.04) 50%, rgba(32,180,177,0.07) 100%);
   position: relative;
   overflow: hidden;
+  background: #fff;
 }
 
+/* Panel diagonal teal detrás del escenario: composición, no decoración flotante */
 .hero::before {
   content: '';
   position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(32,180,177,0.09) 0%, transparent 70%);
-  border-radius: 50%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 46%;
+  background: linear-gradient(160deg, rgba(32,180,177,0.10) 0%, rgba(32,180,177,0.05) 100%);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
   pointer-events: none;
-  z-index: 0;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: -80px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(32,180,177,0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 56px;
   align-items: center;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 100px 24px 80px;
+  padding: 88px 24px 96px;
   position: relative;
   z-index: 1;
 }
@@ -45,33 +35,42 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rs-primary-text);
+}
+
+.eyebrow span {
+  margin: 0 8px;
+  color: var(--rs-primary);
 }
 
 .h1 {
-  font-family: var(--font-primary);
-  font-weight: var(--weight-bold);
-  font-size: 52px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--color-fg);
+  max-width: 11ch;
 }
 
 .subtitle {
-  font-size: var(--text-body);
+  font-size: 18px;
   line-height: var(--leading-relaxed);
   color: var(--color-fg-muted);
-  max-width: 480px;
+  max-width: 46ch;
 }
 
 .ctas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  margin-top: 6px;
 }
 
 .proof {
-  margin-top: -4px;
+  margin-top: 2px;
   font-size: 13px;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -83,98 +82,106 @@
   color: var(--rs-primary);
 }
 
-.imagePlaceholder {
-  width: 100%;
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, rgba(32,180,177,0.07) 0%, rgba(32,180,177,0.14) 100%);
-  border: none;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* === Escenario === */
+.stage {
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 48px rgba(32,180,177,0.12), 0 0 0 1px rgba(32,180,177,0.12);
+  width: 100%;
+  aspect-ratio: 5 / 4;
 }
 
-.imagePlaceholder::before {
-  content: '';
+.laptop {
   position: absolute;
-  bottom: -40px;
-  right: -40px;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(32,180,177,0.18) 0%, transparent 70%);
-  border-radius: 50%;
+  left: 0;
+  right: 14%;
+  top: 14%;
 }
 
-@media (max-width: 1024px) {
-  .h1 {
-    font-size: 42px;
-  }
+.laptopScreen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #1d1d1f;
+  border-radius: 14px 14px 4px 4px;
+  padding: 10px 10px 0;
+  box-shadow: 0 30px 60px -24px rgba(15, 110, 99, 0.35), 0 0 0 1px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
 
-@media (max-width: 767px) {
-  .inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 80px 16px 48px;
-  }
-
-  .h1 {
-    font-size: 32px;
-  }
-
-  .subtitle {
-    max-width: 100%;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas .rs-btn {
-    width: 100%;
-  }
-
-  .imagePlaceholder {
-    aspect-ratio: 16/9;
-  }
+.shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px 6px 0 0;
+  background: #fff;
 }
 
-/* === WOW-1: entrada orquestada === */
+.laptopBase {
+  height: 14px;
+  margin: 0 -3%;
+  background: linear-gradient(180deg, #d9dbe0 0%, #b9bcc4 100%);
+  border-radius: 0 0 12px 12px;
+}
+
+.phone {
+  position: absolute;
+  right: 0;
+  bottom: 4%;
+  width: 24%;
+  aspect-ratio: 390 / 844;
+  padding: 6px;
+  background: #1d1d1f;
+  border-radius: 22px;
+  box-shadow: 0 24px 48px -16px rgba(0,0,0,0.45);
+  overflow: hidden;
+}
+
+.shotPhone {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.stage .kiwiLayer {
+  position: absolute;
+  left: 2%;
+  top: -6%;
+  width: 150px;
+  z-index: 2;
+}
+
+.stageCaption {
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  font-size: var(--text-micro);
+  color: var(--color-fg-muted);
+  letter-spacing: 0.02em;
+}
+
+.stageCaption strong {
+  color: var(--color-fg);
+  font-weight: var(--weight-semibold);
+}
+
+/* === Entrada orquestada (solo si hubo intro) === */
 @keyframes heroRise {
   from { opacity: 0; transform: translateY(26px); filter: blur(10px); }
   to   { opacity: 1; transform: none; filter: blur(0); }
 }
-/* .heroPre eliminado (2026-10-24): el hero ya no arranca en opacity:0 — era la causa del LCP de 6.8 s en móvil */
 .heroIn { animation: heroRise 0.7s var(--ease-out-cubic) 0.15s both; }
 .heroIn2 { animation-delay: 0.3s; }
 .heroIn3 { animation-delay: 0.45s; }
 .heroIn4 { animation-delay: 0.6s; }
 
-/* === WOW-1: orbes vivos === */
-@keyframes orbDrift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50%      { transform: translate(-28px, 20px) scale(1.09); }
-}
-.hero::before { animation: orbDrift 14s ease-in-out infinite; will-change: transform; }
-.hero::after  { animation: orbDrift 18s ease-in-out infinite reverse; will-change: transform; }
-
-@media (max-width: 767px) {
-  .ctas > span { width: 100%; }
-  .ctas > span .rs-btn { width: 100%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroIn, .heroIn2, .heroIn3, .heroIn4 { animation: none; }
-  .hero::before, .hero::after { animation: none; }
-}
-
-/* === WOW-2: parallax scroll-driven (solo navegadores con soporte) === */
+/* Parallax suave del escenario al hacer scroll (solo con soporte) */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .imagePlaceholder {
+    .stage {
       animation: heroParallax linear both;
       animation-timeline: view();
       animation-range: entry 0% exit 100%;
@@ -186,8 +193,38 @@
   to   { transform: translateY(-26px); }
 }
 
-/* === WOW-3: shader detrás del kiwi === */
-.kiwiLayer {
-  position: relative;
-  z-index: 1;
+@media (max-width: 1024px) {
+  .inner {
+    gap: 40px;
+    padding: 72px 20px 80px;
+  }
+  .stage .kiwiLayer { width: 120px; }
+}
+
+@media (max-width: 767px) {
+  .hero::before {
+    width: 100%;
+    top: auto;
+    height: 46%;
+    clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 56px 16px 56px;
+  }
+  .content { gap: 18px; }
+  .subtitle { font-size: var(--text-body); max-width: 100%; }
+  .ctas { flex-direction: column; }
+  .ctas > span { width: 100%; }
+  .ctas > span .rs-btn { width: 100%; }
+  .stage { aspect-ratio: 4 / 3; margin-top: 8px; }
+  .laptop { right: 18%; top: 10%; }
+  .phone { width: 27%; bottom: 0; }
+  .stage .kiwiLayer { width: 96px; top: -4%; }
+  .stageCaption { bottom: -22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroIn, .heroIn2, .heroIn3, .heroIn4 { animation: none; }
 }

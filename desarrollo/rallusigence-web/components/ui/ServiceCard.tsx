@@ -90,6 +90,7 @@ export default function ServiceCard({
           const eased = 1 - Math.pow(1 - p, 3)
           el.textContent = price.replace(match[1], Math.round(target * eased).toLocaleString('en-US'))
           if (p < 1) requestAnimationFrame(tick)
+          else el.closest('.service-card')?.querySelector('.card-kiwi')?.classList.add('card-kiwi--nod')
         }
         requestAnimationFrame(tick)
       },

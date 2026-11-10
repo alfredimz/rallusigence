@@ -23,7 +23,7 @@ export const SERVICIOS: Servicio[] = [
   {
     slug: 'diseno-web',
     nombre: 'Diseño web',
-    kiwi: '/assets/kiwis/kiwi-idea.svg',
+    kiwi: '/assets/kiwis/kiwi-pintor.svg',
     titulo: 'Tu sitio web profesional en 3 días',
     bajada: 'Diseñado con IA y revisado por especialistas. Precio fijo, código tuyo, cero mensualidades.',
     precio: 'Desde $6,000 MXN',
@@ -62,7 +62,7 @@ export const SERVICIOS: Servicio[] = [
   {
     slug: 'seo',
     nombre: 'Posicionamiento en Google (SEO)',
-    kiwi: '/assets/kiwis/kiwi-analista.svg',
+    kiwi: '/assets/kiwis/kiwi-lupa.svg',
     titulo: 'Que te encuentren en Google cuando te buscan',
     bajada: 'SEO técnico + contenido con método probado desde 2016. La publicidad más duradera y barata que existe.',
     precio: 'Desde $2,500 MXN/mes',
@@ -100,7 +100,7 @@ export const SERVICIOS: Servicio[] = [
   {
     slug: 'tienda-online',
     nombre: 'Tienda online',
-    kiwi: '/assets/kiwis/kiwi-carrito.svg',
+    kiwi: '/assets/kiwis/kiwi-compras.svg',
     titulo: 'Vende en línea sin pagar comisiones de marketplace',
     bajada: 'Tu tienda propia con carrito, pagos y WhatsApp integrado. Tuya, no rentada.',
     precio: 'Desde $20,000 MXN',
@@ -138,7 +138,7 @@ export const SERVICIOS: Servicio[] = [
   {
     slug: 'anuncios',
     nombre: 'Anuncios en Google y Meta',
-    kiwi: '/assets/kiwis/kiwi-cool.svg',
+    kiwi: '/assets/kiwis/kiwi-megafono.svg',
     titulo: 'Anuncios que traen clientes, no puros clics',
     bajada: 'Campañas en Google y Facebook/Instagram operadas con método — sin quemar tu presupuesto.',
     precio: 'A cotizar',
@@ -175,7 +175,7 @@ export const SERVICIOS: Servicio[] = [
   {
     slug: 'automatizacion',
     nombre: 'Automatización con IA',
-    kiwi: '/assets/kiwis/kiwi-tiempo.svg',
+    kiwi: '/assets/kiwis/kiwi-director.svg',
     titulo: 'Deja de hacer a mano lo que una máquina hace mejor',
     bajada: 'Conectamos tus herramientas y automatizamos lo repetitivo: seguimiento, recordatorios, reportes.',
     precio: 'Desde $5,000 MXN',

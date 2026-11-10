@@ -23,12 +23,16 @@ export default function Blog() {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <h1 className="rs-h1">Blog — Sitios web e IA para tu negocio</h1>
-
-          <p className={styles.description}>
-            Estrategias prácticas para hacer crecer tu negocio en internet.
-            Sin teoría, solo lo que realmente funciona.
-          </p>
+          <div className={styles.head}>
+            <div>
+              <h1 className="rs-h1">Blog — Sitios web e IA para tu negocio</h1>
+              <p className={styles.description}>
+                Estrategias prácticas para hacer crecer tu negocio en internet.
+                Sin teoría, solo lo que realmente funciona.
+              </p>
+            </div>
+            <img src="/assets/kiwis/kiwi-lector.svg" alt="" aria-hidden="true" width={150} height={150} className={styles.lector} loading="lazy" decoding="async" />
+          </div>
 
           {posts.length === 0 ? (
             <div className={styles.emptyState}>

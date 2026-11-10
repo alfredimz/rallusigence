@@ -158,7 +158,8 @@
   --duration-normal:  0.3s;
   --duration-slow:    0.4s;
   --duration-intro:   0.8s;     /* intro overlay fade */
-  --ease-out-cubic:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-signature:   cubic-bezier(0.22, 1, 0.36, 1);  /* curva de marca (Sprint C): toda transición de sección/micro usa esta */
+  --ease-out-cubic:   var(--ease-signature);
   --ease-in-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce:      cubic-bezier(0.68, -0.55, 0.265, 1.55);
 

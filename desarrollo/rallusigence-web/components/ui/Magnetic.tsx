@@ -34,7 +34,7 @@ export default function Magnetic({
     }
     const onLeave = () => {
       cancelAnimationFrame(raf)
-      target.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)'
+      target.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)'
       target.style.transform = ''
       window.setTimeout(() => { target.style.transition = '' }, 380)
     }

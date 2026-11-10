@@ -26,7 +26,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Servicios profesionales',
     anio: 2019,
     casoSlug: 'mci',
-    kiwi: '/assets/kiwis/kiwi-base.svg'
+    kiwi: '/assets/kiwis/kiwi-traje.svg'
   },
   {
     id: 'alejandro-sipsaa',
@@ -35,7 +35,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'SIPSAA',
     giro: 'Despacho contable',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-tiempo.svg'
+    kiwi: '/assets/kiwis/kiwi-moneda.svg'
   },
   {
     id: 'eduardo-jea',
@@ -62,7 +62,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'SEM',
     giro: 'Mantenimiento y desazolve de drenajes',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-dominios.svg'
+    kiwi: '/assets/kiwis/kiwi-director.svg'
   },
   {
     id: 'jacinto-hands',
@@ -71,7 +71,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'Hands Editores',
     giro: 'Venta de material didáctico',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-idea-circulo.svg'
+    kiwi: '/assets/kiwis/kiwi-lector.svg'
   },
   {
     id: 'sergio-liquen',
@@ -81,7 +81,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Consultorio de terapia',
     anio: 2019,
     casoSlug: 'liquen',
-    kiwi: '/assets/kiwis/kiwi-pintor.svg'
+    kiwi: '/assets/kiwis/kiwi-relax.svg'
   },
   {
     id: 'mary-acacnx',
@@ -101,7 +101,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Limpieza y desinfección a vapor',
     anio: 2019,
     casoSlug: 'steamcleaning',
-    kiwi: '/assets/kiwis/kiwi-nube.svg'
+    kiwi: '/assets/kiwis/kiwi-atleta.svg'
   },
   {
     id: 'oskar-digitalprint',
@@ -111,7 +111,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Impresión y artes gráficas (México y EUA)',
     anio: 2019,
     casoSlug: 'digital-print',
-    kiwi: '/assets/kiwis/kiwi-lanzamiento.svg'
+    kiwi: '/assets/kiwis/kiwi-megafono.svg'
   },
   {
     id: 'escalante-puntoprint',
@@ -120,7 +120,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'El Punto Print House',
     giro: 'Imprenta',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-tiendita.svg'
+    kiwi: '/assets/kiwis/kiwi-lapiz.svg'
   },
   {
     id: 'cesar-perfecciona',
@@ -129,7 +129,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'Perfecciona',
     giro: 'Consultoría empresarial',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-tiempo.svg'
+    kiwi: '/assets/kiwis/kiwi-graduado.svg'
   },
   {
     id: 'elsa-sactei',
@@ -149,7 +149,7 @@ export const TESTIMONIOS: Testimonio[] = [
     giro: 'Cosméticos y cuidado de la piel (marca coreana)',
     anio: 2019,
     casoSlug: 'solfog',
-    kiwi: '/assets/kiwis/kiwi-tiendita.svg'
+    kiwi: '/assets/kiwis/kiwi-compras.svg'
   },
   {
     id: 'raul-ibroken',
@@ -167,7 +167,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'IBB Mi Casa',
     giro: 'Inmobiliaria',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-base.svg'
+    kiwi: '/assets/kiwis/kiwi-tiendita.svg'
   },
   {
     id: 'cecy-nutriologia',
@@ -185,7 +185,7 @@ export const TESTIMONIOS: Testimonio[] = [
     negocio: 'Mariachi Estampa de México',
     giro: 'Mariachi y música en vivo',
     anio: 2019,
-    kiwi: '/assets/kiwis/kiwi-traje.svg'
+    kiwi: '/assets/kiwis/kiwi-vendedor.svg'
   },
   {
     id: 'anita-seprimex',

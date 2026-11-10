@@ -161,3 +161,17 @@
     margin-bottom: 28px;
   }
 }
+/* Sprint B: cabecera a la izquierda con el kiwi lector */
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 40px;
+}
+.head h1, .head .description { text-align: left; margin-left: 0; }
+.lector { width: 150px; height: 150px; }
+@media (max-width: 767px) {
+  .head { grid-template-columns: 1fr; gap: 12px; }
+  .lector { width: 110px; height: 110px; justify-self: end; }
+}

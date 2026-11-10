@@ -1,4 +1,4 @@
-# Matriz de interacción — http://localhost:3007 — 2026-10-24T23:43:39.452Z
+# Matriz de interacción — https://rallusigence.net — 2026-11-10T03:01:03.658Z
 
 Páginas: 17 · viewports: 2 · FAIL: 0 · WARN: 17
 

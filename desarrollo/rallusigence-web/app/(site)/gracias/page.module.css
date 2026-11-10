@@ -26,8 +26,10 @@
 
 /* === ICON === */
 .icon {
-  color: var(--rs-primary);
-  margin-bottom: 24px;
+  display: block;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
 }
 
 /* === TEXT === */
@@ -85,9 +87,9 @@
   }
 
   .icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 20px;
+    width: 104px;
+    height: 104px;
+    margin-bottom: 16px;
   }
 
   .content :global(.rs-btn) {

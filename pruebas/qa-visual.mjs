@@ -64,7 +64,7 @@ for (const vp of VIEWPORTS) {
       window.scrollTo(0, 0)
     })
     await page.addStyleTag({ content: `
-      .reveal, [class*="reveal"], [class*="heroPre"] { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .reveal, [class*="reveal"], [class*="heroPre"] { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
       *, *::before, *::after { animation-play-state: paused !important; transition: none !important; }
     ` })
     await page.waitForTimeout(600)

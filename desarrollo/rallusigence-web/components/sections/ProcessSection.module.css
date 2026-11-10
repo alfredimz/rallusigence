@@ -18,13 +18,47 @@
 }
 
 .titleWrap {
-  text-align: center;
-  margin-bottom: 48px;
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7de8e6;
+  margin-bottom: 14px;
 }
 
 .list {
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 760px;
+  margin: 0;
+}
+
+.stepBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.stepKiwi {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  align-self: center;
+  transform: translateY(6px) scale(0.92);
+  opacity: 0.55;
+  transition: transform 0.6s var(--ease-out-cubic), opacity 0.6s var(--ease-out-cubic);
+}
+
+.active .stepKiwi {
+  transform: none;
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .stepKiwi { width: 56px; height: 56px; }
 }
 
 .stepTitle {

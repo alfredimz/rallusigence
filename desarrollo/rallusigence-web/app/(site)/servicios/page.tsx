@@ -32,23 +32,24 @@ export default function ServiciosPage() {
 
       <section className={styles.gridSection}>
         <div className="section-wrapper">
-          <div className={styles.grid}>
+          <ol className={styles.lista}>
             {SERVICIOS.map((s, i) => (
-              <a
-                key={s.slug}
-                href={`/servicios/${s.slug}`}
-                className={`${styles.card} reveal reveal--blur reveal--delay-${(i % 3) + 1}`}
-              >
-                <img src={s.kiwi} alt="" aria-hidden="true" className={styles.kiwi} width={88} height={88} loading={i > 2 ? 'lazy' : undefined} />
-                <h2 className={styles.nombre}>{s.nombre}</h2>
-                <p className={styles.desc}>{s.bajada}</p>
-                <div className={styles.footer}>
-                  <span className="price-tag">{s.precio}</span>
-                  <span className={styles.ver}>Ver servicio →</span>
-                </div>
-              </a>
+              <li key={s.slug} className={`${styles.fila} reveal reveal--delay-${(i % 3) + 1}`}>
+                <a href={`/servicios/${s.slug}`} className={styles.card}>
+                  <span className={styles.num} aria-hidden="true">0{i + 1}</span>
+                  <img src={s.kiwi} alt="" aria-hidden="true" className={styles.kiwi} width={120} height={120} loading={i > 1 ? 'lazy' : undefined} />
+                  <div className={styles.texto}>
+                    <h2 className={styles.nombre}>{s.nombre}</h2>
+                    <p className={styles.desc}>{s.bajada}</p>
+                    <div className={styles.footer}>
+                      <span className="price-tag">{s.precio}</span>
+                      <span className={styles.ver}>Ver servicio →</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </main>

@@ -31,7 +31,7 @@ export default function ComoFuncionaPage() {
       {/* Hero Section */}
       <section className="section-wrapper reveal" aria-labelledby="hero-title">
         <div className={styles.heroWrapper}>
-          <h1 id="hero-title" className="rs-h1 text-center">
+          <h1 id="hero-title" className="rs-h1">
             De cero a tu sitio en línea. Sin reuniones, sin esperas.
           </h1>
           <p className={styles.heroDescription}>
@@ -43,54 +43,52 @@ export default function ComoFuncionaPage() {
       {/* Proceso Section */}
       <section className={`section-wrapper ${styles.processSection}`} aria-labelledby="process-title">
         <div className={styles.processWrapper}>
-          <h2 id="process-title" className="rs-h2 text-center">
+          <h2 id="process-title" className="rs-h2">
             Así trabajamos
           </h2>
           <div className={styles.processSteps}>
             <div className={`step-item reveal`}>
               <div className="step-item__number">1</div>
+              <img src="/assets/kiwis/kiwi-telefono.svg" alt="" aria-hidden="true" className={styles.stepKiwi} width={72} height={72} loading="lazy" decoding="async" />
               <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>Escríbenos</h3>
                 <p className={styles.stepDescription}>
                   Mándanos un mensaje por WhatsApp o llena el formulario. Cuéntanos de tu negocio
                   y el paquete que quieres. Te respondemos en menos de 2 horas.
                 </p>
-                <div className={styles.stepTime}>
-                  📱 Menos de 2 horas
-                </div>
+                <div className={styles.stepTime}>Menos de 2 horas</div>
               </div>
             </div>
 
             <div className={`step-item reveal reveal--delay-1`}>
               <div className="step-item__number">2</div>
+              <img src="/assets/kiwis/kiwi-moneda.svg" alt="" aria-hidden="true" className={styles.stepKiwi} width={72} height={72} loading="lazy" decoding="async" />
               <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>Pagas el 50%</h3>
                 <p className={styles.stepDescription}>
                   Pagas el 50% del paquete para arrancar (con un código de retiro desde tu app
                   bancaria). En ese momento empezamos.
                 </p>
-                <div className={styles.stepTime}>
-                  💳 Inmediato
-                </div>
+                <div className={styles.stepTime}>Inmediato</div>
               </div>
             </div>
 
             <div className={`step-item reveal reveal--delay-2`}>
               <div className="step-item__number">3</div>
+              <img src="/assets/kiwis/kiwi-director.svg" alt="" aria-hidden="true" className={styles.stepKiwi} width={72} height={72} loading="lazy" decoding="async" />
               <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>Construimos en días</h3>
                 <p className={styles.stepDescription}>
                   Con IA y experiencia, construimos tu sitio mientras tú sigues atendiendo tu negocio.
                   Te mandamos avances y tienes 2 rondas de cambios antes de la entrega.
                 </p>
-                <div className={styles.stepTime}>
-                  ⚙️ 3-12 días según el paquete
-                </div>
+                <div className={styles.stepTime}>3-12 días según el paquete</div>
               </div>
             </div>
 
             <div className={`step-item reveal reveal--delay-3`}>
               <div className="step-item__number">4</div>
+              <img src="/assets/kiwis/kiwi-caja.svg" alt="" aria-hidden="true" className={styles.stepKiwi} width={72} height={72} loading="lazy" decoding="async" />
               <div className={styles.stepContent}>
                 <h3 className={styles.stepTitle}>Te entregamos todo</h3>
                 <p className={styles.stepDescription}>
@@ -98,9 +96,7 @@ export default function ComoFuncionaPage() {
                   Pagas el 50% restante. Cambios menores sin costo los primeros 15 días. El sitio es
                   tuyo para siempre.
                 </p>
-                <div className={styles.stepTime}>
-                  🚀 Desde el primer día
-                </div>
+                <div className={styles.stepTime}>Desde el primer día</div>
               </div>
             </div>
           </div>
@@ -110,7 +106,7 @@ export default function ComoFuncionaPage() {
       {/* Modelo de Pago Section */}
       <section className={`section-wrapper ${styles.paymentSection}`} aria-labelledby="payment-title">
         <div className={styles.paymentWrapper}>
-          <h2 id="payment-title" className="rs-h2 text-center">
+          <h2 id="payment-title" className="rs-h2">
             Transparencia total en cómo cobramos
           </h2>
 
